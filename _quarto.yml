@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Awoo56709.github.io"
+  title: "Joshua Ferrer-Lozano"
   navbar:
     left:
       - href: index.qmd
