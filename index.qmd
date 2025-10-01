@@ -1,0 +1,37 @@
+---
+title: "Joshua Ferrer-Lozano"
+format: html
+editor: visual
+image: profile.jpg
+about:
+  id: hero-heading
+  template: jolla
+  image-shape: round
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/joshuarflozano/
+    - icon: github
+      text: GitHub
+      href: https://github.com/Awoo56709
+theme: none
+css: site_css2.css
+---
+::: {#hero-heading}
+Joshua is a graduate student in Environmental Data Science at UCSB, with a background in data cleaning, climate research, and data visualization. He enjoys hands-on experimentation, playing guitar and capming in his VW bus.
+
+## Education
+
+University of California, Santa Barbara \| Santa Barbara, CA\
+Environmental Data Science M.E.D.s.\| Aug 2024 – June 2026
+
+## Experience
+
+Environmental Research \| Greenhouse Gas Inventory Specialist \| July 2017 – July 2019
+
+IT Specialist \| Community Economic Development Specialist \| April 2023 - August 2025
+:::
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

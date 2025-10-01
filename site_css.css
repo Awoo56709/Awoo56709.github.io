@@ -1,0 +1,27 @@
+body {
+  background-color: #194D45; /* Deep Teal */
+  color: #F5F5F5;            /* Soft White */
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+#hero-heading {
+  background-color: #2D6A4F; /* Forest Green */
+  padding: 2em;
+  border-radius: 8px;
+}
+
+#hero-heading h1, #hero-heading h2, #hero-heading h3 {
+  color: #D0C0B2; /* Sandstone */
+}
+
+a, .btn {
+  background-color: #00BFC4; /* Sky Cyan */
+  color: #F5F5F5;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #6B8E23; /* Moss Green */
+}
