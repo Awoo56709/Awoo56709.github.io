@@ -4,6 +4,12 @@ title: "About"
 
 About this site
 
-```{r}
-1 + 1
-```
+## What I do For Work
+
+I am doing stuff and that what I do
+
+## What I do for fun
+
+I like taking picture of stuff and drive my VW bus
+
+

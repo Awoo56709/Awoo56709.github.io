@@ -8,18 +8,21 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: Personal Life
       - href: resources.qmd
         text: Resources
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    theme: none
+    css: styles.scss
     toc: true
     page-layout: full
+    mainfont: Nunito
 
 
-
+page-footer:
+  left: Copyright 2025, Joshua Ferrer-Lozano
+  right:
+    - icon: Github
