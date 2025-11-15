@@ -10,11 +10,11 @@ title: "test blog" description: "short description of blog post" date: 11/12/202
 
 This is where the body begins
 
-Im going to add a footnote [^index-1]. Here is inline footnote[^index-2]
+Im going to add a footnote [^1]. Here is inline footnote[^2]
 
-[^index-1]: Here is some addational context that might be helpful.
+[^1]: Here is some addational context that might be helpful.
 
-[^index-2]: Inline note
+[^2]: Inline note
 
 example citing here [@shanny-csik2022]
 

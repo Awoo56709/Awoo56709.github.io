@@ -4,23 +4,35 @@ project:
 
 website:
   title: "Joshua Ferrer-Lozano"
-  #favicon: #image/"pic_name"
+  site-url: https://awoo56709.github.io/
   navbar:
     title: false
-    left:
-    #logo: #images/logo.png
-    #logo-alt: #description of the image
+    right:
       - href: index.qmd
         text: Home
       - href: about.qmd
-        text: Personal Life
-    menu:
-      - href: resources.qmd
-        text: Resources
-      - href: blog.qmd
-        text: Blog
+        text: Biography
       - href: photo_gallery.qmd
         text: The World Through Film
+      - href: blog.qmd
+        text: Blog
+      - text: Get in Touch!
+        menu: 
+          - icon: linkedin
+            text: LinkedIn
+            href: https://www.linkedin.com/in/joshuarflozano/
+            target: _blank
+          - icon: github
+            text: GitHub
+            href: https://github.com/Awoo56709
+            target: _blank
+          - text: Email
+            href: "mailto:joshuar.f.lozano@gmail.com"
+
+page-footer:
+  left: Copyright 2025, Joshua Ferrer-Lozano
+  right:
+    - icon: Github
 
 format:
   html:
@@ -29,9 +41,3 @@ format:
     toc: true
     page-layout: full
     mainfont: Nunito
-
-
-page-footer:
-  left: Copyright 2025, Joshua Ferrer-Lozano
-  right:
-    - icon: Github

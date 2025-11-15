@@ -1,19 +1,21 @@
 ---
 title: "Joshua Ferrer-Lozano"
-format: html
-image: cropped_profile.jpg
+toc: false
 about:
   id: hero-heading
   template: jolla
+  image: cropped_profile.jpg
   image-shape: round
   image-width: 17em
   links:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/joshuarflozano/
+      target: _blank
     - icon: github
       text: GitHub
       href: https://github.com/Awoo56709
+      target: _blank
     - text: Email
       href: "mailto:joshuar.f.lozano@gmail.com"
 theme: none
@@ -34,7 +36,3 @@ Environmental Research \| Greenhouse Gas Inventory Specialist \| July 2017 – J
 
 IT Specialist \| Community Economic Development Specialist \| April 2023 - August 2025
 :::
-
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
