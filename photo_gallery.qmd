@@ -3,7 +3,7 @@ title: "photo_gallery"
 format: html
 ---
 
-:::{layout-ncol=3}
+:::{.layout-ncol=3}
 ![church](photos/F1020003.jpg)
 ![tower](photos/F1020004.jpg)
 ![dog](photos/F1020008.jpg)

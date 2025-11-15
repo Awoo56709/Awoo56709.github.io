@@ -14,13 +14,13 @@ website:
         text: Home
       - href: about.qmd
         text: Personal Life
-        menu:
-          - href: resources.qmd
-            text: Resources
-          - href: blog.qmd
-            text: Blog
-          - href: photo_gallery.qmd
-            text: The World Through Film
+    menu:
+      - href: resources.qmd
+        text: Resources
+      - href: blog.qmd
+        text: Blog
+      - href: photo_gallery.qmd
+        text: The World Through Film
 
 format:
   html:
