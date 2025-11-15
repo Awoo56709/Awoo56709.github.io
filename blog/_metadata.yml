@@ -1,0 +1,11 @@
+# any options that specified here will apply to all posts in the folder
+
+author: 
+  - name: Joshua Ferrer-Lozano
+    url: https://awoo56709.github.io/
+    affiliation: MEDS
+    affiliation-url: https://bren.ucsb.edu/
+    
+title-block-banner: true
+
+freeze: auto

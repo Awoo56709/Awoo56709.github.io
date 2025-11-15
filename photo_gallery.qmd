@@ -1,0 +1,14 @@
+---
+title: "photo_gallery"
+format: html
+---
+
+:::{layout-ncol=3}
+![church](photos/F1020003.jpg)
+![tower](photos/F1020004.jpg)
+![dog](photos/F1020008.jpg)
+![dog](photos/F1020010.jpg)
+![dacha](photos/F1040029.jpg)
+![dog](photos/F1050027.jpg)
+:::
+

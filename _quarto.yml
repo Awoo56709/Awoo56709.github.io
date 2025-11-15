@@ -4,14 +4,23 @@ project:
 
 website:
   title: "Joshua Ferrer-Lozano"
+  #favicon: #image/"pic_name"
   navbar:
+    title: false
     left:
+    #logo: #images/logo.png
+    #logo-alt: #description of the image
       - href: index.qmd
         text: Home
       - href: about.qmd
         text: Personal Life
-      - href: resources.qmd
-        text: Resources
+        menu:
+          - href: resources.qmd
+            text: Resources
+          - href: blog.qmd
+            text: Blog
+          - href: photo_gallery.qmd
+            text: The World Through Film
 
 format:
   html:

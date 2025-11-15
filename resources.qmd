@@ -3,3 +3,12 @@ title: "Resources"
 format: html
 ---
 
+<h1 class="title">This a h1 header element</h1>
+
+<p class = "orange-text"> This text is orange</h>
+
+<p class = "center-text" "orange-text"> this text is both centertext and orange</p>
+
+
+
+Heres where im describing [something fun]{.orange-text} that I enjoy doing.

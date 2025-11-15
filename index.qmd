@@ -1,7 +1,6 @@
 ---
 title: "Joshua Ferrer-Lozano"
 format: html
-editor: visual
 image: cropped_profile.jpg
 about:
   id: hero-heading
@@ -15,12 +14,12 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/Awoo56709
-      target: _blank
     - text: Email
-      href: joshuar.f.lozano@gmail.com
+      href: "mailto:joshuar.f.lozano@gmail.com"
 theme: none
 css: site_css2.css
 ---
+
 ::: {#hero-heading}
 Joshua is a graduate student in Environmental Data Science at UCSB, with a background in data cleaning, climate research, and data visualization. In his free time, he enjoys film photography, playing guitar and go camping in his VW bus.
 
