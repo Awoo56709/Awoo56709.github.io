@@ -1,38 +1,29 @@
 ---
-title: "Joshua Ferrer-Lozano"
+#title: ""
+image: cropped_profile.jpg
 toc: false
-about:
-  id: hero-heading
+about: 
   template: jolla
-  image: cropped_profile.jpg
   image-shape: round
-  image-width: 17em
-  links:
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/joshuarflozano/
-      target: _blank
-    - icon: github
-      text: GitHub
-      href: https://github.com/Awoo56709
-      target: _blank
-    - text: Email
-      href: "mailto:joshuar.f.lozano@gmail.com"
-theme: none
-css: site_css2.css
+  image-width: 15em
+  # links:
+  #   - icon: linkedin
+  #     text: LinkedIn
+  #     href: https://www.linkedin.com/in/samanthacsik/
+  #     target: _blank
+  #   # - icon: twitter
+  #   #   text: Twitter
+  #   #   href: https://twitter.com/SamanthaCsik
+  #   #   target: _blank
+  #   - icon: github
+  #     text: GitHub
+  #     href: https://github.com/samanthacsik
+  #     target: _blank
+  #   - icon: envelope
+  #     text: Email
+  #     href: mailto:scsik@ucsb.edu
 ---
 
-::: {#hero-heading}
+::: {#bio}
 Joshua is a graduate student in Environmental Data Science at UCSB, with a background in data cleaning, climate research, and data visualization. In his free time, he enjoys film photography, playing guitar and go camping in his VW bus.
-
-## Education
-
-University of California, Santa Barbara \| Santa Barbara, CA\
-Environmental Data Science M.E.D.s.\| Aug 2024 – June 2026
-
-## Experience
-
-Environmental Research \| Greenhouse Gas Inventory Specialist \| July 2017 – July 2019
-
-IT Specialist \| Community Economic Development Specialist \| April 2023 - August 2025
 :::

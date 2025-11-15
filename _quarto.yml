@@ -4,40 +4,46 @@ project:
 
 website:
   title: "Joshua Ferrer-Lozano"
+  # reader-mode: true
+  # repo-url: https://github.com/samanthacsik/samanthacsik.github.io
+  # repo-actions: [edit, issue]
   site-url: https://awoo56709.github.io/
+  favicon: cropped_profile.jpg
   navbar:
     title: false
+    #logo: 
+    #logo-alt: 
     right:
       - href: index.qmd
-        text: Home
-      - href: about.qmd
-        text: Biography
-      - href: photo_gallery.qmd
-        text: The World Through Film
-      - href: blog.qmd
-        text: Blog
-      - text: Get in Touch!
-        menu: 
+        text: home
+      - about.qmd
+      - href: index.qmd
+        text: Photo Gallery
+      - photo_gallery.qmd  
+      - href: projects.qmd
+        text: projects
+      - blog_page.qmd
+      - text: Contact me!
+        menu:
           - icon: linkedin
             text: LinkedIn
             href: https://www.linkedin.com/in/joshuarflozano/
             target: _blank
-          - icon: github
-            text: GitHub
-            href: https://github.com/Awoo56709
-            target: _blank
-          - text: Email
-            href: "mailto:joshuar.f.lozano@gmail.com"
-
-page-footer:
-  left: Copyright 2025, Joshua Ferrer-Lozano
-  right:
-    - icon: Github
+          - icon: envelope
+            text: email
+            href: mailto:jferrer-lozano@ucsb.edu
+      - icon: github
+        href: https://github.com/Awoo56709
+        target: _blank
+  page-footer: 
+    background: light
+    left: © 2025 Joshua Ferrer-Lozano
 
 format:
   html:
-    theme: none
-    css: styles.scss
-    toc: true
     page-layout: full
+    sidebar: false
+    theme: 
+      - site_css2.css
     mainfont: Nunito
+    toc: true
