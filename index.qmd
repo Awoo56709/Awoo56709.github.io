@@ -26,4 +26,6 @@ about:
 
 ::: {#bio}
 Joshua is a graduate student in Environmental Data Science at UCSB, with a background in data cleaning, climate research, and data visualization. In his free time, he enjoys film photography, playing guitar and go camping in his VW bus.
+
+
 :::
