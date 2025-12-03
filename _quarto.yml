@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Joshua Ferrer-Lozano"   # <-- site title
-  site-url: https://awoo56709.github.io/
+  #site-url: 
   navbar:
     right:
       - href: index.qmd
@@ -13,9 +13,8 @@ website:
         text: About Me
       - href: photo_gallery.qmd
         text: The World Through Film
-      - href: blog.qmd
+      - href: blog_page.qmd
         text: Blog
-      - text: Get in Touch!
         menu: 
           - icon: linkedin
             text: LinkedIn
