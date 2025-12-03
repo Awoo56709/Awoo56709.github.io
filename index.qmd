@@ -1,31 +1,22 @@
 ---
-#title: ""
-image: cropped_profile.jpg
-toc: false
-about: 
+title: "Joshua Ferrer-Lozano"
+about:
   template: jolla
+  image: cropped_profile.jpg
   image-shape: round
-  image-width: 15em
-  # links:
-  #   - icon: linkedin
-  #     text: LinkedIn
-  #     href: https://www.linkedin.com/in/samanthacsik/
-  #     target: _blank
-  #   # - icon: twitter
-  #   #   text: Twitter
-  #   #   href: https://twitter.com/SamanthaCsik
-  #   #   target: _blank
-  #   - icon: github
-  #     text: GitHub
-  #     href: https://github.com/samanthacsik
-  #     target: _blank
-  #   - icon: envelope
-  #     text: Email
-  #     href: mailto:scsik@ucsb.edu
+  image-width: 17em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/joshuarflozano/
+    - icon: github
+      text: GitHub
+      href: https://github.com/Awoo56709
+    - text: Email
+      href: "mailto:joshuar.f.lozano@gmail.com"
 ---
 
 ::: {#bio}
-Joshua is a graduate student in Environmental Data Science at UCSB, with a background in data cleaning, climate research, and data visualization. In his free time, he enjoys film photography, playing guitar and go camping in his VW bus.
-
-
+Welcome! I’m a graduate student in Environmental Data Science at UCSB.  
+I focus on geospatial analysis, reproducible workflows, and creative approaches to teaching data science with a background in data cleaning, climate research, and data visualization. In my free time, he enjoys film photography, cooking, playing guitar and go camping in his VW bus.
 :::
