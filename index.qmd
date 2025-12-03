@@ -18,5 +18,7 @@ about:
 
 ::: {#bio}
 Welcome! I’m a graduate student in Environmental Data Science at UCSB.  
-I focus on geospatial analysis, reproducible workflows, and creative approaches to teaching data science with a background in data cleaning, climate research, and data visualization. In my free time, he enjoys film photography, cooking, playing guitar and go camping in his VW bus.
+I focus on geospatial analysis, reproducible workflows, and creative approaches to teaching data science with a background in data cleaning, climate research, and data visualization. 
+
+I double majored with degrees in Environmental Studies and Planning and Economics from Sonoma State University in 2017. In the following years, I was an AmeriCorps Vista volunteer in Hawaii and worked on environmental policy for the Caldwell Administration and co-developed the methodology for the City and County of Honolulu's first greenhouse gas inventory as well as develop metrics for its first sustainability report. After, I was a Peace Corps volunteer in the country of Georgia where I provided capacity to a small non-government organization providing support in IT, translation, database development, data dashboard and website development and youth development project facilitation.
 :::

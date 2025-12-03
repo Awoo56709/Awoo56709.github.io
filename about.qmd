@@ -1,15 +1,17 @@
 ---
-title: "About"
+title: "About Me"
 ---
 
 About this site
 
 ## What I do For Work
 
-I am doing stuff and that what I do
+As a Masters Student I analyze environmental data using R and Python.
 
 ## What I do for fun
 
-I like taking picture of stuff and drive my VW bus
+In my free time, he enjoys film photography, cooking, playing guitar and go camping in his VW bus.
+
+You can find me enjoying my collection of Soviet era film cameras. My favorite cuisine is Thai food, of which drunken noodles, larb and yellow curry are among my favorite dishes. My all time favorite dish, however is Japanese Ramen, specifically Tsukemen.
 
 
