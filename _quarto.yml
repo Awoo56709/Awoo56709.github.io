@@ -26,3 +26,13 @@ website:
             target: _blank
           - text: Email
             href: "mailto:joshuar.f.lozano@gmail.com"
+            
+collections:
+  posts:
+    categories: true
+    sort: "date desc"
+
+
+#format:
+ # html:
+  #  css: site_css.css   # or styles.css
