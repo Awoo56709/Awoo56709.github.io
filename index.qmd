@@ -2,7 +2,7 @@
 title: "Joshua Ferrer-Lozano"
 about:
   template: jolla
-  image: cropped_profile.jpg
+  image: site_photos/cropped_profile.jpg
   image-shape: round
   image-width: 17em
   links:
