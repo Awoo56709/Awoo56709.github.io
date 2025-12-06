@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "This a h1 header element\n\n\nThis text is orange\n this text is both centertext and orange\nHeres where im describing something fun that I enjoy doing."
+  },
+  {
+    "objectID": "photo_gallery.html",
+    "href": "photo_gallery.html",
+    "title": "Photo Gallery",
+    "section": "",
+    "text": "Guarding the vineyard\n Summer dacha retreat\n Afternoon nap"
+  },
+  {
+    "objectID": "photo_gallery.html#dogs-dacha",
+    "href": "photo_gallery.html#dogs-dacha",
+    "title": "Photo Gallery",
+    "section": "",
+    "text": "Guarding the vineyard\n Summer dacha retreat\n Afternoon nap"
+  },
+  {
+    "objectID": "blog_page.html",
+    "href": "blog_page.html",
+    "title": "Projects blog",
+    "section": "",
+    "text": "Visualizing the Aftermath of the Eaton and Palisades Fires\n\n\n\nPython\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\nUsing satellite imagery to visualize fire scars\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 3, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "about.html#what-i-do-for-work",
+    "href": "about.html#what-i-do-for-work",
+    "title": "About Me",
+    "section": "What I do For Work",
+    "text": "What I do For Work\nAs a Masters Student I analyze environmental data using R and Python."
+  },
+  {
+    "objectID": "about.html#what-i-do-for-fun",
+    "href": "about.html#what-i-do-for-fun",
+    "title": "About Me",
+    "section": "What I do for fun",
+    "text": "What I do for fun\nIn my free time, he enjoys film photography, cooking, playing guitar and go camping in his VW bus.\nYou can find me enjoying my collection of Soviet era film cameras. My favorite cuisine is Thai food, of which drunken noodles, larb and yellow curry are among my favorite dishes. My all time favorite dish, however is Japanese Ramen, specifically Tsukemen."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Joshua Ferrer-Lozano",
+    "section": "",
+    "text": "Welcome! I’m a graduate student in Environmental Data Science at UCSB.\nI focus on geospatial analysis, reproducible workflows, and creative approaches to teaching data science with a background in data cleaning, climate research, and data visualization.\nI double majored with degrees in Environmental Studies and Planning and Economics from Sonoma State University in 2017. In the following years, I was an AmeriCorps Vista volunteer in Hawaii and worked on environmental policy for the Caldwell Administration and co-developed the methodology for the City and County of Honolulu’s first greenhouse gas inventory as well as develop metrics for its first sustainability report. After, I was a Peace Corps volunteer in the country of Georgia where I provided capacity to a small non-government organization providing support in IT, translation, database development, data dashboard and website development and youth development project facilitation."
+  },
+  {
+    "objectID": "posts/Eaton_and_Palisades_Fire/index.html",
+    "href": "posts/Eaton_and_Palisades_Fire/index.html",
+    "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
+    "section": "",
+    "text": "You can access the full analysis of the project in this Github repository"
+  },
+  {
+    "objectID": "posts/Eaton_and_Palisades_Fire/index.html#analysis-1-false-color-visualization",
+    "href": "posts/Eaton_and_Palisades_Fire/index.html#analysis-1-false-color-visualization",
+    "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
+    "section": "Analysis 1: False Color Visualization",
+    "text": "Analysis 1: False Color Visualization"
+  },
+  {
+    "objectID": "posts/Eaton_and_Palisades_Fire/index.html#setup-and-data-import",
+    "href": "posts/Eaton_and_Palisades_Fire/index.html#setup-and-data-import",
+    "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
+    "section": "Setup and Data Import",
+    "text": "Setup and Data Import\n\n\n# Import required libraries for geospatial analysis and visualization\nimport os\nimport numpy as np\nimport rioxarray as rio\nimport matplotlib.pyplot as plt\nimport geopandas as gpd\nimport xarray as xr\n\n\nLoading Fire Perimeter Data\nFire perimeters provide the spatial boundaries of interest for the analysis.\n\n# Load fire perimeter shapefiles\neaton = gpd.read_file('data\\eaton_fire\\Eaton_Perimeter_20250121.shp')\n\n# Load fire perimeter shapefiles\npalisades = gpd.read_file('data\\palisades_fire\\Palisades_Perimeter_20250121.shp')\n\nBoth datasets contain polygon geometries for the fire perimeters, with length and area attributes. Both use the EPSG:3857 CRS (projected)."
+  },
+  {
+    "objectID": "posts/Eaton_and_Palisades_Fire/index.html#loading-and-processing-landsat-imagery",
+    "href": "posts/Eaton_and_Palisades_Fire/index.html#loading-and-processing-landsat-imagery",
+    "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
+    "section": "Loading and Processing Landsat Imagery",
+    "text": "Loading and Processing Landsat Imagery\nThe Landsat 8 data contains multiple spectral bands capturing different wavelengths of reflected light. Each band provides information about surface conditions.\n\n\n# a,b Activate and Import netCDF4\nimport netCDF4\n# c) Check activation and version\nprint(netCDF4.__version__)\n\n1.7.3\n\n\n\n\n# Generate variable for path\nNC_fp = os.path.join('data','landsat8-2025-02-23-palisades-eaton.nc')\n\n# Use netCDF4\nlandsat = xr.open_dataset(\"data/landsat8-2025-02-23-palisades-eaton.nc\", engine=\"netcdf4\")\n\n\n# Explore dimensions and coordinates\nprint(\"Dimensions:\", landsat.dims)\nprint(\"\\nCoordinates:\", list(landsat.coords))\nprint(\"\\nData variables:\", list(landsat.data_vars))\n\nDimensions: FrozenMappingWarningOnValuesAccess({'y': 1418, 'x': 2742})\n\nCoordinates: ['y', 'x', 'time']\n\nData variables: ['red', 'green', 'blue', 'nir08', 'swir22', 'spatial_ref']\n\n\nThe Landsat dataset spans 1418 x 2742 pixels and contains five spectral bands: red, green, blue, nir08, swir22.\n\nRestoring Spatial Information\n\n\n# Recover the geospatial information from spatial_ref\nlandsat = landsat.rio.write_crs(landsat.spatial_ref.crs_wkt)\n\nThe CRS metadata (spatial_ref) was restored to EPSG:32611, appropriate for Los Angeles County.\n\n\nHandling Missing Values\nClouded areas contained NaN values, which caused visualization errors. These were filled to allow rendering.\n\n# Identify which bands have nan values using numpy.isnan()\nnan_bands = []\nfor band in ['red', 'green', 'blue', 'nir08', 'swir22']:\n    if np.isnan(landsat[band]).any():\n        nan_bands.append(band)\n\nprint(\"Bands with NaN values:\", nan_bands)\n\n# Substitute any nan values for 0\nlandsat = landsat.fillna(0)\n\nBands with NaN values: ['green', 'blue']\n\n\n\n\nTrue Color Visualization\n\n# Re-plot with the true color image\nlandsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)\nplt.show()\n\n\n\n\n\n\n\n\nThe robust=True parameter clips extreme outliers, preventing washed-out imagery.\n\n\nFalse Color Analysis\nFalse color composites use non-visible wavelengths to reveal features that are not discernible to the human eye. By assigning short (SWIR) to red, near-infrared (NIR) to green, and red to blue, we create imagery where vegetation appears on the green scale and burned areas show a range of eddish-brown tones.\n\n# Specify bands for false color composite\nlandsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)\nplt.title('False Color Composite (SWIR/NIR/Red)')\nplt.show()\n\n\n\n\n\n\n\n\nThe purpse of this band combination is to discern:\n\nHealthy vegetation which has high NIR reflectance and low SWIR reflectance and appears bright green\nBurned areas which have low NIR and moderate SWIR reflectance and appears reddish brown\nUrban areas which show moderate reflectance across all bands and appear in neutral colors\n\n\n\nFinal Map\nWe overlay the fire perimeters onto our false color image. This requires reprojecting the vector data to match the raster’s coordinate system (EPSG:32611).\n\n# Reproject fire perimeters to match Landsat CRS\neaton = eaton.to_crs(landsat.rio.crs)\npalisades = palisades.to_crs(landsat.rio.crs)\n\n# Create comprehensive map\nfig, ax = plt.subplots(figsize=(10, 10))\n\n# Plot false color composite\nlandsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(\n    ax=ax,\n    robust=True,\n    add_colorbar=False\n)\n# Add Palisades and Eaton fire perimeters\neaton.boundary.plot(ax=ax, edgecolor='blue', linewidth=2)\npalisades.boundary.plot(ax=ax, edgecolor='red', linewidth=2)\n\n\n# Add false color raster\nlandsat[[\"swir22\", \"nir08\", \"red\"]].to_array().plot.imshow(robust=True)\n\n# Add title\nax.set_title('Landsat 8 False Color Image of Palisades and Eaton Fire Perimeters')\n\n# Add labels with gray background\nplt.figtext(0.20, 0.51, \"Palisades Fire\", color='red', fontsize=12, bbox=dict(facecolor='white'))\nplt.figtext(0.80, 0.50, \"Eaton Fire\", color='red', fontsize=12, bbox=dict(facecolor='white'))\n\n# Remove axes\nax.axis('off')\n\n# Display the map\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\nThe Eaton fire (overlaid in blue) and the Palisades fire (overlaid in red) outline the burn perimeter. This false color composite displays the Eaton and Palisades fire areas captured by Landsat 8 on February 23, 2025. The image uses shortwave infrared (SWIR), near-infrared (NIR), and red bands to highlight burn scars and vegetation health.\nKey features:\n\nBright green areas: Healthy vegetation (high NIR reflectance)\nReddish-brown areas: Burned areas and bare soil (low NIR, moderate SWIR)\nUrban/developed areas: Neutral colors (moderate reflectance across bands)"
+  },
+  {
+    "objectID": "posts/Eaton_and_Palisades_Fire/index.html#analysis-2-environmental-justice-dimensions",
+    "href": "posts/Eaton_and_Palisades_Fire/index.html#analysis-2-environmental-justice-dimensions",
+    "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
+    "section": "Analysis 2: Environmental Justice Dimensions",
+    "text": "Analysis 2: Environmental Justice Dimensions\nThis analysis examines socioeconomic characteristics of communities impacted by the fires. While fires affect all habitats, they do not impact all communities equally.\nWe used the Environmental Justice Index (EJI) to identify socioeconomic vulnerability within fire perimeters.\n\n# Read in the EJI dataset\nca_eji_fp = 'data/EJI_2024_California/EJI_2024_California.gdb'\nca_eji = gpd.read_file(ca_eji_fp)\n\n\n# Reproject all datasets to the same crs\neaton = eaton.to_crs(ca_eji.crs)\npalisades = palisades.to_crs(ca_eji.crs)\n\n\n# Get the EJI tracts intersecting the eaton fire perimeter\neji_eaton_join = gpd.sjoin(ca_eji, eaton, how='inner', predicate='intersects')\n\n\nfig, ax = plt.subplots(figsize=(10, 10))\n\neji_eaton_join.plot(\n    ax=ax, \n    color=\"orange\", \n    edgecolor=\"white\", \n    linewidth=0.3,\n    label=\"Intersecting EJI Tracts\"\n)\n\neaton.boundary.plot(\n    ax=ax,\n    color=\"red\",\n    linewidth=2,\n    label=\"Eaton Fire Perimeter\"\n)\n\nax.set_title(\"EJI Census Tracts Intersecting the Eaton Fire Perimeter\")\nax.legend()\nplt.show()\n\nC:\\Users\\joshu\\AppData\\Local\\Temp\\ipykernel_8144\\1830484563.py:19: UserWarning: Legend does not support handles for PatchCollection instances.\nSee: https://matplotlib.org/stable/tutorials/intermediate/legend_guide.html#implementing-a-custom-legend-handler\n  ax.legend()\n\n\n\n\n\n\n\n\n\n\n# Clip tracts to the palisades and eaton fire perimeters\neji_palisades_clip = gpd.clip(ca_eji, palisades)\neji_eaton_clip = gpd.clip(ca_eji, eaton)\n\n\n# Get the EJI tracts intersecting the palisades fire perimeter\neji_palisades_join = gpd.sjoin(ca_eji, palisades, how='inner', predicate='intersects')\n\n\n\nfig, ax = plt.subplots(figsize=(10, 10))\n\neji_palisades_join.plot(ax=ax, \n                        color=\"green\", \n                        edgecolor=\"white\", \n                        linewidth=0.3,\n                        label=\"Intersecting EJI Tracts\")\n\npalisades.boundary.plot(ax=ax,\n                         color=\"red\",\n                         linewidth=2,\n                         label=\"Palisades Fire Perimeter\")\n\nax.set_title(\"EJI Census Tracts Intersecting the Palisades Fire Perimeter\")\nax.legend()\nplt.show()\n\nC:\\Users\\joshu\\AppData\\Local\\Temp\\ipykernel_8144\\2799784687.py:15: UserWarning: Legend does not support handles for PatchCollection instances.\nSee: https://matplotlib.org/stable/tutorials/intermediate/legend_guide.html#implementing-a-custom-legend-handler\n  ax.legend()\n\n\n\n\n\n\n\n\n\n\n\nimport geopandas as gpd\nimport matplotlib.pyplot as plt\nimport contextily as ctx\n\n# Reproject to Web Mercator for basemap\npalisades_3857 = palisades.to_crs(epsg=3857)\neaton_3857 = eaton.to_crs(epsg=3857)\n\n# Get bounds from each fire\npminx, pminy, pmaxx, pmaxy = palisades_3857.total_bounds\neminx, eminy, emaxx, emaxy = eaton_3857.total_bounds\n\nminx = min(pminx, eminx)\nminy = min(pminy, eminy)\nmaxx = max(pmaxx, emaxx)\nmaxy = max(pmaxy, emaxy)\n\n# Plot \nfig, ax = plt.subplots(figsize=(12, 10))\n\n# Set zoom *before* adding basemap\nbuffer = 2000  # small padding around the fire\nax.set_xlim(minx - buffer, maxx + buffer)\nax.set_ylim(miny - buffer, maxy + buffer)\n\n# Add basemap\nctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, zoom=13)\n\n# Plot fire boundaries\npalisades_3857.boundary.plot(ax=ax, color=\"red\", linewidth=2, label=\"Palisades Fire\")\neaton_3857.boundary.plot(ax=ax, color=\"blue\", linewidth=2, label=\"Eaton Fire\")\n\n# Legend + title\nax.legend(loc = 'upper left')\nax.set_title(\"Eaton and Palisades Fire Perimeters on Basemap\")\nax.axis(\"off\")\n\nplt.show()\n\n\n\n\n\n\n\n\nWe overlay the map of the Eaton and Palisades fire with the openstreetmap basemap for Los Angeles.\n\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))\n\n# Define common scale for comparison\neji_variable = 'EPL_POV200'\n#eji_variable = 'E_AGE65'\nvmin = min(eji_palisades_clip[eji_variable].min(),\n           eji_eaton_clip[eji_variable].min())\nvmax = max(eji_palisades_clip[eji_variable].max(),\n           eji_eaton_clip[eji_variable].max())\n\n\n# Eaton Plot\n\neji_eaton_clip.plot(\n    column=eji_variable,\n    vmin=vmin, vmax=vmax,\n    cmap='YlOrRd',\n    legend=False,\n    ax=ax2,\n    edgecolor='black',\n    linewidth=0.5\n)\nax2.set_title('Low-Income Population\\nEaton Fire Area',\n              fontsize=16)\nax2.axis('off')\n\n\n# Palisades Plot\n\neji_palisades_clip.plot(\n    column=eji_variable,\n    vmin=vmin, vmax=vmax,\n    cmap='YlOrRd',\n    legend=False,\n    ax=ax1,\n    edgecolor='black',\n    linewidth=0.5\n)\nax1.set_title('Low-Income Population\\nPalisades Fire Area',\n              fontsize=16)\nax1.axis('off')\n\n# Overall title\nfig.suptitle('Percentile Rank of Low-Income Population in Fire-Affected Areas',\n             fontsize=16)\n\n# Shared colorbar\nsm = plt.cm.ScalarMappable(\n    cmap='YlOrRd',\n    norm=plt.Normalize(vmin=vmin, vmax=vmax)\n)\ncbar_ax = fig.add_axes([0.25, 0.10, 0.5, 0.03])\ncbar = fig.colorbar(sm, cax=cbar_ax, orientation='horizontal')\ncbar.set_label('Percentile Rank (0-100)', fontsize=16)\n\nplt.tight_layout()\nplt.show()\n\nC:\\Users\\joshu\\AppData\\Local\\Temp\\ipykernel_8144\\3834148586.py:56: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.\n  plt.tight_layout()"
+  },
+  {
+    "objectID": "posts/Eaton_and_Palisades_Fire/index.html#findings",
+    "href": "posts/Eaton_and_Palisades_Fire/index.html#findings",
+    "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
+    "section": "Findings",
+    "text": "Findings\nThis analysis reveals the socioeconmic vulnerability within each of the fire perimeters. The maps show percentile rankings of low-income population (households earning less than 200% of the federal poverty level) within census tracts. The higher percentile values (dark red) indicate greater economic vulnerability.\nEaton Fire Area:\nThe burn area shows higher percentile rankings compared to the Palisades area, with large portions in the 50th-70th percentiles and some tracts reaching the 80th-90th percentiles (Altadena). On average, these darker areas demonstrate that fires disproportionately affected communities that are more socioeconomically vulnerable.\nPalisades Fire Area:\nThe Palisades perimeter and its census tracts show predominantly low to moderate percentile rankings (roughly 10th-40th percentiles). This indicates that there was proportionaly less socioeconomically vulnerable communities affected by the Palisades fire.\nEnvironmental Justice Implications:\nThese contrasting patterns reveal that while fires affect habitats, communities and individuals, those that are socioeconomically disadvantaged are disproportionaly affected due to less expendible income/assets that would otherwise allow for post-fire transition. This analysis does however provide a glimpse of how communities and local governments can:\n\nTrain for Emergency preparedness\nSpot-targeting communities that are most vulnerable\nPlan for adaptation and mitigation strategies to address natural disasters"
+  },
+  {
+    "objectID": "posts/Eaton_and_Palisades_Fire/index.html#conclusion",
+    "href": "posts/Eaton_and_Palisades_Fire/index.html#conclusion",
+    "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
+    "section": "Conclusion",
+    "text": "Conclusion\nWildfires leave both physical and social scars. False-color composites reveal burn severity, while EJI data highlights disparities in who is most affected. The Eaton Fire disproportionately impacted lower-income neighborhoods in Altadena, while the Palisades Fire struck wealthier coastal areas.\nBy combining xarray, rioxarray, and geopandas, we linked satellite imagery with census-based vulnerability data. This integrated approach shows not only where fires burned, but also which communities face the greatest challenges in recovery. As climate change intensifies wildfire risk, combining physical and social data is essential for equitable disaster response and planning."
+  }
+]
