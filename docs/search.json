@@ -7,25 +7,60 @@
     "text": "This a h1 header element\n\n\nThis text is orange\n this text is both centertext and orange\nHeres where im describing something fun that I enjoy doing."
   },
   {
-    "objectID": "photo_gallery.html",
-    "href": "photo_gallery.html",
-    "title": "Photo Gallery",
+    "objectID": "posts/Aquaculture/index.html",
+    "href": "posts/Aquaculture/index.html",
+    "title": "Identifying Optimal Species Environments",
     "section": "",
-    "text": "Guarding the vineyard\n Summer dacha retreat\n Afternoon nap"
+    "text": "This blog explores the environmental suitability of oyster aquaculture along the U.S. West Coast. Using sea surface temperature (SST) data, bathymetry rasters, and Exclusive Economic Zone (EEZ) boundaries, we identify areas most favorable for oyster cultivation. By combining geospatial modeling with cartographic visualization, we highlight how environmental data science can inform sustainable aquaculture planning."
   },
   {
-    "objectID": "photo_gallery.html#dogs-dacha",
-    "href": "photo_gallery.html#dogs-dacha",
-    "title": "Photo Gallery",
-    "section": "",
-    "text": "Guarding the vineyard\n Summer dacha retreat\n Afternoon nap"
+    "objectID": "posts/Aquaculture/index.html#aquaculture-suitability-function",
+    "href": "posts/Aquaculture/index.html#aquaculture-suitability-function",
+    "title": "Identifying Optimal Species Environments",
+    "section": "Aquaculture Suitability Function",
+    "text": "Aquaculture Suitability Function\n\n# Import libraries for geospatial and data analysis\nsuppressPackageStartupMessages({\nlibrary(tidyverse)\nlibrary(stars)\nlibrary(terra)\nlibrary(sf)\nlibrary(tmap)\nlibrary(knitr)\nlibrary(kableExtra)\n})\n\n\n# Function to map EEZ suitability for a species\nmap_species_suitability &lt;- function(sst_min, sst_max, depth_min, depth_max, species_name) {\n  \n# Load in data\n  regions_clean &lt;- st_read(\"data/wc_regions_clean.shp\", quiet = TRUE)\n  depth &lt;- rast(\"data/depth.tif\")\n  sst_stack &lt;- c(\n    rast(\"data/average_annual_sst_2008.tif\"),\n    rast(\"data/average_annual_sst_2009.tif\"),\n    rast(\"data/average_annual_sst_2010.tif\"),\n    rast(\"data/average_annual_sst_2011.tif\"),\n    rast(\"data/average_annual_sst_2012.tif\")\n  )\n  \n  # Process the SST and convert to celsius\n  sst_mean &lt;- mean(sst_stack)\n  sst_celsius &lt;- sst_mean - 273.15\n  \n  # Align depth to SST\n  depth_proj &lt;- project(depth, crs(sst_celsius))\n  depth_crop &lt;- crop(depth_proj, sst_celsius)\n  depth_resample &lt;- resample(depth_crop, sst_celsius, method = \"near\")\n  \n  # Create suitability classification matrixes\n  sst_suit &lt;- classify(sst_celsius,\n                       rbind(c(-Inf, sst_min, 0),\n                             c(sst_min, sst_max, 1),\n                             c(sst_max, Inf, 0)))\n  \n  depth_suit &lt;- classify(depth_resample,\n                         rbind(c(-Inf, depth_min, 0),\n                               c(depth_min, depth_max, 1),\n                               c(depth_max, Inf, 0)))\n  \n  suitability &lt;- sst_suit * depth_suit\n  \n  # Create EEZ zonal stats\n  \n  # Convert cleaned EEZ regions to vector\n  eez_v &lt;- vect(regions_clean)\n  \n  # Reproject the EEZ vector to match CRS of sst_celsius\n  eez_v &lt;- project(eez_v, crs(sst_celsius))\n  \n  # Add unique ID for each EEZ zone for later join\n  eez_v$eez_id &lt;- seq_len(nrow(eez_v))\n  \n  # Rasterize the EEZ polygon so each cell in raster is assigned an ID that is within\n  eez_r &lt;- rasterize(eez_v, sst_celsius, field = \"eez_id\")\n  \n  # Calculate the area of each raster in square kilometers\n  cell_area &lt;- cellSize(sst_celsius, unit = \"km\")\n  \n  # Multiply the suitability raster by cell area to get area of suitable habitat per cell\n  area_suitable &lt;- suitability * cell_area\n  \n  # Perform zonal math by getting the sum of the suitable area in each EEZ zone\n  area_by_eez &lt;- zonal(area_suitable, eez_r, fun = \"sum\", na.rm = TRUE)\n  \n  # Convert above results into a dataframe and rename column\n  area_by_eez &lt;- as.data.frame(area_by_eez) |&gt; \n    rename(suitable_km2 = mean)\n  \n  # Convert EEZ vector back to an sf obejct and join stats by EEZ ID\n  eez_sf_out &lt;- st_as_sf(eez_v) |&gt; \n    left_join(area_by_eez, by = \"eez_id\")\n  \n# Plot map\n  tm_shape(eez_sf_out) +\n    tm_polygons(fill = \"suitable_km2\",\n                fill.scale = tm_scale(values = \"viridis\"),\n                fill.legend = tm_legend(title = \"Suitable area (km²)\")) +\n    tm_title(paste(species_name, \"Suitability Across West Coast EEZs\"),\n             position = c(\"center\", \"top\")) +\n    tm_scalebar(position = c(\"left\", \"bottom\")) +\n    tm_compass(position = c(\"right\", \"top\"))\n}\n\n\n# Use the function for finding suitable area for Geoducks\n\n# map_species_suitability(sst_min, sst_max, depth_min, depth_max, species_name)\nmap_species_suitability(sst_min = 0, sst_max = 80, depth_min = -100, depth_max = 0, species_name = \"Geoduck\")\n\n[plot mode] fit legend/component: Some legend items or map compoments do not\nfit well, and are therefore rescaled.\nℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling."
   },
   {
-    "objectID": "blog_page.html",
-    "href": "blog_page.html",
-    "title": "Projects blog",
+    "objectID": "posts/Aquaculture/index.html#import-and-prepare-the-data",
+    "href": "posts/Aquaculture/index.html#import-and-prepare-the-data",
+    "title": "Identifying Optimal Species Environments",
+    "section": "Import and Prepare the Data",
+    "text": "Import and Prepare the Data\n\n# Read in Exclusive Economic Zone (EEZ) shapefile\nregions_clean &lt;- st_read(\"data/wc_regions_clean.shp\")\n\nReading layer `wc_regions_clean' from data source \n  `C:\\Users\\joshu\\Documents\\MEDS\\Career\\Awoo56709.github.io\\posts\\Aquaculture\\data\\wc_regions_clean.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 5 features and 5 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -129.1635 ymin: 30.542 xmax: -117.097 ymax: 49.00031\nGeodetic CRS:  WGS 84\n\n# Read in depth raster\ndepth &lt;- rast(\"data/depth.tif\")\n\n# Read in Sea Surface Temperature rasters\nsst_2008 &lt;- rast(\"data/average_annual_sst_2008.tif\")\nsst_2009 &lt;- rast(\"data/average_annual_sst_2009.tif\")\nsst_2010 &lt;- rast(\"data/average_annual_sst_2010.tif\")\nsst_2011 &lt;- rast(\"data/average_annual_sst_2011.tif\")\nsst_2012 &lt;- rast(\"data/average_annual_sst_2012.tif\")"
+  },
+  {
+    "objectID": "posts/Aquaculture/index.html#process-the-data",
+    "href": "posts/Aquaculture/index.html#process-the-data",
+    "title": "Identifying Optimal Species Environments",
+    "section": "Process the Data",
+    "text": "Process the Data\nWe assume WGS84 (EPSG:4326) as the common CRS. If CRS mismatches occur, analysis would be invalid.\n\n# Stack SST rasters into multi-layer Spatraster\nsst_stack &lt;- c(sst_2008, sst_2009, sst_2010, sst_2011, sst_2012)\n\n\n# Compute the mean of SST across years\nsst_mean &lt;- mean(sst_stack)\n\n\n# Convert Kelvin to Celsius\nsst_celsius &lt;- sst_mean - 273.15\n\n# Replace NA values with 0\nsst_celsius[is.na(sst_celsius)] &lt;- 0\n\n# Add warning if the range is wrong\nif (max(values(sst_celsius), na.rm=TRUE) &gt; 40) warning(\"SST unusually high — check conversion.\")\n\n\n# Convert SST raster to stars object for a more robust plot\nsst_stars &lt;- st_as_stars(sst_celsius)\n\ntm_shape(sst_stars) +\n  tm_raster(fill.scale = tm_scale(values = \"viridis\"),\n            fill.legend = tm_legend(title = \"Temperature (C)\")) +\n  tm_title(\"Mean Sea Surface Temperature (°C, 2008–2012)\", position = c(\"center\", \"top\")) +\n  tm_scalebar(position = c(\"left\", \"bottom\")) +\n  tm_compass(position = c(\"right\", \"bottom\"))\n\n[tm_raster()] Arguments `fill.scale` and `fill.legend` unknown.\n[plot mode] fit legend/component: Some legend items or map compoments do not\nfit well, and are therefore rescaled.\nℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling."
+  },
+  {
+    "objectID": "posts/Aquaculture/index.html#reflection-on-mean-sea-surface-temperature-raster",
+    "href": "posts/Aquaculture/index.html#reflection-on-mean-sea-surface-temperature-raster",
+    "title": "Identifying Optimal Species Environments",
+    "section": "Reflection on Mean Sea Surface Temperature Raster",
+    "text": "Reflection on Mean Sea Surface Temperature Raster\nThe mean sea surface temperature (SST) raster from the years 2008 - 2012 provides insight into the temperature variation along the west coast of the united states from California to Washington state. Because temperature data is continuous, a color scale was used to illustrate temperature variability. The above illustrate is not varied because bins of mean temperature across five years of sea surface temperature."
+  },
+  {
+    "objectID": "posts/Aquaculture/index.html#reflection-on-combined-suitability-raster",
+    "href": "posts/Aquaculture/index.html#reflection-on-combined-suitability-raster",
+    "title": "Identifying Optimal Species Environments",
+    "section": "Reflection on Combined Suitability Raster",
+    "text": "Reflection on Combined Suitability Raster\nThe bathymetry raster illustrates ocean depth across the study area. With the given information, suitability classification was determined by depth preferences of oysters and the categories mapped “suitable” and “unsuitable” was based on binary outcomes of the suitable matrix sea depth. This binary map showcases environments suitable for oyster aquaculture."
+  },
+  {
+    "objectID": "posts/Aquaculture/index.html#reflection-on-oyster-suitability-across-west-coast-eezs",
+    "href": "posts/Aquaculture/index.html#reflection-on-oyster-suitability-across-west-coast-eezs",
+    "title": "Identifying Optimal Species Environments",
+    "section": "Reflection on Oyster Suitability Across West Coast EEZs",
+    "text": "Reflection on Oyster Suitability Across West Coast EEZs\nThis map aggregates suitability into Exclusive Economic Zones (EEZs), showing total suitability across the zones and illustrates aquaculture potential. We see that based on the table below that EEZ ID magnitude of suitability from largest to smallest are EEZ IDs: 3,4,5,1 and 2 illustrating the southern west coast tend to be an optimal environment for Oyster aquaculture.\n\n# Create table of suitable areas by EEZ\narea_by_eez %&gt;%\n  arrange(desc(suitable_km2)) %&gt;%\n  knitr::kable(digits = 2, caption = \"Suitable Area by EEZ (km^2)\") |&gt; \n  kableExtra::kable_classic(full_width = FALSE, position = \"center\")\n\n\nSuitable Area by EEZ (km^2)\n\n\neez_id\nsuitable_km2\n\n\n\n\n3\n4069.88\n\n\n4\n3757.28\n\n\n5\n2378.31\n\n\n1\n1074.27\n\n\n2\n178.03"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Joshua Ferrer-Lozano",
     "section": "",
-    "text": "Visualizing the Aftermath of the Eaton and Palisades Fires\n\n\n\nPython\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\nUsing satellite imagery to visualize fire scars\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 3, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome! I’m a graduate student in Environmental Data Science at UCSB.\nI focus on geospatial analysis, reproducible workflows, and creative approaches to teaching data science with a background in data cleaning, climate research, and data visualization.\nI double majored with degrees in Environmental Studies and Planning and Economics from Sonoma State University in 2017. In the following years, I was an AmeriCorps Vista volunteer in Hawaii and worked on environmental policy for the Caldwell Administration and co-developed the methodology for the City and County of Honolulu’s first greenhouse gas inventory as well as develop metrics for its first sustainability report. After, I was a Peace Corps volunteer in the country of Georgia where I provided capacity to a small non-government organization providing support in IT, translation, database development, data dashboard and website development and youth development project facilitation."
   },
   {
     "objectID": "about.html",
@@ -49,11 +84,25 @@
     "text": "What I do for fun\nIn my free time, he enjoys film photography, cooking, playing guitar and go camping in his VW bus.\nYou can find me enjoying my collection of Soviet era film cameras. My favorite cuisine is Thai food, of which drunken noodles, larb and yellow curry are among my favorite dishes. My all time favorite dish, however is Japanese Ramen, specifically Tsukemen."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Joshua Ferrer-Lozano",
+    "objectID": "blog_page.html",
+    "href": "blog_page.html",
+    "title": "Projects blog",
     "section": "",
-    "text": "Welcome! I’m a graduate student in Environmental Data Science at UCSB.\nI focus on geospatial analysis, reproducible workflows, and creative approaches to teaching data science with a background in data cleaning, climate research, and data visualization.\nI double majored with degrees in Environmental Studies and Planning and Economics from Sonoma State University in 2017. In the following years, I was an AmeriCorps Vista volunteer in Hawaii and worked on environmental policy for the Caldwell Administration and co-developed the methodology for the City and County of Honolulu’s first greenhouse gas inventory as well as develop metrics for its first sustainability report. After, I was a Peace Corps volunteer in the country of Georgia where I provided capacity to a small non-government organization providing support in IT, translation, database development, data dashboard and website development and youth development project facilitation."
+    "text": "Visualizing the Aftermath of the Eaton and Palisades Fires\n\n\n\nPython\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\nUsing satellite imagery to visualize fire scars\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 3, 2025\n\n\n\n\n\n\n\n\n\n\n\nIdentifying Optimal Species Environments\n\n\n\nR\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\n\n\n\n\nJoshua Ferrer-Lozano\n\n\nNov 28, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "photo_gallery.html",
+    "href": "photo_gallery.html",
+    "title": "Photo Gallery",
+    "section": "",
+    "text": "Guarding the vineyard\n Summer dacha retreat\n Afternoon nap"
+  },
+  {
+    "objectID": "photo_gallery.html#dogs-dacha",
+    "href": "photo_gallery.html#dogs-dacha",
+    "title": "Photo Gallery",
+    "section": "",
+    "text": "Guarding the vineyard\n Summer dacha retreat\n Afternoon nap"
   },
   {
     "objectID": "posts/Eaton_and_Palisades_Fire/index.html",
