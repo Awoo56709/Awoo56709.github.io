@@ -1,0 +1,350 @@
+---
+title: "Identifying Optimal Species Environments"
+author: Joshua Ferrer-Lozano
+date: 11/28/25
+editor: visual
+format:
+  html:
+    toc: true
+    code-fold: false
+knitr:
+  opts_chunk:
+    warning: false
+    message: false
+---
+
+# About
+
+This blog explores the environmental suitability of oyster aquaculture along the U.S. West Coast. Using sea surface temperature (SST) data, bathymetry rasters, and Exclusive Economic Zone (EEZ) boundaries, we identify areas most favorable for oyster cultivation. By combining geospatial modeling with cartographic visualization, we highlight how environmental data science can inform sustainable aquaculture planning.
+
+# Highlights of the Analysis
+
+Raster Reclassification: Converted SST and depth rasters into binary suitability maps based on oyster thresholds. Map Algebra: Combined multiple criteria (temperature × depth) to produce a composite suitability raster. Zonal Statistics: Summed suitable areas within EEZ boundaries to quantify aquaculture potential by region. Cartographic Visualization: Produced clear maps with legends, units, and orientation cues to communicate results effectively.
+
+# Dataset Descriptions
+
+-   Sea Surface Temperature (2008–2012) NOAA Coral Reef Watch 5‑km SST data, averaged across five years and converted from Kelvin to Celsius. Accessed Nov. 2025.
+
+-   Bathymetry GEBCO gridded bathymetry dataset, reprojected and resampled to align with SST rasters. Accessed Nov. 2025.
+
+-   Exclusive Economic Zones (EEZs) Marine Regions shapefiles defining U.S. West Coast EEZ boundaries. Accessed Nov. 2025.
+
+-   Species Requirements Oyster depth and temperature preferences from SeaLifeBase. Accessed Nov. 2025.
+
+# Findings
+
+-   Oyster aquaculture suitability is concentrated in specific EEZs along the West Coast.
+
+-   Combining SST and depth thresholds provides a robust method for identifying viable cultivation zones.
+
+-   Zonal statistics allow policymakers to compare aquaculture potential across regions.
+
+# Conclusion
+
+This analysis demonstrates how spatial data science can inform sustainable aquaculture planning. By integrating environmental thresholds with geospatial datasets, we can identify where oysters are most likely to thrive. Future work could expand this framework to other species — such as grapevines requiring specific elevations or trees adapted to certain climates — showcasing the versatility of raster reclassification and zonal statistics in environmental modeling.
+
+# References
+
+SeaLifeBase. (2025). Species depth and temperature requirements. https://www.sealifebase.ca/search.php \[Accessed Nov. 2025\]
+
+NOAA Coral Reef Watch. (2025). 5‑km Sea Surface Temperature Anomaly Product. https://coralreefwatch.noaa.gov/product/5km/index_5km_ssta.php \[Accessed Nov. 2025\]
+
+GEBCO. (2025). Gridded Bathymetry Data. https://www.gebco.net/data-products/gridded-bathymetry-data#area \[Accessed Nov. 2025\]
+
+Marine Regions. (2025). Exclusive Economic Zones (EEZs). https://www.marineregions.org/eez.php \[Accessed Nov. 2025\]
+
+# Analysis 1: Mean Sea Surface Temperature
+
+## Aquaculture Suitability Function
+
+```{r}
+# Import libraries for geospatial and data analysis
+suppressPackageStartupMessages({
+library(tidyverse)
+library(stars)
+library(terra)
+library(sf)
+library(tmap)
+library(knitr)
+library(kableExtra)
+})
+```
+
+```{r}
+# Function to map EEZ suitability for a species
+map_species_suitability <- function(sst_min, sst_max, depth_min, depth_max, species_name) {
+  
+# Load in data
+  regions_clean <- st_read("data/wc_regions_clean.shp", quiet = TRUE)
+  depth <- rast("data/depth.tif")
+  sst_stack <- c(
+    rast("data/average_annual_sst_2008.tif"),
+    rast("data/average_annual_sst_2009.tif"),
+    rast("data/average_annual_sst_2010.tif"),
+    rast("data/average_annual_sst_2011.tif"),
+    rast("data/average_annual_sst_2012.tif")
+  )
+  
+  # Process the SST and convert to celsius
+  sst_mean <- mean(sst_stack)
+  sst_celsius <- sst_mean - 273.15
+  
+  # Align depth to SST
+  depth_proj <- project(depth, crs(sst_celsius))
+  depth_crop <- crop(depth_proj, sst_celsius)
+  depth_resample <- resample(depth_crop, sst_celsius, method = "near")
+  
+  # Create suitability classification matrixes
+  sst_suit <- classify(sst_celsius,
+                       rbind(c(-Inf, sst_min, 0),
+                             c(sst_min, sst_max, 1),
+                             c(sst_max, Inf, 0)))
+  
+  depth_suit <- classify(depth_resample,
+                         rbind(c(-Inf, depth_min, 0),
+                               c(depth_min, depth_max, 1),
+                               c(depth_max, Inf, 0)))
+  
+  suitability <- sst_suit * depth_suit
+  
+  # Create EEZ zonal stats
+  
+  # Convert cleaned EEZ regions to vector
+  eez_v <- vect(regions_clean)
+  
+  # Reproject the EEZ vector to match CRS of sst_celsius
+  eez_v <- project(eez_v, crs(sst_celsius))
+  
+  # Add unique ID for each EEZ zone for later join
+  eez_v$eez_id <- seq_len(nrow(eez_v))
+  
+  # Rasterize the EEZ polygon so each cell in raster is assigned an ID that is within
+  eez_r <- rasterize(eez_v, sst_celsius, field = "eez_id")
+  
+  # Calculate the area of each raster in square kilometers
+  cell_area <- cellSize(sst_celsius, unit = "km")
+  
+  # Multiply the suitability raster by cell area to get area of suitable habitat per cell
+  area_suitable <- suitability * cell_area
+  
+  # Perform zonal math by getting the sum of the suitable area in each EEZ zone
+  area_by_eez <- zonal(area_suitable, eez_r, fun = "sum", na.rm = TRUE)
+  
+  # Convert above results into a dataframe and rename column
+  area_by_eez <- as.data.frame(area_by_eez) |> 
+    rename(suitable_km2 = mean)
+  
+  # Convert EEZ vector back to an sf obejct and join stats by EEZ ID
+  eez_sf_out <- st_as_sf(eez_v) |> 
+    left_join(area_by_eez, by = "eez_id")
+  
+# Plot map
+  tm_shape(eez_sf_out) +
+    tm_polygons(fill = "suitable_km2",
+                fill.scale = tm_scale(values = "viridis"),
+                fill.legend = tm_legend(title = "Suitable area (km²)")) +
+    tm_title(paste(species_name, "Suitability Across West Coast EEZs"),
+             position = c("center", "top")) +
+    tm_scalebar(position = c("left", "bottom")) +
+    tm_compass(position = c("right", "top"))
+}
+```
+
+```{r}
+# Use the function for finding suitable area for Geoducks
+
+# map_species_suitability(sst_min, sst_max, depth_min, depth_max, species_name)
+map_species_suitability(sst_min = 0, sst_max = 80, depth_min = -100, depth_max = 0, species_name = "Geoduck")
+
+```
+
+# Analysis 1: Mean Sea Surface Temperature
+
+## Import and Prepare the Data
+
+```{r}
+# Read in Exclusive Economic Zone (EEZ) shapefile
+regions_clean <- st_read("data/wc_regions_clean.shp")
+
+# Read in depth raster
+depth <- rast("data/depth.tif")
+
+# Read in Sea Surface Temperature rasters
+sst_2008 <- rast("data/average_annual_sst_2008.tif")
+sst_2009 <- rast("data/average_annual_sst_2009.tif")
+sst_2010 <- rast("data/average_annual_sst_2010.tif")
+sst_2011 <- rast("data/average_annual_sst_2011.tif")
+sst_2012 <- rast("data/average_annual_sst_2012.tif")
+```
+
+## Process the Data
+
+We assume WGS84 (EPSG:4326) as the common CRS. If CRS mismatches occur, analysis would be invalid.
+
+```{r}
+# Stack SST rasters into multi-layer Spatraster
+sst_stack <- c(sst_2008, sst_2009, sst_2010, sst_2011, sst_2012)
+```
+
+```{r}
+# Compute the mean of SST across years
+sst_mean <- mean(sst_stack)
+```
+
+```{r}
+# Convert Kelvin to Celsius
+sst_celsius <- sst_mean - 273.15
+
+# Replace NA values with 0
+sst_celsius[is.na(sst_celsius)] <- 0
+
+# Add warning if the range is wrong
+if (max(values(sst_celsius), na.rm=TRUE) > 40) warning("SST unusually high — check conversion.")
+
+```
+
+```{r}
+# Convert SST raster to stars object for a more robust plot
+sst_stars <- st_as_stars(sst_celsius)
+
+tm_shape(sst_stars) +
+  tm_raster(fill.scale = tm_scale(values = "viridis"),
+            fill.legend = tm_legend(title = "Temperature (C)")) +
+  tm_title("Mean Sea Surface Temperature (°C, 2008–2012)", position = c("center", "top")) +
+  tm_scalebar(position = c("left", "bottom")) +
+  tm_compass(position = c("right", "bottom"))
+
+```
+
+## Reflection on Mean Sea Surface Temperature Raster
+
+The mean sea surface temperature (SST) raster from the years 2008 - 2012 provides insight into the temperature variation along the west coast of the united states from California to Washington state. Because temperature data is continuous, a color scale was used to illustrate temperature variability. The above illustrate is not varied because bins of mean temperature across five years of sea surface temperature.
+
+# Analysis 2: Combined Suitability Raster
+
+```{r}
+# Align depth raster to the SST raster
+
+# Reproject CRS
+depth_proj <- project(depth, crs(sst_celsius))  
+# Crop to SST extent
+depth_crop <- crop(depth_proj, sst_celsius)
+# Resample resolution
+depth_resample <- resample(depth_crop, sst_celsius, method = "near") 
+```
+
+Resampling with the nearest neighbor preserves categorical depth bins.
+
+```{r}
+# Verify alignments of CRS, resolution and extent
+crs(sst_celsius) == crs(depth_resample)
+if (!identical(res(sst_celsius), res(depth_resample))) stop("Resolution mismatch.")
+
+```
+
+```{r}
+# Create matrix to reclassify SST suitability for oysters based on 11–30 C
+sst_suit <- classify(sst_celsius,
+                     rbind(c(-Inf, 11, 0), # Unsuitable temp below 11 C
+                           c(11, 30, 1),   # Suitable temp at 11 - 30 C
+                           c(30, Inf, 0))) # Unsuitable temp above 30 C
+
+# Create matrix to reclassify depth suitability for oysters based on 0–70 m
+depth_suit <- classify(depth_resample,
+                       rbind(c(-Inf, -70, 0),  # Unsuitable elevation above sea level
+                             c(-70, 0, 1),     # Suitable between -70 - 0 m sea level
+                             c(0, Inf, 0)))    # Unsuitable elevation above sea level
+
+# Test to verify our matrix of binary output
+testthat::expect_true(all(unique(values(sst_suit)) %in% c(0,1)))
+```
+
+We assume depths are negative, so suitable oyster depths are −70 to 0 m. If positive, thresholds would be 0–70.
+
+```{r}
+
+# Combine suitability (map algebra: both must be 1)
+suitability <- sst_suit * depth_suit
+
+# Convert raster to dataframe
+suit_df <- as.data.frame(suitability, xy = TRUE, na.rm = TRUE)
+
+# Plot with ggplot
+ggplot(suit_df) +
+  geom_raster(aes(x = x, y = y, fill = factor(mean))) +
+  scale_fill_manual(values = c("0" = "purple", "1" = "gold"),
+                    name = "Oyster suitability",
+                    labels = c("Unsuitable", "Suitable")) +
+  labs(title = "Combined Suitability (Oysters)") +
+  theme_minimal()
+
+```
+
+## Reflection on Combined Suitability Raster
+
+The bathymetry raster illustrates ocean depth across the study area. With the given information, suitability classification was determined by depth preferences of oysters and the categories mapped "suitable" and "unsuitable" was based on binary outcomes of the suitable matrix sea depth. This binary map showcases environments suitable for oyster aquaculture.
+
+# Analysis 3: Suitability by EEZ
+
+```{r}
+# Convert EEZ polygons to terra vector
+eez_v <- vect(regions_clean)
+# Align CRS
+eez_v <- project(eez_v, crs(sst_celsius))
+
+# Rasterize EEZ IDs to each polygon
+eez_v$eez_id <- seq_len(nrow(eez_v))
+eez_r <- rasterize(eez_v, sst_celsius, field = "eez_id")
+
+# Calculate cell area in km^2
+cell_area <- cellSize(sst_celsius, unit = "km")
+
+# Multiply suitable area raster by cell to get suitable area per cell
+area_suitable <- suitability * cell_area
+
+# Zonal sum of suitable area per EEZ
+area_by_eez <- zonal(area_suitable, eez_r, fun = "sum", na.rm = TRUE)
+
+# Convert to data frame and rename columns correctly
+area_by_eez <- as.data.frame(area_by_eez) |> 
+  dplyr::rename(suitable_km2 = mean)
+```
+
+```{r}
+head(arrange(area_by_eez, desc(suitable_km2)))
+```
+
+Summing suitable cell areas by EEZ allows us to rank zones by aquaculture potential
+
+```{r}
+# Join zonal statistics to EEZ polygons
+eez_sf_out <- st_as_sf(eez_v) |> 
+  left_join(area_by_eez, by = "eez_id")
+```
+
+```{r}
+# Plot map of suitable area by EEZ
+eez_sf <- st_as_sf(eez_v) |>  left_join(area_by_eez, by = "eez_id")
+
+ggplot(eez_sf) +
+  geom_sf(aes(fill = suitable_km2), color = "black", size = 0.2) +
+  scale_fill_viridis_c(option = "C", name = "Suitable area (km^2)") +
+  labs(title = "Oyster Suitability Across West Coast EEZs") +
+  theme_minimal() +
+  theme(
+    plot.title.position = "plot",                # move title above plot panel
+    plot.title = element_text(margin = margin(b = 10)) # add spacing below title
+  )
+```
+
+## Reflection on Oyster Suitability Across West Coast EEZs
+
+This map aggregates suitability into Exclusive Economic Zones (EEZs), showing total suitability across the zones and illustrates aquaculture potential. We see that based on the table below that EEZ ID magnitude of suitability from largest to smallest are EEZ IDs: 3,4,5,1 and 2 illustrating the southern west coast tend to be an optimal environment for Oyster aquaculture.
+
+```{r}
+# Create table of suitable areas by EEZ
+area_by_eez %>%
+  arrange(desc(suitable_km2)) %>%
+  knitr::kable(digits = 2, caption = "Suitable Area by EEZ (km^2)") |> 
+  kableExtra::kable_classic(full_width = FALSE, position = "center")
+```
