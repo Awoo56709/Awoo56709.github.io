@@ -1,16 +1,16 @@
 ---
 title: "Identifying Optimal Species Environments"
-author: Joshua Ferrer-Lozano
-date: 11/28/25
-editor: visual
+author:
+  name: Joshua Ferrer-Lozano
+  affiliation: Master of Environmental Data Science
+date: 2025-11-28
+categories: [R, MEDS, data-viz, Geospatial]
 format:
   html:
     toc: true
     code-fold: false
-knitr:
-  opts_chunk:
-    warning: false
-    message: false
+    embed-resources: true
+draft: false
 ---
 
 # About
@@ -19,39 +19,43 @@ This blog explores the environmental suitability of oyster aquaculture along the
 
 # Highlights of the Analysis
 
-Raster Reclassification: Converted SST and depth rasters into binary suitability maps based on oyster thresholds. Map Algebra: Combined multiple criteria (temperature × depth) to produce a composite suitability raster. Zonal Statistics: Summed suitable areas within EEZ boundaries to quantify aquaculture potential by region. Cartographic Visualization: Produced clear maps with legends, units, and orientation cues to communicate results effectively.
+Raster Reclassification: Converted SST and depth rasters into binary suitability maps based on oyster thresholds.
+Map Algebra: Combined multiple criteria (temperature × depth) to produce a composite suitability raster.
+Zonal Statistics: Summed suitable areas within EEZ boundaries to quantify aquaculture potential by region.
+Cartographic Visualization: Produced clear maps with legends, units, and orientation cues to communicate results effectively.
 
 # Dataset Descriptions
+- Sea Surface Temperature (2008–2012) NOAA Coral Reef Watch 5‑km SST data, averaged across five years and converted from Kelvin to Celsius. Accessed Nov. 2025.
 
--   Sea Surface Temperature (2008–2012) NOAA Coral Reef Watch 5‑km SST data, averaged across five years and converted from Kelvin to Celsius. Accessed Nov. 2025.
+- Bathymetry GEBCO gridded bathymetry dataset, reprojected and resampled to align with SST rasters. Accessed Nov. 2025.
 
--   Bathymetry GEBCO gridded bathymetry dataset, reprojected and resampled to align with SST rasters. Accessed Nov. 2025.
+- Exclusive Economic Zones (EEZs) Marine Regions shapefiles defining U.S. West Coast EEZ boundaries. Accessed Nov. 2025.
 
--   Exclusive Economic Zones (EEZs) Marine Regions shapefiles defining U.S. West Coast EEZ boundaries. Accessed Nov. 2025.
-
--   Species Requirements Oyster depth and temperature preferences from SeaLifeBase. Accessed Nov. 2025.
+- Species Requirements Oyster depth and temperature preferences from SeaLifeBase. Accessed Nov. 2025.
 
 # Findings
 
--   Oyster aquaculture suitability is concentrated in specific EEZs along the West Coast.
+- Oyster aquaculture suitability is concentrated in specific EEZs along the West Coast.
 
--   Combining SST and depth thresholds provides a robust method for identifying viable cultivation zones.
+- Combining SST and depth thresholds provides a robust method for identifying viable cultivation zones.
 
--   Zonal statistics allow policymakers to compare aquaculture potential across regions.
+- Zonal statistics allow policymakers to compare aquaculture potential across regions.
 
 # Conclusion
 
 This analysis demonstrates how spatial data science can inform sustainable aquaculture planning. By integrating environmental thresholds with geospatial datasets, we can identify where oysters are most likely to thrive. Future work could expand this framework to other species — such as grapevines requiring specific elevations or trees adapted to certain climates — showcasing the versatility of raster reclassification and zonal statistics in environmental modeling.
 
+
+
 # References
 
-SeaLifeBase. (2025). Species depth and temperature requirements. https://www.sealifebase.ca/search.php \[Accessed Nov. 2025\]
+SeaLifeBase. (2025). Species depth and temperature requirements. https://www.sealifebase.ca/search.php [Accessed Nov. 2025]
 
-NOAA Coral Reef Watch. (2025). 5‑km Sea Surface Temperature Anomaly Product. https://coralreefwatch.noaa.gov/product/5km/index_5km_ssta.php \[Accessed Nov. 2025\]
+NOAA Coral Reef Watch. (2025). 5‑km Sea Surface Temperature Anomaly Product. https://coralreefwatch.noaa.gov/product/5km/index_5km_ssta.php [Accessed Nov. 2025]
 
-GEBCO. (2025). Gridded Bathymetry Data. https://www.gebco.net/data-products/gridded-bathymetry-data#area \[Accessed Nov. 2025\]
+GEBCO. (2025). Gridded Bathymetry Data. https://www.gebco.net/data-products/gridded-bathymetry-data#area [Accessed Nov. 2025]
 
-Marine Regions. (2025). Exclusive Economic Zones (EEZs). https://www.marineregions.org/eez.php \[Accessed Nov. 2025\]
+Marine Regions. (2025). Exclusive Economic Zones (EEZs). https://www.marineregions.org/eez.php [Accessed Nov. 2025]
 
 # Analysis 1: Mean Sea Surface Temperature
 
@@ -69,6 +73,7 @@ library(knitr)
 library(kableExtra)
 })
 ```
+
 
 ```{r}
 # Function to map EEZ suitability for a species
