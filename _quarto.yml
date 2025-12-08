@@ -13,6 +13,15 @@ website:
         text: About Me
       - href: photo_gallery.qmd
         text: The World Through Film
+        menu:
+          - href: photo_gallery.qmd
+            text: General Gallery
+          - href: peace_corps.qmd
+            text: Peace Corps Service
+          - href: armenia_travel.qmd
+            text: Travel to Armenia
+          - href: professional.qmd
+            text: In the Field
       - href: blog_page.qmd
         text: Blog
         menu: 

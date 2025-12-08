@@ -1,27 +1,8 @@
 ---
-title: "photo_gallery"
-format: html
----
-
----
 title: "Photo Gallery"
 format: html
 ---
 
-<style>
-.gallery-img {
-  width: 100%;
-}
-.caption {
-  text-align: center;
-  font-style: italic;
-  margin-top: 0.5em;
-}
-</style>
-
-## Dogs & Dacha
-
-:::{.grid .grid-3}
 ![](photos/doggo.jpg){.gallery-img}
 *Guarding the vineyard*
 
@@ -30,6 +11,3 @@ format: html
 
 ![](photos/resting_doggo.jpg){.gallery-img}
 *Afternoon nap*
-:::
-
-

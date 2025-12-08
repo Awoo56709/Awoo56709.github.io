@@ -1,0 +1,27 @@
+---
+title: "recuerdos"
+format: html
+editor: visual
+---
+
+![](photos/recuerdos/recuerdos_1.jpg){.gallery-img}
+
+![](photos/recuerdos/recuerdos_2.jpg){.gallery-img}
+
+![](photos/recuerdos/recuerdos_3.jpg){.gallery-img}
+
+![](photos/recuerdos/recuerdos_4.jpg){.gallery-img}
+
+![](photos/recuerdos/recuerdos_5.jpg){.gallery-img}
+
+
+
+
+
+
+
+
+
+
+
+

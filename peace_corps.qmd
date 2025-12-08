@@ -1,0 +1,37 @@
+---
+title: "peace_corps"
+format: html
+---
+
+![](photos/peace_corps_photos/georgian_church.jpg){.gallery-img}
+*Guarding the vineyard*
+
+![](photos/peace_corps_photos/handsome_cat.jpg){.gallery-img}
+*Summer dacha retreat*
+
+![](photos/peace_corps_photos/mestia_cow.jpg){.gallery-img}
+*Afternoon nap*
+
+
+![](photos/peace_corps_photos/motor_cat.jpg){.gallery-img}
+![](photos/peace_corps_photos/mtchadi.jpg){.gallery-img}
+![](photos/peace_corps_photos/night_in_tkibuli.jpg){.gallery-img}
+![](photos/peace_corps_photos/oba.jpg){.gallery-img}
+
+![](photos/peace_corps_photos/tkibuli_lift.jpg){.gallery-img}
+![](photos/peace_corps_photos/tkibuli_office.jpg){.gallery-img}
+![](photos/peace_corps_photos/tkibuli_office_me.jpg){.gallery-img}
+![](photos/peace_corps_photos/tkibuli_town.jpg){.gallery-img}
+
+
+
+
+
+
+
+
+
+
+
+
+
