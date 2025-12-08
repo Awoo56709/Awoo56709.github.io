@@ -3,16 +3,14 @@ project:
   output-dir: docs
 
 website:
-  title: "Joshua Ferrer-Lozano"   # <-- site title
-  #site-url: 
+  title: "Joshua Ferrer-Lozano"
   navbar:
     right:
       - href: index.qmd
         text: Home
       - href: about.qmd
         text: About Me
-      - href: photo_gallery.qmd
-        text: The World Through Film
+      - text: The World Through Film
         menu:
           - href: photo_gallery.qmd
             text: General Gallery
@@ -22,26 +20,20 @@ website:
             text: Travel to Armenia
           - href: professional.qmd
             text: In the Field
-      - href: blog_page.qmd
-        text: Blog
-        menu: 
-          - icon: linkedin
+      - text: Blog
+        menu:
+          - href: blog_page.qmd
+            text: Blog Home
+          - href: https://www.linkedin.com/in/joshuarflozano/
             text: LinkedIn
-            href: https://www.linkedin.com/in/joshuarflozano/
             target: _blank
-          - icon: github
+          - href: https://github.com/Awoo56709
             text: GitHub
-            href: https://github.com/Awoo56709
             target: _blank
-          - text: Email
-            href: "mailto:joshuar.f.lozano@gmail.com"
-            
+          - href: "mailto:joshuar.f.lozano@gmail.com"
+            text: Email
+
 collections:
   posts:
     categories: true
     sort: "date desc"
-
-
-#format:
- # html:
-  #  css: site_css.css   # or styles.css
