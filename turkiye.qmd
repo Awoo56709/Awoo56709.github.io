@@ -1,0 +1,35 @@
+---
+title: "turkiye"
+format: html
+---
+
+![](photos/turkiye/istanbul_sofia.jpg){.gallery-img}
+
+![](photos/turkiye/turk_breakfast.jpg){.gallery-img}
+![](photos/turkiye/turkish_bridge.jpg){.gallery-img}
+
+
+![](photos/turkiye/turkish_chan.jpg){.gallery-img}
+![](photos/turkiye/turkish_doggo.jpg){.gallery-img}
+![](photos/turkiye/turkish_market.jpg){.gallery-img}
+![](photos/turkiye/turkish_tea.jpg){.gallery-img}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+---
+title: "armenia"
+format: html
+---
+
+![](photos/armenia/armenia_subway.jpg){.gallery-img}
+![](photos/armenia/armenia_square.jpg){.gallery-img}
+![](photos/armenia/armenia_statue.jpg){.gallery-img}
+![](photos/armenia/armenia_walk.jpg){.gallery-img}

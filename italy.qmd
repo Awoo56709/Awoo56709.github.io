@@ -1,0 +1,10 @@
+---
+title: "italy"
+format: html
+---
+
+![](photos/italia/church.jpg){.gallery-img}
+
+
+
+![](photos/italia/church_close.jpg){.gallery-img
