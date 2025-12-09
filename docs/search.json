@@ -166,5 +166,12 @@
     "title": "Visualizing the Aftermath of the Eaton and Palisades Fires",
     "section": "Conclusion",
     "text": "Conclusion\nWildfires leave both physical and social scars. False-color composites reveal burn severity, while EJI data highlights disparities in who is most affected. The Eaton Fire disproportionately impacted lower-income neighborhoods in Altadena, while the Palisades Fire struck wealthier coastal areas.\nBy combining xarray, rioxarray, and geopandas, we linked satellite imagery with census-based vulnerability data. This integrated approach shows not only where fires burned, but also which communities face the greatest challenges in recovery. As climate change intensifies wildfire risk, combining physical and social data is essential for equitable disaster response and planning."
+  },
+  {
+    "objectID": "italy.html",
+    "href": "italy.html",
+    "title": "italy",
+    "section": "",
+    "text": "{.gallery-img"
   }
 ]
