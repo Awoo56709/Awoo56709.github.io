@@ -1,5 +1,5 @@
 ---
-title: "armenia"
+title: "Armenia"
 format: html
 ---
 

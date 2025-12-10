@@ -20,24 +20,12 @@ website:
             text: Armenia
           - href: turkiye.qmd
             text: Turkiye
-          - href: italy
+          - href: italy.qmd
             text: Italia
- #         - href: professional.qmd
-#            text: In the Field
           - href: recuerdos.qmd
             text: Recuerdos
-      - text: Blog
-        menu:
-          - href: blog_page.qmd
-            text: Blog Home
-          - href: https://www.linkedin.com/in/joshuarflozano/
-            text: LinkedIn
-            target: _blank
-          - href: https://github.com/Awoo56709
-            text: GitHub
-            target: _blank
-          - href: "mailto:joshuar.f.lozano@gmail.com"
-            text: Email
+      - href: blog_page.qmd
+        text: Blog
 
 collections:
   posts:
