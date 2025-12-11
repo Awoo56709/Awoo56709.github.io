@@ -8,74 +8,52 @@ editor: visual
 
 # Introduction
 
-Environmental data are often treated as neutral, objective, and “raw.” Yet as scholars and professionals across environmental justice, data studies, and Indigenous methodologies have shown, data are always shaped by the contexts in which they are collected, reported, and interpreted. Biases-whether through suppression, measurement choices, deficit framing, sampling gaps, or confounding variables-can influence how environmental problems are understood and addressed. Recognizing these biases is essential for building more equitable, transparent, and participatory data practices. This project examines five case studies of environmental data bias, each illustrating a distinct type of bias and its consequences for science, policy, and justice. Together, they demonstrate that environmental data justice requires not only technical expertise but also attention to social, cultural, and political contexts.
+In 2014, Flint, Michigan changed its water source to the Flint River, triggering one of the most infamous environmental justice crises in the United States. Residents complained of foul smelling, discolored water, but official reports insisted the water was safe. The problem was not only the contamination itself—it was the way data were collected and reported. This case study examines how measurement bias and reporting bias in lead testing concealed the severity of contamination, delayed action, and eroded trust in public institutions. Flint is not an isolated incident. Similar forms of bias have appeared in other environmental contexts: suppression of climate policy tools (Nost et al., 2024), averaging emissions that mask acute exposures (Walker et al., 2018), deficit framing in Indigenous health statistics (Walter & Suina, 2019), and sampling gaps in biodiversity monitoring (Young et al., 2014). By situating Flint within this broader landscape, we can see how data bias is a systemic issue that undermines both science and justice.
 
-# Case Descriptions
+# The Case
 
-## Archiving Federal Environmental Data (Nost et al., 2024)
+## The Data and the Problem
 
-The Environmental Data & Governance Initiative (EDGI) documented how the Trump administration deleted Clean Power Plan webpages, calculators, and fact sheets months before formally proposing repeal. This is a clear example of reporting bias and suppression, where inconvenient data were removed from public view. The impact was significant where communities and policymakers lost access to tools that quantified emissions and incentives, undermining transparency and accountability. Archiving efforts like EDGI’s highlight the importance of preserving not only data sets but also their metadata and narratives.
+State agencies tested household water samples for lead contamination. Their protocols introduced systematic bias: taps were flushed before samples were taken, which lowered lead readings; unusually high results were discarded as “outliers”; and sampling was concentrated in lower risk areas rather than older homes with lead service lines. These practices produced datasets that looked statistically sound but misrepresented the true extent of contamination. Independent researchers from Virginia Tech and local pediatricians conducted their own sampling, uncovering far higher lead levels, especially in vulnerable neighborhoods. Dr. Mona Hanna Attisha’s study of children’s blood lead levels provided irrefutable evidence that official testing had failed to capture the crisis.
 
-## Louisiana Bucket Brigade (Walker et al., 2018; Vera et al., 2019)
+## Identifying the Bias
 
-In Louisiana, state air monitors averaged toxic emissions over 24‑hour periods, masking short‑term spikes in pollution near chemical facilities. Community members responded by developing community “air buckets” to capture peak exposures. This case illustrates measurement bias, where methodological choices obscured hazards. Official data understated health risks, while community‑generated data revealed the lived realities of fence‑line communities-communities that are immediately adjacent to highly polluting facilities. The Bucket Brigade demonstrates how participatory monitoring can counteract these biases and disseminate environmental knowledge.
+The biases here were twofold: • Measurement bias: Sampling methods underestimated lead concentrations by flushing taps and avoiding high risk homes. • Reporting bias: Inconvenient results were excluded, creating a false picture of safety. Together, these practices reassured the public while masking the severity of the crisis.
 
-## Indigenous Health Statistics (Walter & Suina, 2019)
+## The Consequences
 
-Indigenous statistics in settler nation states often emphasize difference, disparity, disadvantage, dysfunction, and deprivation—the so‑called “5D data.” This framing positions Indigenous peoples primarily through deficit narratives, a form of outcome reporting bias and deficit framing bias. The implication is that this data reinforces colonial logics/frameworks and obscure Indigenous lifeworlds of wellness, which include spirituality, language, and community well‑being. Walter and Suina argue for specifically Indigenous quantitative methodologies and data sovereignty to disrupt these deficit narratives and ensure the data reflect Indigenous priorities and values.
+Because of these biases, recognition of the crisis was delayed. Thousands of residents, including children, were exposed to dangerous levels of lead. The official data eroded trust in institutions, while independent data revealed the scale of contamination. The consequences were long term health impacts, community outrage, and a national reckoning with environmental justice.
 
-## Biodiversity Monitoring (Young et al., 2014)
+# Reflection
 
-The global biodiversity data sets disproportionately represent birds and mammals, while insects, fungi, and plants are under counted. This is a classic case of sampling bias, where certain species are "privileged" or prioritized in monitoring efforts. The impact is unbalanced conservation priorities that neglect less visible but ecologically critical organisms. Young and colleagues emphasize the need for interdisciplinary dialogue and more inclusive monitoring strategies that reflect the complexity of the ecosystems and the relevance of policy .
-
-## Biases in Environmental Causal Inference (Konno et al., 2024)
-
-This journal identified 121 types of bias relevant to environmental research, including confounding and selection bias. For example, in agricultural studies, management practices may confound relationships between soil moisture, sunlight, and crop yields. Even well‑designed studies can mislead if variables are not accounted for. Konno and colleagues highlight the importance of utilizing critical appraisal tools to identify and mitigate biases in causal inference, ensuring that environmental interventions are based on valid evidence.
-
-# Reflections
-
-These five case studies illustrate that environmental data bias is not simply a technical flaw but a reflection of deeper social, political, and cultural contexts. Each case demonstrates how decisions about what data to collect, how to measure it, and how to report it are shaped by power relations and institutional assumptions/priorities.
-
-From Nost et al. (2024), we see how political suppression of data undermines transparency and accountability. This resonates with my own experience in Georgia, where language bias limited access to environmental reports. Even when data were technically available, the choice of language shaped who could meaningfully engage with it and the cultural context that may be focused. Both examples highlight that accessibility is not just about open data sets but about ensuring that communities can interpret and use information.
-
-The Louisiana Bucket Brigade shows how measurement bias can obscure lived realities. Official monitors averaged emissions over long periods, masking acute exposures. In Hawaii, I learned through the practice of “talk story” that technical jargon without relational communication can alienate communities and create distrust between institution/government and its constituents. Just as the Bucket Brigade’s air buckets made data relatable and actionable, “talk story” emphasizes that data must be shared in ways that build trust and resonate with local values.
-
-Walter & Suina (2019) remind us that deficit framing bias can reproduce colonial narratives. Indigenous health statistics often emphasize disparities without reflecting Indigenous lifeworlds of wellness. This connects to my vineyard LiDAR project, where focusing only on quantitative canopy metrics risks ignoring cultural practices of viticulture. Both cases show that data must be situated in broader lifeworlds to avoid reinforcing narrow or harmful narratives.
-
-Young et al. (2014) demonstrate sampling bias in biodiversity monitoring, where charismatic species are over represented. This reflects a broader tendency to privilege what is visible or valued by dominant institutions. It raises the question: whose priorities shape data collection? Similarly, in my own work, privileging certain variables (sunlight, soil moisture) without considering management practices risks reproducing sampling bias in agricultural contexts.
-
-Finally, Konno et al. (2024) highlight confounding and selection biases in causal inference. Their systematic review shows that even well‑designed studies can mislead if confounding variables are not accounted for. This reinforces the importance of reproducibility and transparency in my own regression analyses, where vineyard management practices may confound relationships between environmental variables and grape sugar content.
-
-Together, these reflections underscore the importance of frameworks like the CARE Principles and Environmental Data Justice (EDJ). CARE emphasizes collective benefit, authority to control, responsibility, and ethics, ensuring that data practices respect Indigenous sovereignty and community values. EDJ situates data within social and political contexts, challenging extractive logics and deficit narratives. Both frameworks remind us that environmental data are never raw—they are always relational, situated, and shaped by power.
+The Flint case underscores how technical decisions in data collection are never neutral. Choices about flushing taps or discarding results reflected institutional priorities rather than community realities. This mirrors what Vera et al. (2019) describe as extractive logic in environmental data practices, where data are shaped to protect institutions rather than people. It also highlights the invisibility of bias. A dataset can appear rigorous if you don’t ask what was excluded. This parallels Konno et al. (2024) on hidden biases in environmental causal inference. In Flint, the testing protocols produced results that fit official narratives but diverged from lived experience. Flint also resonates with other cases: • Suppression bias: Nost et al. (2024) showed how climate policy tools were erased from public websites. • Measurement bias: Walker et al. (2018) documented how averaging emissions masked acute exposures in Louisiana. • Deficit framing bias: Walter & Suina (2019) critiqued Indigenous health statistics that reinforced colonial narratives. • Sampling bias: Young et al. (2014) revealed biodiversity datasets privileging charismatic species. Each case demonstrates that bias is not accidental—it reflects power relations and institutional priorities. Flint, like these other examples, shows that communities often must generate their own evidence to counter official claims. This connects directly to Environmental Data Justice (EDJ) and the CARE Principles, which emphasize transparency, accountability, and community sovereignty in data practices.
 
 # Solutions
 
-The five case studies demonstrate that environmental data bias arises from multiple sources—political suppression, measurement choices, deficit framing, sampling gaps, and confounding variables. Addressing these biases requires a combination of technical, social, and ethical strategies. Revisiting the mentioned case-studies, solutions that may address each unique bias include:
+## Improved Testing Protocols
 
-Countering Suppression Bias (Nost et al., 2024): Establishing independent archiving initiatives that preserve data sets, metadata, and contextual narratives would be key. Then model cards and datasheets that provide transparency about the origins, limitations, and intended uses.
+Protocols must require first draw samples from high risk homes, not pre flushed taps. Sampling should prioritize vulnerable neighborhoods and older housing stock to ensure representative coverage.
 
-Addressing Measurement Bias (Louisiana Bucket Brigade): Ensure we incorporate participatory monitoring methods that allow communities to collect data reflecting their lived experiences. Grassroots projects and low‑cost sensors can complement official monitoring.
+## Bias Detection and Characterization
 
-Disrupting Deficit Framing (Walter & Suina, 2019): We can adopt Indigenous quantitative methodologies and apply the CARE Principles to ensure sovereignty and empowerment.
+Agencies should use tools to detect and quantify bias, such as comparative sampling and critical appraisal frameworks (Konno et al., 2024). Independent audits and community science can validate official data.
 
-Reducing Sampling Bias (Young et al., 2014): Start by expanding biodiversity monitoring to include underrepresented species and ecosystems. Moreover, include interdisciplinary collaboration to frame research questions.
+## Transparency and Communication of Uncertainty
 
-Mitigating Confounding and Selection Bias (Konno et al., 2024): Include the use of critical appraisal tools to systematically identify and address biases in causal inference. Encourage and administer transparency in methods, reproducibility of analyses, and reporting of any confounding variables.
-
-Integrative strategies include combining FAIR and CARE Principles to ensure data are both technically objective and ethically governed, applying Environmental Data Justice to place data within social, political contexts, and communicating data through culturally appropriate practices such as “talk story” or multilingual reporting. These approaches ensure that environmental data are not only accurate but also meaningful, accessible, and just.
+All results—including “outliers”—should be published with clear explanations. Maps of sampling effort and contamination levels can show where data are strong and where gaps remain. Communicating uncertainty builds trust and allows communities to make informed choices. Applicability to Other Cases The lessons from Flint extend broadly: • Suppression bias in climate data (Nost et al., 2024). • Measurement bias in air monitoring (Walker et al., 2018). • Deficit framing in Indigenous statistics (Walter & Suina, 2019). • Sampling bias in biodiversity monitoring (Young et al., 2014). In each case, improved sampling, bias detection, and transparent communication can mitigate distortions. Flint is one example of a broader pattern: environmental data often reflects institutional convenience or politics rather than community realities.
 
 # Conclusion
 
-Environmental data bias will continue to be present in human designed methodologies, data and political/cultural environments. By recognizing the forms of bias like suppression, measurement, deficit framing, sampling, and confounding, we can design strategies that make data more transparent, participatory, and equitable. The five case studies presented here demonstrate that environmental data justice requires both technical expertise and social responsibility. Ultimately, data is never raw and that they are always cooked with care. The challenge is to ensure that they are cooked in ways that serve communities, respect sovereignty, and advance environmental justice.
+The Flint water crisis demonstrates how measurement and reporting biases can have life threatening consequences. Biased data can appear rigorous while systematically misrepresenting reality. Ensuring unbiased sampling, transparent reporting, and community participation is essential for trustworthy environmental science. Flint reminds us that data are not just technical observations, they are instruments of potential justice or injustice, depending on how they are collected and shared.
 
 # References
 
-Konno, K., Gibbons, J., Lewis, R., & Pullin, A. S. (2024). Potential types of bias when estimating causal effects in environmental research and how to interpret them. Environmental Evidence, 13(1), 1–31. https://doi.org/10.1186/s13750-024-00324-7
+-   Hanna Attisha, M., LaChance, J., Sadler, R. C., & Champney Schnepp, A. (2016). Elevated blood lead levels in children associated with the Flint drinking water crisis: A spatial analysis of risk and public health response. American Journal of Public Health, 106(2), 283–290. https://doi.org/10.2105/AJPH.2015.303003
 
-Nost, E., Gehrke, G., Vera, L., & Hansen, S. (2024). Why the Environmental Data & Governance Initiative is archiving public environmental data. Patterns, 6(1), 101151. https://doi.org/10.1016/j.patter.2024.101151
+-   Konno, K., Gibbons, J., Lewis, R., & Pullin, A. S. (2024). Potential types of bias when estimating causal effects in environmental research and how to interpret them. Environmental Evidence, 13(1), 1–31. https://doi.org/10.1186/s13750-024-00324-7
 
-Walker, D., Nost, E., Lemelin, A., Lave, R., & Dillon, L. (2018). Practicing environmental data justice: From DataRescue to Data Together. Geo: Geography and Environment, 5(2), e00061. https://doi.org/10.1002/geo2.61
+-   Nost, E., Gehrke, G., Vera, L., & Hansen, S. (2024). Why the Environmental Data & Governance Initiative is archiving public environmental data. Patterns, 6(1), 101151. https://doi.org/10.1016/j.patter.2024.101151
 
-Walter, M., & Suina, M. (2019). Indigenous data, indigenous methodologies and indigenous data sovereignty. International Journal of Social Research Methodology, 22(3), 233–243. https://doi.org/10.1080/13645579.2018.1531228
+-   Vera, L. A., Walker, D., Murphy, M., Mansfield, B., Siad, L. M., & Ogden, J. (2019). When data justice and environmental justice meet: Formulating a response to extractive logic through environmental data justice. Information, Communication & Society, 22(7), 1012–1028. https://doi.org/10.1080/1369118X.2019.1596293
 
-Vera, L. A., Walker, D., Murphy, M., Mansfield, B., Mohamed Siad, L., Ogden, J., & Environmental Data & Governance Initiative (EDGI). (2019). When data justice and environmental justice meet: Formulating a response to extractive logic through environmental data justice. Information, Communication & Society, 22(7), 1012–1028. https://doi.org/10.1080/1369118X.2019.1596293
+-   Walter, M., & Suina, M. (2019). Indigenous data, indigenous methodologies and indigenous data sovereignty. International Journal of Social Research Methodology, 22(3), 233–243. https://doi.org/10.1080/13645579.2018.1531228
