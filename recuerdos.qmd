@@ -5,23 +5,19 @@ editor: visual
 ---
 
 ![](photos/recuerdos/recuerdos_1.jpg){.gallery-img}
+*Markets of Dreams of Past*
 
 ![](photos/recuerdos/recuerdos_2.jpg){.gallery-img}
 
+*Somewhere in Time*
 ![](photos/recuerdos/recuerdos_3.jpg){.gallery-img}
+*Only Time will Tell*
+
 
 ![](photos/recuerdos/recuerdos_4.jpg){.gallery-img}
+*A Sea of Obscurity*
+
 
 ![](photos/recuerdos/recuerdos_5.jpg){.gallery-img}
-
-
-
-
-
-
-
-
-
-
-
+*Take a Leap of Faith*
 
