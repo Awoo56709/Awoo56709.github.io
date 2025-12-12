@@ -4,6 +4,10 @@ format: html
 ---
 
 ![](photos/armenia/armenia_subway.jpg){.gallery-img}
+*Riding the Metro*
+
 ![](photos/armenia/armenia_square.jpg){.gallery-img}
-![](photos/armenia/armenia_statue.jpg){.gallery-img}
+*Downtown Yerevan*
 ![](photos/armenia/armenia_walk.jpg){.gallery-img}
+*An Afternoon in Yerevan*
+

@@ -7,7 +7,7 @@ format: html
 *Guarding the vineyard*
 
 ![](photos/dacha.jpg){.gallery-img}
-*Summer dacha retreat*
+*Summer Dacha retreat*
 
 ![](photos/resting_doggo.jpg){.gallery-img}
 *Afternoon nap*

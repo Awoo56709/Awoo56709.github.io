@@ -4,25 +4,32 @@ format: html
 ---
 
 ![](photos/peace_corps_photos/georgian_church.jpg){.gallery-img}
-*Guarding the vineyard*
+*Georgian 14th Century Church*
 
 ![](photos/peace_corps_photos/handsome_cat.jpg){.gallery-img}
-*Summer dacha retreat*
+*Summer Time Lounging*
 
 ![](photos/peace_corps_photos/mestia_cow.jpg){.gallery-img}
-*Afternoon nap*
+*Mestia and Svan Towers*
 
 
 ![](photos/peace_corps_photos/motor_cat.jpg){.gallery-img}
+*Rallying for a Ride*
+
 ![](photos/peace_corps_photos/mtchadi.jpg){.gallery-img}
+*Berikaoba Mtchadi*
+
 ![](photos/peace_corps_photos/night_in_tkibuli.jpg){.gallery-img}
+*Evening Walks in Tkibuli*
+
 ![](photos/peace_corps_photos/oba.jpg){.gallery-img}
+*An Experience at Berikaoba*
 
 ![](photos/peace_corps_photos/tkibuli_lift.jpg){.gallery-img}
+*Winter in Georgia*
 ![](photos/peace_corps_photos/tkibuli_office.jpg){.gallery-img}
-![](photos/peace_corps_photos/tkibuli_office_me.jpg){.gallery-img}
 ![](photos/peace_corps_photos/tkibuli_town.jpg){.gallery-img}
-
+*Racha and Imereti is the Place to be*
 
 
 

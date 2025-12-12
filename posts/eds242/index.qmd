@@ -40,16 +40,16 @@ Agencies should use tools to detect and quantify bias, such as comparative sampl
 
 ## Transparency and Communication of Uncertainty
 
-All results—including “outliers”—should be published with clear explanations. Maps of sampling effort and contamination levels can show where data are strong and where gaps remain. Communicating uncertainty builds trust and allows communities to make informed choices. 
+All results—including “outliers”—should be published with clear explanations. Maps of sampling effort and contamination levels can show where data are strong and where gaps remain. Communicating uncertainty builds trust and allows communities to make informed choices.
 
-## Applicability to Other Cases 
+## Applicability to Other Cases
 
-The lessons from Flint extend broadly: 
+The lessons from Flint extend broadly:
 
-- Suppression bias in climate data (Nost et al., 2024). 
-- Measurement bias in air monitoring (Walker et al., 2018). 
-- Deficit framing in Indigenous statistics (Walter & Suina, 2019). 
-- Sampling bias in biodiversity monitoring (Young et al., 2014). 
+-   Suppression bias in climate data (Nost et al., 2024).
+-   Measurement bias in air monitoring (Walker et al., 2018).
+-   Deficit framing in Indigenous statistics (Walter & Suina, 2019).
+-   Sampling bias in biodiversity monitoring (Young et al., 2014).
 
 In each case, improved sampling, bias detection, and transparent communication can mitigate distortions. Flint is one example of a broader pattern: environmental data often reflects institutional convenience or politics rather than community realities.
 

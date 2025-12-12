@@ -1,0 +1,729 @@
+---
+title: "Grape Quality and Environmental Predictors"
+editor: visual
+author: Joshua Ferrer-Lozano
+date: 12/11/2025
+format:
+  html:
+    code-fold: true
+execute: 
+  warning: false
+  message: false
+---
+
+# Context
+
+Wine making has been a culture since 6000 BCE and originated from the Caucasus region of which is modern day Georgia and Armenia. During the Soviet occupation, Moscow wanted to streamline the process of wine making, consolidating the variety of grape types for larger export value and quality control. Because of this, many family owned grape varieties as well as environmental factors caused nearly the extinction of hundreds of endemic varieties. Due to the lack of Georgia specific data, the "GRAPE_QUALITY" data set provides general environmental and physiological variables for a multitude of European and American wine regions.
+
+Climate change has affected grape yields, composition and quality as a consequence of changing temperature, precipitation , humidity and radiation. According to a journal by Nature, "about 90% of traditional wine regions in coastal and lowland regions of Spain, Italy, Greece and southern California could be at risk of disappearing by the end of the century because of excessive drought and more frequent heatwaves with climate change."
+
+Based on this, this phenomena provides context for the long-term effects of climate change on wine development, feasibility and marketing. To explore this, this analysis will explore the effects of environmental qualities, variety type and region on grape quality and Brix. Brix degrees is a measure of the dissolved solids, primarily sugar, in a liquid and acts as a reference to the quality of the grape.
+
+Sugar content (Brix) is a key indicator of grape ripeness and quality.
+
+# Research Question:
+
+*How does sun exposure, soil moisture, and other environmental and physiological factors influence Brix?*
+
+## Data Sourcing and Collection
+
+The data used in this project was sourced from Kaggle, an online platform that houses reliable crowd-sourced data sets for data scientists. This project will use the **Grape Quality** data set found [here](https://www.kaggle.com/datasets/mrmars1010/grape-quality), hosted by user Mars_1010.
+
+## Dataset Description
+
+**GRAPE_QUALITY** data set
+
+The data set contains about 2 months of data relating to grape quality during harvest season across a multitude of regions and varieties of wine grapes. Variables in this data set include:
+
+-   quality_score (numeric)
+-   variety (categorical)
+-   region (categorical)
+-   sugar_content_brix (numeric; outcome for this analysis)
+-   acidity_ph (numeric)
+-   sun_exposure_hours (numeric)
+-   soil_moisture_percent (numeric)
+-   rainfall_mm (numeric)
+-   cluster_weight_g (numeric)
+-   berry_size_mm (numeric)
+-   harvest_date (date)
+
+## DAG (Directed acyclic graph) and Assumptions
+
+For this project, the variables that base our analysis include:
+
+**Predictor Variables**:
+
+We assume for these variables, the numbers presented are averages at the moment of harvest
+
+-   quality_score (numeric): Quality score on a scale between 0 and 4 with each next bin at 1.5.
+-   variety (categorical): Type of grape variety harvested.
+-   region (categorical): Geological region the harvest took place.
+-   acidity_ph (numeric): The level of acidity at the time of harvest
+-   sun_exposure_hours (numeric): The number of hours per day the grapes received (assumption this is an average)
+-   soil_moisture_percent (numeric): The percentage of moisture in the soil of the harvested variety
+-   rainfall_mm (numeric): The amount of millimeters of water retained in the soil for a particular variety.
+-   cluster_weight_g (numeric): The weight in grams of the grape variety's cluster
+-   berry_size_mm (numeric): The size of the berry at the moment of harvest.
+
+**Response Variable**:
+
+Brix: Score of the grapes at the time of harvest, denoting the amount of dissolved solids, a key indicator of quality and readiness of the grape for wine production.
+
+```{r}
+
+library(dagitty)
+
+# Example DAG
+dag <- dagitty("
+dag {
+  Sun -> Brix
+  Moisture -> Brix
+  Sun -> Moisture
+  Rainfall -> Moisture
+  HarvestDate -> Brix
+  Variety -> Brix
+  Region -> Brix
+}
+")
+plot(dag)
+```
+
+We specify a DAG to represent our assumed causal relationships between predictors and Brix
+
+-   Confounds: region, variety
+
+-   Mediators: soil_moisture_percent (between rainfall and Brix), harvest_date (ripening progression)
+
+-   Collider (caution): variables influenced by both variety and environment (e.g., berry_size_mm) can behave as colliders; avoid conditioning unless justified by the DAG
+
+-   Predictors:
+
+-   sun_exposure_hours
+
+-   soil_moisture_percent
+
+-   rainfall_mm
+
+-   acidity_ph
+
+-   harvest_date
+
+-   cluster_weight_g
+
+-   berry_size_mm
+
+-   Predictors:
+
+-   sun_exposure_hours
+
+-   soil_moisture_percent
+
+-   rainfall_mm
+
+-   acidity_ph
+
+-   harvest_date
+
+-   cluster_weight_g
+
+-   berry_size_mm
+
+-   Adjusted for: - variety - region
+
+# Data Exploration and Cleaning
+
+```{r}
+# Import libraries
+library(tidyverse)
+library(tidyterra)
+library(readr)
+library(broom)
+library(ggplot2)
+library(dplyr)
+library(kableExtra)
+set.seed(123)
+```
+
+```{r}
+# Read in dataset
+grapes <- read.csv("data/GRAPE_QUALITY.csv") |> 
+  janitor::clean_names() |> 
+  # Create another date time column for possible analysis related to date of harvest
+  mutate(harvest_date = as.Date(harvest_date),
+         days_since_start = as.numeric(harvest_date - min(harvest_date)))
+```
+
+Convert harvest_date to date and create days_since_start for temporal visual
+
+### Plotting Brix against Sun Exposure
+
+```{r}
+# Graph quality category and Brix score, colored by quality category
+ggplot(grapes, aes(sun_exposure_hours, sugar_content_brix, colour = quality_category)) +
+  geom_point(size = 2, alpha = .5) +
+  theme_minimal() +
+  labs(
+    title = "Relationship between Sun Exposure hours and Brix Score",
+    x = "Hours of Sun Exposure",
+    y = "Brix Score",
+    color = "Quality Category"
+  )
+```
+
+We visualize Brix against sun exposure, colorerd by quality category
+
+```{r}
+# Facet by variety and Brix score
+ggplot(grapes, aes(x = sun_exposure_hours, y = sugar_content_brix, color = region)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = "lm", se = TRUE, color = "firebrick") +
+  facet_wrap(~ region) +
+  theme_minimal() +
+  labs(x = "Hours of Sun Exposure",
+       y = "Brix",
+       color = "Wine Region")
+
+```
+
+We facet by region to compare sun exposire effects across wine regions
+
+### Plotting Brix Against Rainfall
+
+```{r}
+# Graph and color code by quality category
+ggplot(grapes, aes(rainfall_mm, sugar_content_brix, colour = quality_category)) +
+  geom_point(size = 2, alpha = .5) +
+  geom_smooth(method = "lm", se = TRUE, color = "firebrick") +
+  facet_wrap(~ quality_category) +
+  theme_minimal() +
+  labs(
+    title = "Relationship between Rainfall and Brix Score",
+    x = "Milimeters of Rainfall",
+    y = "Brix Score",
+    color = "Quality Category"
+  )
+```
+
+We visualize Brix against rainfall, faceted by quality category
+
+```{r}
+# Plot Brix against rainfall
+ggplot(grapes, aes(x = rainfall_mm, y = sugar_content_brix, color = region)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = "lm", se = TRUE, color = "firebrick") +
+  facet_wrap(~ region) +
+  theme_minimal() +
+  labs(title = "Relationship between Rainfall and Brix Score",
+    x = "Milimeters of Rainfall",
+    y = "Brix Score",
+    color = "Quality Category"
+  )
+```
+
+We facet by region to compare rainfall effects
+
+```{r}
+# Plot Brix against quality category
+  ggplot(grapes, aes(x = quality_category, y =sugar_content_brix)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Relationship between Quality Category and Brix Score",
+    x = "Quality Category",
+    y = "Brix Score"
+  )
+```
+
+We compare Brix distributions across quality categories
+
+Brix scores seem to be more variable within the Medium and High categories.
+
+```{r}
+# Plot x-axis is based on weekly breaks divided by min and max
+ggplot(grapes, aes(x = harvest_date, y = sugar_content_brix, color = quality_score)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess", se = FALSE, color = "firebrick") +
+  facet_wrap(~ variety) +
+  scale_color_viridis_c(option = "plasma") +
+  scale_x_date(date_breaks = "1 week", date_labels = "%b %d") +
+  labs(title = "Brix vs Harvest Date by Variety",
+       x = "Harvest Date", y = "Sugar Content (°Brix)",
+       color = "Quality Score") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+# Plot the graph based on harvest date and region
+ggplot(grapes, aes(x = harvest_date, y = sugar_content_brix, color = quality_score)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess", se = FALSE, color = "firebrick") +
+  facet_wrap(~ region) +
+  scale_color_viridis_c(option = "plasma") +
+  scale_x_date(date_breaks = "1 week", date_labels = "%b %d") +
+  labs(title = "Brix vs Harvest Date by region",
+       x = "Harvest Date", y = "Sugar Content (°Brix)",
+       color = "Quality Score") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+```
+
+# Statistical Model
+
+The project will use a Gamma regression model with a log link because the response variable Brix is positively continuous and right-skewed.
+
+For this analysis, we assume the observations are independent of the explanatory variables and the response. Furthermore, this model assumes that hours of sun exposure and the amount of rainfall affects Brix score positively or negatively.
+
+-   Response family: Gamma
+-   Link function: log
+-   The log link ensures positive fitted means and multiplicative effects, appropriate for right-skewed, positive values such as Brix.
+
+Model notation:
+
+$$
+Y_i \sim \text{Gamma}(\mu_i, \phi) \\
+\log(\mu_i) = \beta_0 
++ \beta_1 \cdot \text{Sun} 
++ \beta_2 \cdot \text{Moisture} 
++ \beta_3 \cdot \text{Rainfall} 
++ \beta_4 \cdot \text{pH} 
++ \beta_5 \cdot \text{HarvestDate} 
++ \beta_6 \cdot \text{ClusterWeight} 
++ \beta_7 \cdot \text{BerrySize} 
++ \boldsymbol{\beta_8} \cdot \text{Variety} 
++ \boldsymbol{\beta_9} \cdot \text{Region}
+$$
+
+**Log is added to ensure positivity and multiplicative effects**
+
+# Data Simulation
+
+Using assumptions about viticulture, we will create coefficients based on assumed effects. Assumption: Sugar accumulation is multiplicative rather than additive. As per validating our Gamma regression model, we simulate data with true parameters and have a model recover them.
+
+## Create True Parameters
+
+```{r}
+n_sample <- 1000
+
+# Define true value for coefficients for simulation
+beta_0 <- 2.7
+beta_sun_1 <- .015
+beta_moisture_2 <- -0.01
+beta_rainfall_3 <- .0003
+beta_ph_4 <- .02
+beta_weight_5 <- .0001
+beta_size_6 <- - .002
+
+# Control variance in Gamma distribution (higher will result in less spread)
+phi <- 50
+```
+
+We define assumed parameter values for simulation.
+
+## Generate Predictor
+
+```{r}
+# Simulate predictor variable with realistic ranges based on data
+
+sim_data  <- tibble(
+  # Choose continuous predictors based on realistic ranges from data
+  # Runif generate from uniform distribution, equally likely
+  # Rnorm generates from a norm distribution, clusters around the mean and spread by sd
+  
+  sun_exp_hours = runif(n_sample, 6, 12), # Assume hours of sun between 6 - 12 hours
+  soil_moisture_perc = runif(n_sample, 15, 35), # Assume 15-35% moisture
+  rainfall_mm = runif(n_sample, 200, 600), # Assume 200 - 600 mm rain
+  acidity_ph = rnorm(n_sample, 3.3, .2), # Assume ph around 3.3 on average
+  cluster_weight_g = rnorm(n_sample, 150, 30), # Assume average 150g so we choose rnorm
+  berry_size_mm = rnorm(n_sample, 15,2), # Assume average is around 15mm and assume normally distributed
+
+# Categorical predictors
+  variety = sample(c("Chardonnay", "Cabernet","Merlot"), n_sample, replace = TRUE),
+  region = sample(c("Central Coast","Napa", "Sonoma"), n_sample, replace = TRUE)
+)
+```
+
+We generate predictor variables with realistic ranges.
+
+## Calculating the response variable (Brix)
+
+```{r}
+
+# Linear predictor
+lin_predict <- beta_0 + 
+  beta_sun_1 * sim_data$sun_exp_hours + 
+  beta_moisture_2 * sim_data$soil_moisture_perc +
+  beta_rainfall_3  * sim_data$rainfall_mm +
+  beta_ph_4 * sim_data$acidity_ph +
+  beta_weight_5 * sim_data$cluster_weight_g +
+  beta_size_6 * sim_data$berry_size_mm
+
+# Convert mean response to natural scale
+mu <- exp(lin_predict)
+
+
+# Simulate Gamma response
+sim_data$sugar_content_brix <- rgamma(n_sample,
+                                      shape = phi,
+                                      rate = phi / mu)
+
+```
+
+We calculate the linear predictor, transform the mean response and simulate Brix values.
+
+## Fit the model to the simulated data
+
+```{r}
+# Fit gamma regression with log link
+model_sim <- glm(
+  sugar_content_brix ~ sun_exp_hours +  soil_moisture_perc + 
+    rainfall_mm + acidity_ph + cluster_weight_g + berry_size_mm +
+    variety + region,
+  family = Gamma(link = "log"),
+  data = sim_data
+)
+
+```
+
+We fit a Gamma regression model to the simulated data
+
+## Recover Parameters for Model Success
+
+```{r}
+# Define true parameters
+true_params <- c(beta_0, beta_sun_1, beta_moisture_2, beta_rainfall_3, 
+                 beta_ph_4, beta_weight_5, beta_size_6)
+
+# Extract estimated parameters from the fitted model
+estimated <- coef(model_sim)[1:7]
+df_sim <- tibble(
+  parameter  = names(coef(model_sim))[1:7],   # First 7 coefficients for comparison
+  true_value = round(true_params, 3),
+  estimated  = round(coef(model_sim)[1:7], 3)
+)
+
+df_sim %>% kbl(caption = "Estimated vs True Parameters") %>% 
+  kable_styling(bootstrap_options = c("striped"))
+```
+
+We compare estimated coefficients to true values to validate model recovery.
+
+## Conclusion
+
+The values are not exact but are very close. This indicates the model is accurate and real data can be used.
+
+# Inference and Hypotheses
+
+-   Scientific hypothesis: After adjusting for variety and region, greater sun exposure increases °Brix and higher soil moisture decreases °Brix.
+-   Null: No association between sun exposure or soil moisture and °Brix, controlling for variety and region.
+
+Statistical hypotheses:
+
+-   Sun exposure effect:
+
+$$
+H_0 : \beta_{1} = 0 \quad \text{vs.} \quad H_a : \beta_{1} > 0
+$$
+
+-   Soil moisture effect:
+
+$$ 
+H_0:\beta_{2}=0 \quad \text{vs} \quad H_a:\beta_{2} <0
+$$ We will test whether sun exposure increases Brix and soil moisture decreases Brix, controlling for grape variety and region.
+
+# Fitting Real Data
+
+```{r}
+# Check for correlation
+
+predictors <- grapes |> 
+  select(sun_exposure_hours, soil_moisture_percent, rainfall_mm,
+         acidity_ph, cluster_weight_g, berry_size_mm)
+
+# Check correlations for multicollinearity
+corr_matrix <- cor(predictors, use = "complete.obs")
+print(round(corr_matrix, 3))
+
+```
+
+We check correlations among the predictors. The correlations are near zero overall. The largest correlation among the pairs of variables are sun exposure with berry size (r = -.056), rainfall with acidity (r = -.047) and cluster weight with berry size (r = -.045)
+
+## Fit My Model
+
+```{r}
+model <- glm(
+  sugar_content_brix ~ sun_exposure_hours + soil_moisture_percent + 
+    rainfall_mm + acidity_ph + cluster_weight_g + berry_size_mm + 
+    variety + region,
+  family = Gamma(link = "log"),
+  data = grapes
+)
+```
+
+We fit a Gamma regression to the grape data set
+
+## Tidy Results
+
+```{r}
+# Extract model estimates with CI to evaluate effects of sun exposure and soil moisture
+results <- tidy(model, conf.int = TRUE)
+
+# Filter for main predictors
+main_predictors <- results %>%
+  filter(term %in% c("sun_exposure_hours", "soil_moisture_percent",
+                     "rainfall_mm", "acidity_ph", "cluster_weight_g",
+                     "berry_size_mm"))
+# Print clean table
+print(main_predictors %>% 
+        select(term, estimate, std.error, p.value) %>%
+        mutate(across(where(is.numeric), ~round(., 3))))
+
+```
+
+All the p-values are not significant, indicating little to no effect of variables.
+
+```{r}
+results %>%
+  select(term, estimate, std.error, p.value, conf.low, conf.high) %>%
+  mutate(across(where(is.numeric), ~round(., 3))) %>%
+  kbl(caption = "Gamma Regression Results") %>%
+  kable_styling(bootstrap_options = c("striped"))
+```
+
+```{r}
+# Visualize sun exposure vs Brix
+pred_sun <- expand_grid(
+  sun_exposure_hours = seq(min(grapes$sun_exposure_hours, na.rm=TRUE),
+                           max(grapes$sun_exposure_hours, na.rm=TRUE),
+                           length.out=100),
+  soil_moisture_percent = mean(grapes$soil_moisture_percent, na.rm=TRUE),
+  rainfall_mm = mean(grapes$rainfall_mm, na.rm=TRUE),
+  acidity_ph = mean(grapes$acidity_ph, na.rm=TRUE),
+  cluster_weight_g = mean(grapes$cluster_weight_g, na.rm=TRUE),
+  berry_size_mm = mean(grapes$berry_size_mm, na.rm=TRUE),
+  variety = "Chardonnay",
+  region  = "Napa Valley"
+)
+
+pred_sun <- pred_sun %>%
+  mutate(predicted_brix = predict(model, newdata=pred_sun, type="response"))
+
+ggplot() +
+  geom_line(data=pred_sun, aes(x=sun_exposure_hours, y=predicted_brix),
+            color="firebrick", linewidth=1.5) +
+  geom_point(data=grapes, aes(x=sun_exposure_hours, y=sugar_content_brix),
+             color="black", alpha=0.5) +
+  labs(title="Gamma Regression: Sun Exposure vs Brix",
+       x="Sun Exposure (hours)", y="Sugar Content (°Brix)") +
+  theme_minimal()
+
+```
+
+Visualize sun exposure effect on Brix, comparing predicted values with observed.
+
+```{r}
+# Visualize soil moisture vs Brix
+pred_moisture <- expand_grid(
+  soil_moisture_percent = seq(min(grapes$soil_moisture_percent, na.rm=TRUE),
+                              max(grapes$soil_moisture_percent, na.rm=TRUE),
+                              length.out=100),
+  sun_exposure_hours = mean(grapes$sun_exposure_hours, na.rm=TRUE),
+  rainfall_mm = mean(grapes$rainfall_mm, na.rm=TRUE),
+  acidity_ph = mean(grapes$acidity_ph, na.rm=TRUE),
+  cluster_weight_g = mean(grapes$cluster_weight_g, na.rm=TRUE),
+  berry_size_mm = mean(grapes$berry_size_mm, na.rm=TRUE),
+  variety = "Chardonnay",
+  region  = "Napa Valley"
+)
+
+pred_moisture <- pred_moisture %>%
+  mutate(predicted_brix = predict(model, newdata=pred_moisture, type="response"))
+
+ggplot() +
+  geom_line(data=pred_moisture, aes(x=soil_moisture_percent, y=predicted_brix),
+            color="firebrick", linewidth=1.5) +
+  geom_point(data=grapes, aes(x=soil_moisture_percent, y=sugar_content_brix),
+             color="black", alpha=0.5) +
+  labs(title="Gamma Regression: Soil Moisture vs Brix",
+       x="Soil Moisture (%)", y="Sugar Content (°Brix)") +
+  theme_minimal()
+
+```
+
+Visualize soil moisture effect on Brix, comparing predicted values with observed.
+
+```{r}
+
+fixed_variety <- "Chardonnay"
+fixed_region  <- "Napa Valley"
+
+pred_grid <- expand_grid(
+  sun_exposure_hours = seq(
+    min(grapes$sun_exposure_hours, na.rm = TRUE),
+    max(grapes$sun_exposure_hours, na.rm = TRUE),
+    length.out = 100
+  ),
+  soil_moisture_percent = mean(grapes$soil_moisture_percent, na.rm = TRUE),
+  rainfall_mm = mean(grapes$rainfall_mm, na.rm = TRUE),
+  acidity_ph = mean(grapes$acidity_ph, na.rm = TRUE),
+  cluster_weight_g = mean(grapes$cluster_weight_g, na.rm = TRUE),
+  berry_size_mm = mean(grapes$berry_size_mm, na.rm = TRUE),
+  variety = fixed_variety,
+  region  = fixed_region
+)
+
+# Predictions with uncertainty on link scale
+pred_se  <- predict(model, newdata = pred_grid, type = "link", se.fit = TRUE)
+linkinv  <- family(model)$linkinv
+
+pred_grid <- pred_grid %>%
+  mutate(
+    eta = pred_se$fit,
+    se  = pred_se$se.fit,
+    fit = linkinv(eta),
+    lwr = linkinv(eta - 1.96 * se),
+    upr = linkinv(eta + 1.96 * se)
+  )
+
+```
+
+# Diagnosis Non-Significance
+
+```{r}
+# Check for variability in sun exposure and soil moisture
+variation_check <- grapes %>%
+  summarise(
+    sun_min = min(sun_exposure_hours),
+    sun_max = max(sun_exposure_hours),
+    sun_range = sun_max - sun_min,
+    sun_sd = sd(sun_exposure_hours),
+    moisture_min = min(soil_moisture_percent),
+    moisture_max = max(soil_moisture_percent),
+    moisture_range = moisture_max - moisture_min,
+    moisture_sd = sd(soil_moisture_percent)
+  )
+
+print(variation_check)
+```
+
+Sun exposure ranges from 6 to 12 hours per day, with a standard deviation of about 1.7 hours. This indicates moderate variability across vineyards. Soil moisture ranges from 30 to 70%, with a stadard deviation of 11.6%, showing an adequate amount of variability. Both of the predictors have sufficient spread to allow for analysis.
+
+```{r}
+# Fit a simpler model with fewer predictors
+
+model_simple <- glm(
+  sugar_content_brix ~ sun_exposure_hours + soil_moisture_percent + 
+    variety + region,
+  family = Gamma(link = "log"),
+  data = grapes
+)
+# Tidy results
+results_simple <- tidy(model_simple, conf.int = TRUE) %>%
+  filter(term %in% c("sun_exposure_hours", "soil_moisture_percent"))
+
+print(results_simple %>% 
+        select(term, estimate, p.value) %>%
+        mutate(across(where(is.numeric), ~round(., 5))))
+ 
+```
+
+We fit a reduced model containing only sun exposurem, moisture, variety and region.
+
+Based on the p value \> .05, nothing is significant and the effects may be very small or not present.
+
+# Check the model fit
+
+```{r}
+# Add predictions and residuals
+grapes <- grapes %>%
+  mutate(predicted_brix = predict(model_simple, type = "response"),
+         residuals = sugar_content_brix - predicted_brix)
+
+ggplot(grapes, aes(x = predicted_brix, y = sugar_content_brix)) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, color = "red") +
+  labs(x = "Predicted Brix", y = "Observed Brix", title = "Model Fit Check")
+
+```
+
+```{r}
+# Model fit diagnostics
+correlation <- cor(grapes$predicted_brix, grapes$sugar_content_brix)
+r_squared <- correlation^2
+r_interp <- r_squared * 100
+r_interp
+
+```
+
+We calculate approximate R\^2 by squaring the correlation between fitted and observed values. The squared correlation between fitted values and observed values give an a r squared value of about 1.3%, indicating the model explains very little variation in Brix.
+
+## Residual Plot
+
+```{r}
+# Plot Residuals vs predicted
+ggplot(grapes, aes(x = predicted_brix, y = residuals)) +
+  geom_point() +
+  geom_hline(yintercept = 0, color = "red") +
+  labs(x = "Predicted Brix", y = "Residuals", title = "Residual Plot")
+
+```
+
+The residuals show random scatter around zero but with no apparent pattern. This suggests the Gamma model with a log link is appropriate. However, the wide range of scatter indicates the model explains very little variation.
+
+# Testing Hypotheses
+
+```{r}
+# Test the sun_exposure hypothesis
+
+sun_hyp <- results_simple %>% filter(term == "sun_exposure_hours")
+
+# Check values of interest
+sun_check <- tibble(
+  Term        = sun_hyp$term,
+  Estimate    = sun_hyp$estimate,
+  Std_Error   = sun_hyp$std.error,
+  P_Value     = sun_hyp$p.value,
+  CI_Low      = sun_hyp$conf.low,
+  CI_High     = sun_hyp$conf.high,
+  Pct_Change  = (exp(sun_hyp$estimate) - 1) * 100
+)
+
+sun_check
+
+```
+
+The large p-value (\>.05), there is no evidence that sun exposure affects Brix in this data set. The confidence interval includes zero, meaning the true effect could be positive, negative, or non-existent.
+
+```{r}
+
+# Test the soil_moisture decreasing hypothesis
+
+soil_moisture_hyp <- results_simple %>% filter(term == "soil_moisture_percent")
+
+# Check p-value
+soil_moisture_check <- tibble(
+  Term        = soil_moisture_hyp$term,
+  Estimate    = soil_moisture_hyp$estimate,
+  Std_Error   = soil_moisture_hyp$std.error,
+  P_Value     = soil_moisture_hyp$p.value,
+  CI_Low      = soil_moisture_hyp$conf.low,
+  CI_High     = soil_moisture_hyp$conf.high,
+  Pct_Change  = (exp(soil_moisture_hyp$estimate) - 1) * 100
+)
+
+soil_moisture_check
+```
+
+The large p-value (\>.05), there is no evidence that soil moisture affects Brix in this data set. The confidence interval includes zero, meaning the true effect could be positive, negative, or non-existent.
+
+# Conclusion
+
+The Gamma regression model recovered true parameters when tested. In the real data, the predictors showed low correlations (no multicollinearity). However, the model could explain very little of the variation of Brix, suggesting other environmental or physiological factors may be more influential in Brix.
+
+# References
+
+van Leeuwen, C., Sgubin, G., Bois, B., et al. Climate change impacts and adaptations of wine production. Nature Reviews Earth & Environment, 5, 258–275 (2024). https://doi.org/10.1038/s43017-024-00521-5
+
+Getting Started with Gamma Regression | UVA Library. (2025). University of Virginia Library. https://library.virginia.edu/data/articles/getting-started-with-gamma-regression
+
+GammaRegressor — scikit‑learn 1.8.0 documentation. (2025). scikit-learn.org. . https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.GammaRegressor.html
+
+Mars_1010. (2023). Grape Quality [Dataset]. Kaggle. https://www.kaggle.com/datasets/mrmars1010/grape-quality

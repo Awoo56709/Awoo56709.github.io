@@ -4,16 +4,23 @@ format: html
 ---
 
 ![](photos/turkiye/istanbul_sofia.jpg){.gallery-img}
-
+*Hagia Sofia Sunset*
 ![](photos/turkiye/turk_breakfast.jpg){.gallery-img}
+*Turkish Culinary Delight*
+
 ![](photos/turkiye/turkish_bridge.jpg){.gallery-img}
+*East and West Istanbul Connects*
 
 
 ![](photos/turkiye/turkish_chan.jpg){.gallery-img}
-![](photos/turkiye/turkish_doggo.jpg){.gallery-img}
-![](photos/turkiye/turkish_market.jpg){.gallery-img}
-![](photos/turkiye/turkish_tea.jpg){.gallery-img}
+*Spider Prevention*
 
+![](photos/turkiye/turkish_doggo.jpg){.gallery-img}
+*Turkish Doggo*
+![](photos/turkiye/turkish_market.jpg){.gallery-img}
+*Colorful as warm as Turksh Soul*
+![](photos/turkiye/turkish_tea.jpg){.gallery-img}
+*Traveling is the Spice of Life*
 
 
 
