@@ -8,7 +8,7 @@ categories: [R, MEDS, data-viz, Geospatial]
 format:
   html:
     toc: true
-    code-fold: false
+    code-fold: true
     embed-resources: true
 draft: false
 ---
