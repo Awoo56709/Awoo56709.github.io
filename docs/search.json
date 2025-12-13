@@ -116,7 +116,7 @@
     "href": "italy.html",
     "title": "Italy",
     "section": "",
-    "text": "{.gallery-img"
+    "text": "Narrow Corridors of Venice"
   },
   {
     "objectID": "blog_page.html",
@@ -334,5 +334,12 @@
     "title": "Armenia",
     "section": "",
     "text": "Riding the Metro\n Downtown Yerevan  An Afternoon in Yerevan"
+  },
+  {
+    "objectID": "recuerdos.html",
+    "href": "recuerdos.html",
+    "title": "Recuerdos",
+    "section": "",
+    "text": "Markets of Dreams of Past\n\nSomewhere in Time  Only Time will Tell\n A Sea of Obscurity\n Take a Leap of Faith"
   }
 ]
