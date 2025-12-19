@@ -14,16 +14,16 @@ website:
         menu:
           - href: photo_gallery.qmd
             text: General Gallery
-          - href: peace_corps.qmd
-            text: მშვისდობის კორპუსი
           - href: armenia.qmd
             text: Armenia
-          - href: turkiye.qmd
-            text: Turkiye
           - href: italy.qmd
             text: Italia
+          - href: turkiye.qmd
+            text: Turkiye
           - href: recuerdos.qmd
             text: Recuerdos
+          - href: peace_corps.qmd
+            text: მშვისდობის კორპუსი
       - href: blog_page.qmd
         text: Blog
       - href: /files/resume.pdf
