@@ -26,6 +26,8 @@ website:
             text: Recuerdos
       - href: blog_page.qmd
         text: Blog
+      - href: docs/resume.pdf
+        text: Resume
 
 collections:
   posts:
