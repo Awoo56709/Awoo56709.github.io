@@ -130,28 +130,28 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "About this site"
+    "text": "As a Masters Student I analyze environmental and Geospatial data using R and Python. Packages that I use in my workflow include: ::: {.tbl-colwidths=“20,80”} | Library | Description | |———|————-| | tidyverse | data wrangling and plotting | | terra | raster processing, reclassification, resampling, map algebra | | sf | reading shapefiles, managing projections, spatial joins | | stars | converts rasters for use with tmap and ggplot2 | | tmap | creates maps with basemaps, legends, labels, scale bars, compasses | | knitr / kableExtra | table formatting and report‑ready tables | | geopandas | load shapefiles, reproject CRS, clip vectors, spatial joins | | xarray | open NetCDFs, access spectral bands, convert to arrays | | matplotlib | true/false‑color composites, fire overlays, raster visualization | | pandas | tabular data manipulation | | numpy | numerical operations, masks, array calculations | :::"
   },
   {
     "objectID": "about.html#what-i-do-for-work",
     "href": "about.html#what-i-do-for-work",
     "title": "About Me",
-    "section": "What I do For Work",
-    "text": "What I do For Work\nAs a Masters Student I analyze environmental data using R and Python."
+    "section": "",
+    "text": "As a Masters Student I analyze environmental and Geospatial data using R and Python. Packages that I use in my workflow include: ::: {.tbl-colwidths=“20,80”} | Library | Description | |———|————-| | tidyverse | data wrangling and plotting | | terra | raster processing, reclassification, resampling, map algebra | | sf | reading shapefiles, managing projections, spatial joins | | stars | converts rasters for use with tmap and ggplot2 | | tmap | creates maps with basemaps, legends, labels, scale bars, compasses | | knitr / kableExtra | table formatting and report‑ready tables | | geopandas | load shapefiles, reproject CRS, clip vectors, spatial joins | | xarray | open NetCDFs, access spectral bands, convert to arrays | | matplotlib | true/false‑color composites, fire overlays, raster visualization | | pandas | tabular data manipulation | | numpy | numerical operations, masks, array calculations | :::"
   },
   {
     "objectID": "about.html#what-i-do-for-fun",
     "href": "about.html#what-i-do-for-fun",
     "title": "About Me",
     "section": "What I do for fun",
-    "text": "What I do for fun\nIn my free time, he enjoys film photography, cooking, playing guitar and go camping in his VW bus.\nYou can find me enjoying my collection of Soviet era film cameras. My favorite cuisine is Thai food, of which drunken noodles, larb and yellow curry are among my favorite dishes. My all time favorite dish, however is Japanese Ramen, specifically Tsukemen."
+    "text": "What I do for fun\nIn my free time, I enjoy film photography, cooking, playing guitar and going camping in my Volkswagen.\n\nYou can find me enjoying my collection of vinyl records. My favorite cuisine is Thai food. Among Thai food, drunken noodles, larb and yellow curry are among my favorite dishes. However, my all time favorite dish is the Japanese Ramen, specifically Tsukemen."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Joshua Ferrer-Lozano",
     "section": "",
-    "text": "Welcome! I’m a graduate student in Environmental Data Science at UCSB.\nI focus on geospatial analysis, reproducible workflows, and creative approaches to teaching data science with a background in data cleaning, climate research, and data visualization.\nI double majored with degrees in Environmental Studies and Planning and Economics from Sonoma State University in 2017. In the following years, I was an AmeriCorps Vista volunteer in Hawaii and worked on environmental policy for the Caldwell Administration and co-developed the methodology for the City and County of Honolulu’s first greenhouse gas inventory as well as develop metrics for its first sustainability report. After, I was a Peace Corps volunteer in the country of Georgia where I provided capacity to a small non-government organization providing support in IT, translation, database development, data dashboard and website development and youth development project facilitation."
+    "text": "Welcome! I’m a graduate student in Environmental Data Science at UCSB, specializing in geospatial analysis, reproducible workflows, and creative approaches to teaching data science. My background spans data cleaning, climate research, and visualization.\nI earned dual degrees in Environmental Studies & Planning and Economics from Sonoma State University in 2017. Since then, I’ve served as an AmeriCorps VISTA in Hawaii, where I worked on environmental policy for the Caldwell Administration and helped develop Honolulu’s first greenhouse gas inventory and sustainability metrics. Later, as a Peace Corps volunteer in Georgia, I supported a local NGO with IT, translation, database and dashboard development, and youth project facilitation."
   },
   {
     "objectID": "peace_corps.html",
@@ -172,21 +172,21 @@
     "href": "posts/Aquaculture/index.html#aquaculture-suitability-function",
     "title": "Identifying Optimal Species Environments",
     "section": "Aquaculture Suitability Function",
-    "text": "Aquaculture Suitability Function\n\n# Import libraries for geospatial and data analysis\nsuppressPackageStartupMessages({\nlibrary(tidyverse)\nlibrary(stars)\nlibrary(terra)\nlibrary(sf)\nlibrary(tmap)\nlibrary(knitr)\nlibrary(kableExtra)\n})\n\n\n# Function to map EEZ suitability for a species\nmap_species_suitability &lt;- function(sst_min, sst_max, depth_min, depth_max, species_name) {\n  \n# Load in data\n  regions_clean &lt;- st_read(\"data/wc_regions_clean.shp\", quiet = TRUE)\n  depth &lt;- rast(\"data/depth.tif\")\n  sst_stack &lt;- c(\n    rast(\"data/average_annual_sst_2008.tif\"),\n    rast(\"data/average_annual_sst_2009.tif\"),\n    rast(\"data/average_annual_sst_2010.tif\"),\n    rast(\"data/average_annual_sst_2011.tif\"),\n    rast(\"data/average_annual_sst_2012.tif\")\n  )\n  \n  # Process the SST and convert to celsius\n  sst_mean &lt;- mean(sst_stack)\n  sst_celsius &lt;- sst_mean - 273.15\n  \n  # Align depth to SST\n  depth_proj &lt;- project(depth, crs(sst_celsius))\n  depth_crop &lt;- crop(depth_proj, sst_celsius)\n  depth_resample &lt;- resample(depth_crop, sst_celsius, method = \"near\")\n  \n  # Create suitability classification matrixes\n  sst_suit &lt;- classify(sst_celsius,\n                       rbind(c(-Inf, sst_min, 0),\n                             c(sst_min, sst_max, 1),\n                             c(sst_max, Inf, 0)))\n  \n  depth_suit &lt;- classify(depth_resample,\n                         rbind(c(-Inf, depth_min, 0),\n                               c(depth_min, depth_max, 1),\n                               c(depth_max, Inf, 0)))\n  \n  suitability &lt;- sst_suit * depth_suit\n  \n  # Create EEZ zonal stats\n  \n  # Convert cleaned EEZ regions to vector\n  eez_v &lt;- vect(regions_clean)\n  \n  # Reproject the EEZ vector to match CRS of sst_celsius\n  eez_v &lt;- project(eez_v, crs(sst_celsius))\n  \n  # Add unique ID for each EEZ zone for later join\n  eez_v$eez_id &lt;- seq_len(nrow(eez_v))\n  \n  # Rasterize the EEZ polygon so each cell in raster is assigned an ID that is within\n  eez_r &lt;- rasterize(eez_v, sst_celsius, field = \"eez_id\")\n  \n  # Calculate the area of each raster in square kilometers\n  cell_area &lt;- cellSize(sst_celsius, unit = \"km\")\n  \n  # Multiply the suitability raster by cell area to get area of suitable habitat per cell\n  area_suitable &lt;- suitability * cell_area\n  \n  # Perform zonal math by getting the sum of the suitable area in each EEZ zone\n  area_by_eez &lt;- zonal(area_suitable, eez_r, fun = \"sum\", na.rm = TRUE)\n  \n  # Convert above results into a dataframe and rename column\n  area_by_eez &lt;- as.data.frame(area_by_eez) |&gt; \n    rename(suitable_km2 = mean)\n  \n  # Convert EEZ vector back to an sf obejct and join stats by EEZ ID\n  eez_sf_out &lt;- st_as_sf(eez_v) |&gt; \n    left_join(area_by_eez, by = \"eez_id\")\n  \n# Plot map\n  tm_shape(eez_sf_out) +\n    tm_polygons(fill = \"suitable_km2\",\n                fill.scale = tm_scale(values = \"viridis\"),\n                fill.legend = tm_legend(title = \"Suitable area (km²)\")) +\n    tm_title(paste(species_name, \"Suitability Across West Coast EEZs\"),\n             position = c(\"center\", \"top\")) +\n    tm_scalebar(position = c(\"left\", \"bottom\")) +\n    tm_compass(position = c(\"right\", \"top\"))\n}\n\n\n# Use the function for finding suitable area for Geoducks\n\n# map_species_suitability(sst_min, sst_max, depth_min, depth_max, species_name)\nmap_species_suitability(sst_min = 0, sst_max = 80, depth_min = -100, depth_max = 0, species_name = \"Geoduck\")\n\n[plot mode] fit legend/component: Some legend items or map compoments do not\nfit well, and are therefore rescaled.\nℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling."
+    "text": "Aquaculture Suitability Function\n\n\nCode\n# Import libraries for geospatial and data analysis\nsuppressPackageStartupMessages({\nlibrary(tidyverse)\nlibrary(stars)\nlibrary(terra)\nlibrary(sf)\nlibrary(tmap)\nlibrary(knitr)\nlibrary(kableExtra)\n})\n\n\n\n\nCode\n# Function to map EEZ suitability for a species\nmap_species_suitability &lt;- function(sst_min, sst_max, depth_min, depth_max, species_name) {\n  \n# Load in data\n  regions_clean &lt;- st_read(\"data/wc_regions_clean.shp\", quiet = TRUE)\n  depth &lt;- rast(\"data/depth.tif\")\n  sst_stack &lt;- c(\n    rast(\"data/average_annual_sst_2008.tif\"),\n    rast(\"data/average_annual_sst_2009.tif\"),\n    rast(\"data/average_annual_sst_2010.tif\"),\n    rast(\"data/average_annual_sst_2011.tif\"),\n    rast(\"data/average_annual_sst_2012.tif\")\n  )\n  \n  # Process the SST and convert to celsius\n  sst_mean &lt;- mean(sst_stack)\n  sst_celsius &lt;- sst_mean - 273.15\n  \n  # Align depth to SST\n  depth_proj &lt;- project(depth, crs(sst_celsius))\n  depth_crop &lt;- crop(depth_proj, sst_celsius)\n  depth_resample &lt;- resample(depth_crop, sst_celsius, method = \"near\")\n  \n  # Create suitability classification matrixes\n  sst_suit &lt;- classify(sst_celsius,\n                       rbind(c(-Inf, sst_min, 0),\n                             c(sst_min, sst_max, 1),\n                             c(sst_max, Inf, 0)))\n  \n  depth_suit &lt;- classify(depth_resample,\n                         rbind(c(-Inf, depth_min, 0),\n                               c(depth_min, depth_max, 1),\n                               c(depth_max, Inf, 0)))\n  \n  suitability &lt;- sst_suit * depth_suit\n  \n  # Create EEZ zonal stats\n  \n  # Convert cleaned EEZ regions to vector\n  eez_v &lt;- vect(regions_clean)\n  \n  # Reproject the EEZ vector to match CRS of sst_celsius\n  eez_v &lt;- project(eez_v, crs(sst_celsius))\n  \n  # Add unique ID for each EEZ zone for later join\n  eez_v$eez_id &lt;- seq_len(nrow(eez_v))\n  \n  # Rasterize the EEZ polygon so each cell in raster is assigned an ID that is within\n  eez_r &lt;- rasterize(eez_v, sst_celsius, field = \"eez_id\")\n  \n  # Calculate the area of each raster in square kilometers\n  cell_area &lt;- cellSize(sst_celsius, unit = \"km\")\n  \n  # Multiply the suitability raster by cell area to get area of suitable habitat per cell\n  area_suitable &lt;- suitability * cell_area\n  \n  # Perform zonal math by getting the sum of the suitable area in each EEZ zone\n  area_by_eez &lt;- zonal(area_suitable, eez_r, fun = \"sum\", na.rm = TRUE)\n  \n  # Convert above results into a dataframe and rename column\n  area_by_eez &lt;- as.data.frame(area_by_eez) |&gt; \n    rename(suitable_km2 = mean)\n  \n  # Convert EEZ vector back to an sf obejct and join stats by EEZ ID\n  eez_sf_out &lt;- st_as_sf(eez_v) |&gt; \n    left_join(area_by_eez, by = \"eez_id\")\n  \n# Plot map\n  tm_shape(eez_sf_out) +\n    tm_polygons(fill = \"suitable_km2\",\n                fill.scale = tm_scale(values = \"viridis\"),\n                fill.legend = tm_legend(title = \"Suitable area (km²)\")) +\n    tm_title(paste(species_name, \"Suitability Across West Coast EEZs\"),\n             position = c(\"center\", \"top\")) +\n    tm_scalebar(position = c(\"left\", \"bottom\")) +\n    tm_compass(position = c(\"right\", \"top\"))\n}\n\n\n\n\nCode\n# Use the function for finding suitable area for Geoducks\n\n# map_species_suitability(sst_min, sst_max, depth_min, depth_max, species_name)\nmap_species_suitability(sst_min = 0, sst_max = 80, depth_min = -100, depth_max = 0, species_name = \"Geoduck\")\n\n\n[plot mode] fit legend/component: Some legend items or map compoments do not\nfit well, and are therefore rescaled.\nℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling."
   },
   {
     "objectID": "posts/Aquaculture/index.html#import-and-prepare-the-data",
     "href": "posts/Aquaculture/index.html#import-and-prepare-the-data",
     "title": "Identifying Optimal Species Environments",
     "section": "Import and Prepare the Data",
-    "text": "Import and Prepare the Data\n\n# Read in Exclusive Economic Zone (EEZ) shapefile\nregions_clean &lt;- st_read(\"data/wc_regions_clean.shp\")\n\nReading layer `wc_regions_clean' from data source \n  `C:\\Users\\joshu\\Documents\\MEDS\\Career\\Awoo56709.github.io\\posts\\Aquaculture\\data\\wc_regions_clean.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 5 features and 5 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -129.1635 ymin: 30.542 xmax: -117.097 ymax: 49.00031\nGeodetic CRS:  WGS 84\n\n# Read in depth raster\ndepth &lt;- rast(\"data/depth.tif\")\n\n# Read in Sea Surface Temperature rasters\nsst_2008 &lt;- rast(\"data/average_annual_sst_2008.tif\")\nsst_2009 &lt;- rast(\"data/average_annual_sst_2009.tif\")\nsst_2010 &lt;- rast(\"data/average_annual_sst_2010.tif\")\nsst_2011 &lt;- rast(\"data/average_annual_sst_2011.tif\")\nsst_2012 &lt;- rast(\"data/average_annual_sst_2012.tif\")"
+    "text": "Import and Prepare the Data\n\n\nCode\n# Read in Exclusive Economic Zone (EEZ) shapefile\nregions_clean &lt;- st_read(\"data/wc_regions_clean.shp\")\n\n\nReading layer `wc_regions_clean' from data source \n  `C:\\Users\\joshu\\Documents\\MEDS\\Career\\Awoo56709.github.io\\posts\\Aquaculture\\data\\wc_regions_clean.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 5 features and 5 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -129.1635 ymin: 30.542 xmax: -117.097 ymax: 49.00031\nGeodetic CRS:  WGS 84\n\n\nCode\n# Read in depth raster\ndepth &lt;- rast(\"data/depth.tif\")\n\n# Read in Sea Surface Temperature rasters\nsst_2008 &lt;- rast(\"data/average_annual_sst_2008.tif\")\nsst_2009 &lt;- rast(\"data/average_annual_sst_2009.tif\")\nsst_2010 &lt;- rast(\"data/average_annual_sst_2010.tif\")\nsst_2011 &lt;- rast(\"data/average_annual_sst_2011.tif\")\nsst_2012 &lt;- rast(\"data/average_annual_sst_2012.tif\")"
   },
   {
     "objectID": "posts/Aquaculture/index.html#process-the-data",
     "href": "posts/Aquaculture/index.html#process-the-data",
     "title": "Identifying Optimal Species Environments",
     "section": "Process the Data",
-    "text": "Process the Data\nWe assume WGS84 (EPSG:4326) as the common CRS. If CRS mismatches occur, analysis would be invalid.\n\n# Stack SST rasters into multi-layer Spatraster\nsst_stack &lt;- c(sst_2008, sst_2009, sst_2010, sst_2011, sst_2012)\n\n\n# Compute the mean of SST across years\nsst_mean &lt;- mean(sst_stack)\n\n\n# Convert Kelvin to Celsius\nsst_celsius &lt;- sst_mean - 273.15\n\n# Replace NA values with 0\nsst_celsius[is.na(sst_celsius)] &lt;- 0\n\n# Add warning if the range is wrong\nif (max(values(sst_celsius), na.rm=TRUE) &gt; 40) warning(\"SST unusually high — check conversion.\")\n\n\n# Convert SST raster to stars object for a more robust plot\nsst_stars &lt;- st_as_stars(sst_celsius)\n\ntm_shape(sst_stars) +\n  tm_raster(fill.scale = tm_scale(values = \"viridis\"),\n            fill.legend = tm_legend(title = \"Temperature (C)\")) +\n  tm_title(\"Mean Sea Surface Temperature (°C, 2008–2012)\", position = c(\"center\", \"top\")) +\n  tm_scalebar(position = c(\"left\", \"bottom\")) +\n  tm_compass(position = c(\"right\", \"bottom\"))\n\n[tm_raster()] Arguments `fill.scale` and `fill.legend` unknown.\n[plot mode] fit legend/component: Some legend items or map compoments do not\nfit well, and are therefore rescaled.\nℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling."
+    "text": "Process the Data\nWe assume WGS84 (EPSG:4326) as the common CRS. If CRS mismatches occur, analysis would be invalid.\n\n\nCode\n# Stack SST rasters into multi-layer Spatraster\nsst_stack &lt;- c(sst_2008, sst_2009, sst_2010, sst_2011, sst_2012)\n\n\n\n\nCode\n# Compute the mean of SST across years\nsst_mean &lt;- mean(sst_stack)\n\n\n\n\nCode\n# Convert Kelvin to Celsius\nsst_celsius &lt;- sst_mean - 273.15\n\n# Replace NA values with 0\nsst_celsius[is.na(sst_celsius)] &lt;- 0\n\n# Add warning if the range is wrong\nif (max(values(sst_celsius), na.rm=TRUE) &gt; 40) warning(\"SST unusually high — check conversion.\")\n\n\n\n\nCode\n# Convert SST raster to stars object for a more robust plot\nsst_stars &lt;- st_as_stars(sst_celsius)\n\ntm_shape(sst_stars) +\n  tm_raster(fill.scale = tm_scale(values = \"viridis\"),\n            fill.legend = tm_legend(title = \"Temperature (C)\")) +\n  tm_title(\"Mean Sea Surface Temperature (°C, 2008–2012)\", position = c(\"center\", \"top\")) +\n  tm_scalebar(position = c(\"left\", \"bottom\")) +\n  tm_compass(position = c(\"right\", \"bottom\"))\n\n\n[tm_raster()] Arguments `fill.scale` and `fill.legend` unknown.\n[plot mode] fit legend/component: Some legend items or map compoments do not\nfit well, and are therefore rescaled.\nℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling."
   },
   {
     "objectID": "posts/Aquaculture/index.html#reflection-on-mean-sea-surface-temperature-raster",
@@ -207,7 +207,7 @@
     "href": "posts/Aquaculture/index.html#reflection-on-oyster-suitability-across-west-coast-eezs",
     "title": "Identifying Optimal Species Environments",
     "section": "Reflection on Oyster Suitability Across West Coast EEZs",
-    "text": "Reflection on Oyster Suitability Across West Coast EEZs\nThis map aggregates suitability into Exclusive Economic Zones (EEZs), showing total suitability across the zones and illustrates aquaculture potential. We see that based on the table below that EEZ ID magnitude of suitability from largest to smallest are EEZ IDs: 3,4,5,1 and 2 illustrating the southern west coast tend to be an optimal environment for Oyster aquaculture.\n\n# Create table of suitable areas by EEZ\narea_by_eez %&gt;%\n  arrange(desc(suitable_km2)) %&gt;%\n  knitr::kable(digits = 2, caption = \"Suitable Area by EEZ (km^2)\") |&gt; \n  kableExtra::kable_classic(full_width = FALSE, position = \"center\")\n\n\nSuitable Area by EEZ (km^2)\n\n\neez_id\nsuitable_km2\n\n\n\n\n3\n4069.88\n\n\n4\n3757.28\n\n\n5\n2378.31\n\n\n1\n1074.27\n\n\n2\n178.03"
+    "text": "Reflection on Oyster Suitability Across West Coast EEZs\nThis map aggregates suitability into Exclusive Economic Zones (EEZs), showing total suitability across the zones and illustrates aquaculture potential. We see that based on the table below that EEZ ID magnitude of suitability from largest to smallest are EEZ IDs: 3,4,5,1 and 2 illustrating the southern west coast tend to be an optimal environment for Oyster aquaculture.\n\n\nCode\n# Create table of suitable areas by EEZ\narea_by_eez %&gt;%\n  arrange(desc(suitable_km2)) %&gt;%\n  knitr::kable(digits = 2, caption = \"Suitable Area by EEZ (km^2)\") |&gt; \n  kableExtra::kable_classic(full_width = FALSE, position = \"center\")\n\n\n\nSuitable Area by EEZ (km^2)\n\n\neez_id\nsuitable_km2\n\n\n\n\n3\n4069.88\n\n\n4\n3757.28\n\n\n5\n2378.31\n\n\n1\n1074.27\n\n\n2\n178.03"
   },
   {
     "objectID": "posts/eds222/index.html",
@@ -341,5 +341,82 @@
     "title": "Recuerdos",
     "section": "",
     "text": "Markets of Dreams of Past\n\nSomewhere in Time  Only Time will Tell\n A Sea of Obscurity\n Take a Leap of Faith"
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html",
+    "href": "posts/Bon_Appetit/index.html",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "",
+    "text": "Why do some recipes take off while others barely get noticed? It’s a question every home cook, food blogger, and recipe platform has wondered about and one that feels surprisingly personal. We all have dishes we return to again and again, and others we scroll past without a second thought. But what actually drives that difference at scale. To explore this, I turned to a massive data set of more than 500,000 recipes published on Food.com. With recipes entered between the years 1999 and 2016 I will be manipulating variables on ingredients, cooking times, ratings, and nutritional information to examine the patterns behind recipe reviews and popularity."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#hierarchy-visual-flow",
+    "href": "posts/Bon_Appetit/index.html#hierarchy-visual-flow",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "1. Hierarchy & Visual Flow",
+    "text": "1. Hierarchy & Visual Flow\nI structured the infographic like a light dinner: a main dish and a dessert. This metaphor created a natural visual flow and helped me organize the story:\n\nThe 30‑minute plot opens the narrative with a clear, intuitive insight.\nThe ingredient sunburst act as a dish that deepen the this data analysis.\nThe complexity “layered cake” plot anchors the center.\n\nLike a dinner menu, this structure guides the viewer through the thought process to the conclusion."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#color",
+    "href": "posts/Bon_Appetit/index.html#color",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "2. Color",
+    "text": "2. Color\nI used a warm, food‑inspired palette — terracotta, caramel, cream, and sage — inspired by Bon Appétit and Sûr La Table. These tones:\n\nevoke a culinary aesthetic\ndifferentiate plot elements without overwhelming the sense\nmaintain a general cohesion across all visualizations\n\nThe palette also reinforces the editorial tone I wanted."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#typography",
+    "href": "posts/Bon_Appetit/index.html#typography",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "3. Typography",
+    "text": "3. Typography\nI used Copperplate Gothic Light and bold for body text and annotations to give the aesthetic of elegance and readability."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#annotation",
+    "href": "posts/Bon_Appetit/index.html#annotation",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "4. Annotation",
+    "text": "4. Annotation\nAnnotations were used for turning raw data into a narrative that many cooks think about - time, complexity and ingredient usage:\n\n“44.6% of recipes are less than 30 minutes” label highlights the dramatic drop‑off in engagement.\n\nThe annotation helps my audience understand the story without needing to decode the data."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#layout",
+    "href": "posts/Bon_Appetit/index.html#layout",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "5. Layout",
+    "text": "5. Layout\nI used spacing, centered titles, and consistent margins to maintain an airy, magazine‑style feel. The sunburst plot was edited in Affinity to ensure readibility and balance among the rectangular bar chart."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#simplicity",
+    "href": "posts/Bon_Appetit/index.html#simplicity",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "6. Simplicity",
+    "text": "6. Simplicity\nEach visualization focuses on a single idea:\n\nTime relates to engagement\nComplexity relates to rating tiers\nIngredients relates to category identity\n\nIn regards to the sunburst plot, I intentionally avoided overplotting and limited categories (top three ingredients per category)."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#consistency",
+    "href": "posts/Bon_Appetit/index.html#consistency",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "7. Consistency",
+    "text": "7. Consistency\nAll plots share:\n\nthe general background tone (#F5EFE6 / #F7F2EB)\nthe same font style/family\na cohesive palette (tans/creams/caramel colors)"
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#accessibility",
+    "href": "posts/Bon_Appetit/index.html#accessibility",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "8. Accessibility",
+    "text": "8. Accessibility\nI used:\n\nhigh‑contrast text\nclear labels\nintuitive axis scales\nnon‑color cues (stacking order, spacing)\n\nWhile the palette is not strictly colorblind‑optimized, contrast remains strong and readability is preserved."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#storytelling",
+    "href": "posts/Bon_Appetit/index.html#storytelling",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "9. Storytelling",
+    "text": "9. Storytelling\nEach visualization answers a sub‑question, but together they reveal a broader pattern:\n\nHome cooks overwhelmingly prefer quick recipes.\nModerate complexity is the sweet spot across rating tiers.\nIngredient families define the identity of recipe categories with ingredients such as Garlic Cloves, Eggs, and Onion as the top ingredients."
+  },
+  {
+    "objectID": "posts/Bon_Appetit/index.html#applying-a-dei-lens",
+    "href": "posts/Bon_Appetit/index.html#applying-a-dei-lens",
+    "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
+    "section": "10. Applying a DEI Lens",
+    "text": "10. Applying a DEI Lens\nThe data set does not directly represent people or communities in a way that raises equity concerns, but I was mindful of how I categorized cuisines. Perhaps looking into ethnic dishes can be a future analysis."
   }
 ]
