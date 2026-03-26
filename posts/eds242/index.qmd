@@ -4,6 +4,7 @@ author: Joshua Ferrer-Lozano
 date: 12/9/2025
 format: html
 editor: visual
+image: flint.jpeg
 ---
 
 # Introduction
