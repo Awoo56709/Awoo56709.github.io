@@ -11,6 +11,7 @@ format:
     code-fold: true
     embed-resources: true
 draft: false
+image: EEZ.png
 ---
 
 ![](EEZ.png)
