@@ -21,7 +21,7 @@ Why do some recipes take off while others barely get noticed? It’s a question 
 
 # Main Questions
 
-My goal was to understand what makes a recipe resonate with home cooks and what leads to reviews/scores. I approached this through three guiding questions:
+My goal was to understand what makes a recipe resonate with home cooks and what leads to increased reviews/scores. I approached this through three guiding questions:
 
 -   Time: Do quicker recipes attract more engagement?
 -   Complexity: Are simpler dishes more popular, or do cooks reward effort?
