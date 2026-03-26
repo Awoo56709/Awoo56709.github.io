@@ -722,8 +722,8 @@ The Gamma regression model recovered true parameters when tested. In the real da
 
 van Leeuwen, C., Sgubin, G., Bois, B., et al. Climate change impacts and adaptations of wine production. Nature Reviews Earth & Environment, 5, 258–275 (2024). https://doi.org/10.1038/s43017-024-00521-5
 
-Getting Started with Gamma Regression | UVA Library. (2025). University of Virginia Library. https://library.virginia.edu/data/articles/getting-started-with-gamma-regression
+Getting Started with Gamma Regression \| UVA Library. (2025). University of Virginia Library. https://library.virginia.edu/data/articles/getting-started-with-gamma-regression
 
 GammaRegressor — scikit‑learn 1.8.0 documentation. (2025). scikit-learn.org. . https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.GammaRegressor.html
 
-Mars_1010. (2023). Grape Quality [Dataset]. Kaggle. https://www.kaggle.com/datasets/mrmars1010/grape-quality
+Mars_1010. (2023). Grape Quality \[Dataset\]. Kaggle. https://www.kaggle.com/datasets/mrmars1010/grape-quality

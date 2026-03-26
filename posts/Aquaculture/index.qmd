@@ -13,6 +13,8 @@ format:
 draft: false
 ---
 
+![](EEZ.png)
+
 # About
 
 This blog explores the environmental suitability of oyster aquaculture along the U.S. West Coast. Using sea surface temperature (SST) data, bathymetry rasters, and Exclusive Economic Zone (EEZ) boundaries, we identify areas most favorable for oyster cultivation. By combining geospatial modeling with cartographic visualization, we highlight how environmental data science can inform sustainable aquaculture planning.
