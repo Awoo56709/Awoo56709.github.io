@@ -7,7 +7,7 @@ title: "About Me"
 As a Masters Student I analyze environmental and Geospatial data using R and Python. Packages that I use in my workflow include:
 
 | Library | Description |
-|----|----|
+|------------------------------|------------------------------------------|
 | `tidyverse` | data wrangling and plotting |
 | `terra` | raster processing, reclassification, resampling, map algebra |
 | `sf` | reading shapefiles, managing projections, spatial joins |
