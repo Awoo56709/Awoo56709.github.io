@@ -13,6 +13,8 @@ In 2014, Flint, Michigan changed its water source to the Flint River, triggering
 
 # The Case
 
+![](flint.jpeg)
+
 ## The Data and the Problem
 
 State agencies tested household water samples for lead contamination. Their protocols introduced systematic bias: taps were flushed before samples were taken, which lowered lead readings; unusually high results were discarded as “outliers”; and sampling was concentrated in lower risk areas rather than older homes with lead service lines. These practices produced datasets that looked statistically sound but misrepresented the true extent of contamination. Independent researchers from Virginia Tech and local pediatricians conducted their own sampling, uncovering far higher lead levels, especially in vulnerable neighborhoods. Dr. Mona Hanna Attisha’s study of children’s blood lead levels provided irrefutable evidence that official testing had failed to capture the crisis.

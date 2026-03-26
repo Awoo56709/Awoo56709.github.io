@@ -9,7 +9,10 @@ format:
 execute: 
   warning: false
   message: false
+image: grapes.jpg
 ---
+
+![](grapes.jpg)
 
 # Context
 
