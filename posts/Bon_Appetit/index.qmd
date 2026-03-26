@@ -14,12 +14,6 @@ editor: visual
 description: "A data-driven exploration of how time, complexity, ingredients, and nutrition shape recipe popularity on Food.com."
 categories: ["infographic", "data visualization", "food data", "EDS 240"]
 
-execute:
-  freeze: auto
-  cache: false
-
-editor_options: 
-  chunk_output_type: console
 ---
 
 
