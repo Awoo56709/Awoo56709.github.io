@@ -1,44 +1,90 @@
 ---
 title: "Peace Corps Experiences"
-format: html
+format:
+  html:
+    toc: false
+    smooth-scroll: true
+    css: peacecorps.css
 ---
 
-![](photos/peace_corps_photos/georgian_church.jpg){.gallery-img}
-*Georgian 14th Century Church*
+# Peace Corps Experiences
 
-![](photos/peace_corps_photos/handsome_cat.jpg){.gallery-img}
-*Summer Time Lounging*
+::: {.scene}
+![](photos/peace_corps_photos/georgian_church.jpg){.full-img}
+<div class="caption">
+Georgian 14th Century Church  
+A quiet moment before the day began.
+</div>
+:::
 
-![](photos/peace_corps_photos/mestia_cow.jpg){.gallery-img}
-*Mestia and Svan Towers*
+::: {.scene}
+![](photos/peace_corps_photos/handsome_cat.jpg){.full-img}
+<div class="caption">
+Summer Time Lounging  
+The neighborhood cats always knew the best places to rest.
+</div>
+:::
 
+::: {.scene}
+![](photos/peace_corps_photos/mestia_cow.jpg){.full-img}
+<div class="caption">
+Mestia and Svan Towers  
+A landscape where cows and mountains share the same calm.
+</div>
+:::
 
-![](photos/peace_corps_photos/motor_cat.jpg){.gallery-img}
-*Rallying for a Ride*
+::: {.scene}
+![](photos/peace_corps_photos/motor_cat.jpg){.full-img}
+<div class="caption">
+Rallying for a Ride  
+A cat with somewhere important to be.
+</div>
+:::
 
-![](photos/peace_corps_photos/mtchadi.jpg){.gallery-img}
-*Berikaoba Mtchadi*
+::: {.scene}
+![](photos/peace_corps_photos/mtchadi.jpg){.full-img}
+<div class="caption">
+Berikaoba Mtchadi  
+Warm bread, cold air, and the feeling of celebration.
+</div>
+:::
 
-![](photos/peace_corps_photos/night_in_tkibuli.jpg){.gallery-img}
-*Evening Walks in Tkibuli*
+::: {.scene}
+![](photos/peace_corps_photos/night_in_tkibuli.jpg){.full-img}
+<div class="caption">
+Evening Walks in Tkibuli  
+Streetlights, quiet roads, and the rhythm of small‑town nights.
+</div>
+:::
 
-![](photos/peace_corps_photos/oba.jpg){.gallery-img}
-*An Experience at Berikaoba*
+::: {.scene}
+![](photos/peace_corps_photos/oba.jpg){.full-img}
+<div class="caption">
+An Experience at Berikaoba  
+Tradition, color, and the energy of community.
+</div>
+:::
 
-![](photos/peace_corps_photos/tkibuli_lift.jpg){.gallery-img}
-*Winter in Georgia*
-![](photos/peace_corps_photos/tkibuli_office.jpg){.gallery-img}
-![](photos/peace_corps_photos/tkibuli_town.jpg){.gallery-img}
-*Racha and Imereti is the Place to be*
+::: {.scene}
+![](photos/peace_corps_photos/tkibuli_lift.jpg){.full-img}
+<div class="caption">
+Winter in Georgia  
+Snow‑covered hills and the slow hum of daily life.
+</div>
+:::
 
+::: {.scene}
+![](photos/peace_corps_photos/tkibuli_office.jpg){.full-img}
+<div class="caption">
+Inside the Tkibuli Office  
+Where projects began, conversations unfolded, and ideas took shape.
+</div>
+:::
 
-
-
-
-
-
-
-
-
-
-
+::: {.scene}
+![](photos/peace_corps_photos/tkibuli_town.jpg){.full-img}
+<div class="caption">
+Racha and Imereti is the Place to Be  
+A region that shaped my service and my memories.
+</div>
+:::
