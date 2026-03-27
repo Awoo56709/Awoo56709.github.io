@@ -1,0 +1,22 @@
+.full-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.scene {
+  margin: 0 0 4rem 0;
+  padding: 0;
+}
+
+.caption {
+  max-width: 650px;
+  margin: 1.5rem auto 3rem auto;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #444;
+  font-style: italic;
+}

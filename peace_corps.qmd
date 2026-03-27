@@ -4,7 +4,7 @@ format:
   html:
     toc: false
     smooth-scroll: true
-    css: peacecorps.css
+    css: styles/peacecorps.css
 ---
 
 # Peace Corps Experiences
