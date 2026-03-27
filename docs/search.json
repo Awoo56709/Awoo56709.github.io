@@ -123,7 +123,7 @@
     "href": "blog_page.html",
     "title": "Projects blog",
     "section": "",
-    "text": "Phoenix Biodoversity Intactness\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBon Datatite - A Data-Driven Exploration for Recipes and Popularity\n\n\n\ninfographic\n\ndata visualization\n\nfood data\n\nEDS 240\n\n\n\nA data-driven exploration of how time, complexity, ingredients, and nutrition shape recipe popularity on Food.com.\n\n\n\nJoshua Ferrer-Lozano\n\n\nMar 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nGrape Quality and Environmental Predictors\n\n\n\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnvironmental Data Bias: Case Studies and Pathways to Justice\n\n\n\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nVisualizing the Aftermath of the Eaton and Palisades Fires\n\n\n\nPython\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\nUsing satellite imagery to visualize fire scars\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifying Optimal Species Environments\n\n\n\nR\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\n\n\n\n\nJoshua Ferrer-Lozano\n\n\nNov 28, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Phoenix Biodoversity Intactness\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDo Sea‑Level Rise Maps Backfire?\n\n\n\n\n\n\nJoshua Ferrer-Lozano, Zach Loo, William Mullins, Sofia Sarak\n\n\nMar 19, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nBon Datatite - A Data-Driven Exploration for Recipes and Popularity\n\n\n\ninfographic\n\ndata visualization\n\nfood data\n\nEDS 240\n\n\n\nA data-driven exploration of how time, complexity, ingredients, and nutrition shape recipe popularity on Food.com.\n\n\n\nJoshua Ferrer-Lozano\n\n\nMar 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nGrape Quality and Environmental Predictors\n\n\n\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnvironmental Data Bias: Case Studies and Pathways to Justice\n\n\n\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nVisualizing the Aftermath of the Eaton and Palisades Fires\n\n\n\nPython\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\nUsing satellite imagery to visualize fire scars\n\n\n\nJoshua Ferrer-Lozano\n\n\nDec 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifying Optimal Species Environments\n\n\n\nR\n\nMEDS\n\ndata-viz\n\nGeospatial\n\n\n\n\n\n\n\nJoshua Ferrer-Lozano\n\n\nNov 28, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -418,5 +418,117 @@
     "title": "Bon Datatite - A Data-Driven Exploration for Recipes and Popularity",
     "section": "10. Applying a DEI Lens",
     "text": "10. Applying a DEI Lens\nThe data set does not directly represent people or communities in a way that raises equity concerns, but I was mindful of how I categorized cuisines. Perhaps looking into ethnic dishes can be a future analysis."
+  },
+  {
+    "objectID": "posts/eds241/index.html",
+    "href": "posts/eds241/index.html",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "",
+    "text": "Warning: package 'here' was built under R version 4.5.2\nFlooding in the Bay Area is particularly intense when rainstorms coincide with king tides (Source: The San Fransisco Chronicle, 2025).\nThe following blog post breaks down the use of a randomized experiment and replicates the methods and code (using the original data) from a published study. Navigate to the appropriate sections for the following:\nBackground: A brief overview of the study we are replicating.\nStudy Design:\nRecreation of Results/Figure 4: Our version of the study’s methods and code, using only a subset of the data.\nInterpretation and Conclusion:\nA full exploration of the study and the accompanying code can be found in our GitHub repository."
+  },
+  {
+    "objectID": "posts/eds241/index.html#background",
+    "href": "posts/eds241/index.html#background",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Background",
+    "text": "Background\nSea‑level rise (SLR) is one of California’s most pressing climate risks. Yet even in a climate‑aware state, public concern about SLR remains surprisingly low. Mildenberger et al. (2024) test whether personalized SLR maps increase resident concern by showing how rising seas could affect their home.\nThe surprising finding: maps often reduce perceived personal harm, even for people whose homes are projected to flood.\nThis blog post walks through the design‑based causal method of a randomized experiment to recreate the California‑only version of Figure 4, which shows how the map’s treatment effect varies with distance from the SLR boundary. The original study conducted this analysis on coastal communities of New Jersey, Florida, and Virginia, as well. California data comes from the San Francisco Bay Area.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Effect of map treatment on personal concern, with separate regressions estimated at 50 meter intervals, pooled across California, New Jersey, Virginia and Florida samples (Mildenberger et al. 2024, Figure 4).\n\n\n\nWe opted to conduct the replication using data from only one state in order to explore whether study findings hold even when considering just a subset, as well as limit our scope to allow for a more in-depth analysis of the causal method itself. Additionally, we chose California because provides the cleanest replication of Figure 4 due to consistent geospatial data availability and a larger sample size within a single region."
+  },
+  {
+    "objectID": "posts/eds241/index.html#randomized-experiment",
+    "href": "posts/eds241/index.html#randomized-experiment",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Randomized experiment",
+    "text": "Randomized experiment\nRespondents in California were recruited using address‑level mail‑to‑web sampling. Each respondent was randomly assigned to:\nTreatment (treat_map = 1): See a customized SLR map centered on their home\nControl (treat_map = 0): See no map\nBecause treatment is randomized, the difference in outcomes between treated and control respondents is meant to be a causal estimate of the map’s effect.\nAdditionally, the study utilized a geographic risk discontinuity design to test whether there was a difference in concern between respondents that were just within or just outside of the flood zone. Under these assumptions, these residents should be relatively similar in most covariates other than the risk to sea level rise. A jump in concern between groups on either side of the threshold would indicate a treatment effect.\n\nSurvey Methods\nIndividualized letters were sent to households within the sample area (San Francisco Bay, CA) in Fall 2020; the timing of survey completion depended on when respondents chose to complete it. The average response rates inside and outside the projected SLR boundary (as a fraction of mailed invitations) – of all 4 states in the original study – was 2.6% and 3.1% respectively. Treatment, or whether the letter/survey was accompanied by a map of SLR, was randomized using the Qualtric web platform.\nAlthough the randomization assumption was met in this case, the low rate of response has the potential to contribute non-response/participation bias in the outcome."
+  },
+  {
+    "objectID": "posts/eds241/index.html#outcome-variable",
+    "href": "posts/eds241/index.html#outcome-variable",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Outcome variable",
+    "text": "Outcome variable\ndv_personal — The study measures perceived risk or personal harm from SLR using a 0-3 scale, which respondents selected in their surveys."
+  },
+  {
+    "objectID": "posts/eds241/index.html#running-variable",
+    "href": "posts/eds241/index.html#running-variable",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Running variable",
+    "text": "Running variable\nTo recreate Figure 4, we use:\ndist_min — distance (in meters) from the SLR boundary, where negative values correspond to homes inside the projected flood zone and positive ones outside of it.\nThis running variable is used to estimate spatial heterogeneity in the treatment effect."
+  },
+  {
+    "objectID": "posts/eds241/index.html#causal-identification-strategy",
+    "href": "posts/eds241/index.html#causal-identification-strategy",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Causal Identification Strategy",
+    "text": "Causal Identification Strategy\nThe randomized sample estimates an Average Treatment Effect (ATE). Because map exposure is randomly assigned, the causal effect is simply:\n\nATE = mean outcome of those that received the SLR map - mean outcome of those that did not receive map\n\nSpatial heterogeneity/geographic risk discontinuity (Figure 4) is leveraged to understand whether the map works differently for people closer to the flood zone. The study does the following:\n\nBin respondents into 50‑meter intervals of distance to the SLR boundary\nEstimate the treatment effect within each bin\nPlot those bin‑specific effects against distance\n\nTo reiterate, this is not a formal regression discontinuity design, but it borrows the intuition that if the map increases personal relevance, the treatment effect should be strongest near the boundary."
+  },
+  {
+    "objectID": "posts/eds241/index.html#study-result",
+    "href": "posts/eds241/index.html#study-result",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Study Result",
+    "text": "Study Result\nThe treatment effect is negative (reduces concern of SLR risk), regardless of geographic location. Across all four states, the authors find that personalized SLR maps reduce perceived personal harm. Respondents shown a map report significantly lower concern than those in the control group, even when their homes are explicitly shown inside the projected flood zone. This counterintuitive “backfire effect” is one of the central findings of the study."
+  },
+  {
+    "objectID": "posts/eds241/index.html#load-required-packages",
+    "href": "posts/eds241/index.html#load-required-packages",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Load Required Packages",
+    "text": "Load Required Packages\n\nlibrary(tidyverse)\nlibrary(broom)\nlibrary(estimatr)\nlibrary(gtsummary)"
+  },
+  {
+    "objectID": "posts/eds241/index.html#load-and-clean-california-data",
+    "href": "posts/eds241/index.html#load-and-clean-california-data",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Load and Clean California Data",
+    "text": "Load and Clean California Data\n\n# CA survey data\ndata_ca &lt;- read_csv(\"data/SeaLevelRiseSurvey_California_January+16,+2021_13.54.csv\") %&gt;%\n  .[-c(1,2),] %&gt;%\n  mutate(geo = \"CA\")\n\n# Load CA distance-to-boundary file\ndist_ca &lt;- read_csv(\"data/ca_dist_mins.csv\")\n\n# Load CA combined metadata\ncw_ca &lt;- read_csv(\"data/ca_combined_final_withtraffic_sub.csv\")\n\n# Load flood zone file\nfld_zone &lt;- read.csv(\"data/fld_zone.csv\")"
+  },
+  {
+    "objectID": "posts/eds241/index.html#merge-survey-distance-and-flood-zone",
+    "href": "posts/eds241/index.html#merge-survey-distance-and-flood-zone",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Merge Survey, Distance and Flood Zone",
+    "text": "Merge Survey, Distance and Flood Zone\n\ndist_ca_clean &lt;- dist_ca %&gt;% \n  # Keep only the first occurrence\n  filter(!duplicated(.)) %&gt;%\n  group_by(adds) %&gt;%\n  # Filter to minimum at each address\n  filter(dist_min == min(dist_min)) %&gt;%\n    inner_join(cw_ca %&gt;%  # Join traffic data on addresses, and retain corresponding emails and IDS\n      select(adds, email, FID) %&gt;% \n      filter(!duplicated(.))) %&gt;%\n  rename(RecipientEmail = email) %&gt;%\n  inner_join(fld_zone %&gt;% # Join flood zone info on addresses, keeping county, tract, and flood zone info\n             select(adds, COUNTYFP, TRACTCE, FLD_ZONE) %&gt;% \n             distinct(adds, .keep_all = TRUE))\n\nIn the analysis we are replicating in this blog post, traffic data is not used (but it used for another experiment in the same study, which is why it is included here).\nData Description: This intermediary clean data frame contains the following columns:\n\nadds - Residential addresses where surveys were sent\ndist_min - The minimum distance to the SLR boundary\nRecipientEmail - Email address associated with recipient of survey\nFID - Feature IDs from the corresponding geospatial data set\nCOUNTYFP - County identifier (there are 10 unique counties included in this study)\nTRACTCE - Census tract identifier\nFLD_ZONE - Flood zone area identifier"
+  },
+  {
+    "objectID": "posts/eds241/index.html#construct-california-only-analytic-dataset",
+    "href": "posts/eds241/index.html#construct-california-only-analytic-dataset",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Construct California-Only Analytic Dataset",
+    "text": "Construct California-Only Analytic Dataset\n\n# Create function that recodes survey responses to numeric values\ndv_recode &lt;- function(x){\n  case_when(\n    x == \"Not at all\" ~ 0,\n    x == \"Only a little\" ~ 1,\n    x == \"A moderate amount\" ~ 2,\n    x == \"A great deal\" ~ 3\n  )\n}\n\n# Clean CA data frame\ndata_ca_clean &lt;- data_ca %&gt;%\n  # Join with cleaned distance data, by email\n  left_join(dist_ca_clean, by = \"RecipientEmail\") %&gt;%\n    \n  mutate(\n    # Boolean variable denoting whether observation received a map treatment\n    treat_map = !is.na(exp_emphasis),\n    \n    # Boolean variable denoting whether the image shown was a SLR image\n    slr = str_detect(img, \"SLR\"),\n    \n    # Recode survey responses using function made above\n    dv_personal = dv_recode(slharmpersonal),\n    \n    # Flip sign of dist_min so that negative values represent closer to coast/greater risk\n    dist_min = ifelse(slr == TRUE, -dist_min, dist_min)\n  ) %&gt;%\n  \n  # Remove NA values\n  filter(!is.na(dv_personal), !is.na(dist_min))"
+  },
+  {
+    "objectID": "posts/eds241/index.html#california-only-covariate-balance-table",
+    "href": "posts/eds241/index.html#california-only-covariate-balance-table",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "California-Only Covariate Balance Table",
+    "text": "California-Only Covariate Balance Table\n\n# Create balance table comparing groups that did and did not receive treatment\ndata_ca_clean |&gt; \n  select(race, edu, gender, ideo, party, dist_min, treat_map) |&gt; \n  tbl_summary(\n    by = treat_map,\n    statistic = list(all_continuous() ~ \"{mean} ({sd})\")) |&gt; \n  modify_header(label ~\"**Covariate**\") |&gt; \n  modify_spanning_header(c(\"stat_1\", \"stat_2\") ~ \"**Map Treatment**\") |&gt; \n  as_gt() |&gt; \n  gt::opt_interactive(use_compact_mode = TRUE) # Reduce long balance table\n\nCovariate Summary: The covariate balance table compares demographic and geographic features between respondents who received the SLR map treatment and those who did not. Across covariates like race, gender, distance from SLR boundary, etc., the distributions are similar between groups, indicating successful randomization. This balance is essential for this study’s causal identification strategy as dv_personal can be attributed to the map itself rather than underlying differences between respondents.\nData Description: The final clean data frame contains a total of 123 columns, we will not summarize in entirety here. Those that are necessary for our analysis include:\n\ndv_personal: Survey result, recoded as 0-3 to represent responses “Not at all”, “Only a little”, “A moderate amount”, and “A great deal”, respectively, when residents were asked about SLR concern. This is our outcome variable.\ntreat_map: Whether treatment was applied (SLR map included in survey). This is our treatment variable.\ndist_min: Minimum distance (in meters) to SLR boundary. This is the running variable for our spatial heterogeneity test.\n\nThis data contains 680 observations from California residents. The entire dataset (not used here) containing data from all four states has a sample size of 1,243\nIn the following steps, we replicate two components of the study:\n\nThe Average Treatment Effect (ATE) of map exposure on perceived personal harm, and\nThe spatial heterogeneity analysis used to construct Figure 4."
+  },
+  {
+    "objectID": "posts/eds241/index.html#step-1---estimate-the-ate-of-california",
+    "href": "posts/eds241/index.html#step-1---estimate-the-ate-of-california",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Step 1 - Estimate the ATE of California",
+    "text": "Step 1 - Estimate the ATE of California\n\n# Run robust linear model, using personal risk as response and map treatment as predictor\nmod_ate &lt;- lm_robust(dv_personal ~ treat_map, se_type = \"HC1\", \n                     data = data_ca_clean)\n\n# Print summary\nsummary(mod_ate)\n\n\nCall:\nlm_robust(formula = dv_personal ~ treat_map, data = data_ca_clean, \n    se_type = \"HC1\")\n\nStandard error type:  HC1 \n\nCoefficients:\n              Estimate Std. Error t value   Pr(&gt;|t|) CI Lower CI Upper  DF\n(Intercept)     1.5646    0.04869  32.137 2.129e-138   1.4690   1.6602 678\ntreat_mapTRUE  -0.2529    0.07454  -3.392  7.332e-04  -0.3992  -0.1065 678\n\nMultiple R-squared:  0.01685 ,  Adjusted R-squared:  0.0154 \nF-statistic: 11.51 on 1 and 678 DF,  p-value: 0.0007332\n\n\nThe above code chunk conducts a simple linear regression of dv_personal on treat_map, which is estimated using lm_robust() with HC1 (heteroskedasticity-consistent) standard errors. This results in an estimate of the average treatment effect of seeing the map on perceived personal harm.\nThis identification approach is a simple difference in means under randomization, meaning that no covariates , fixed effects, or matching are used. The intercept reported by the model is 1.565 (p &lt; 0.001), representing the mean level of perceived personal harm among control-group respondents. As this is on a 0-3 scale, this indicates a moderate baseline level of concern. The treatment coefficient is −0.253 (SE = 0.075, p = 0.0007), meaning that respondents who saw the personalized SLR map reported roughly a quarter of a point less personal concern than those who did not. The 95% confidence interval excludes zero, which indicates that the map causally reduces perceived personal harm"
+  },
+  {
+    "objectID": "posts/eds241/index.html#step-2-create-distance-bins",
+    "href": "posts/eds241/index.html#step-2-create-distance-bins",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Step 2 — Create distance bins",
+    "text": "Step 2 — Create distance bins\n\n# Set bin width\nbin_width &lt;- 50\n\n# Create data set where each observation is binned based on distance away from SLR line\ndata_ca_binned &lt;- data_ca_clean %&gt;%\n  mutate(\n    dist_bin = bin_width * round(dist_min / bin_width),\n    dist_bin = pmax(pmin(dist_bin, 500), -500)\n  )\n\nThe above code discretizes the dist_min variable into 50 meter bins by rounding to the nearest multiple of 50. Bins are capped at +- 500 meters, meaning that all observations more than 500 meters from the SLR boundary are lumped together into “extreme” bins."
+  },
+  {
+    "objectID": "posts/eds241/index.html#step-3---estimate-treatment-effect-within-each-bin",
+    "href": "posts/eds241/index.html#step-3---estimate-treatment-effect-within-each-bin",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Step 3 - Estimate treatment effect within each bin",
+    "text": "Step 3 - Estimate treatment effect within each bin\n\neffects_ca &lt;- data_ca_binned %&gt;%\n  \n  # Keep only distance bins that are more than 15 meters away from SLR line/flood zone\n  group_by(dist_bin) %&gt;%\n  filter(n() &gt;= 15) %&gt;%\n  \n  # Run same model as before\n  do(tidy(lm_robust(\n    dv_personal ~ treat_map,\n    se_type = \"HC1\",\n    data = .\n  ))) %&gt;%\n  \n  # Ungroup\n  ungroup() %&gt;%\n  \n  # Keep only observations that received treatment\n  filter(term == \"treat_mapTRUE\") %&gt;%\n  \n  # Calculate confidnece intervals\n  mutate(\n    ci_low = estimate - 1.96 * std.error,\n    ci_high = estimate + 1.96 * std.error\n  )\n\nThe above code conducts a separate OLS regression of dv_personal on treat_map with HC1 standard errors for each of the bins. Bins with less than 15 observations are dropped to reduce noise. This should, in theory, test the impact of the map based on the flood zone. For this to work, randomization must be maintained across each bin."
+  },
+  {
+    "objectID": "posts/eds241/index.html#step-4---plot-california---only-figure",
+    "href": "posts/eds241/index.html#step-4---plot-california---only-figure",
+    "title": "Do Sea‑Level Rise Maps Backfire?",
+    "section": "Step 4 - Plot California - Only Figure",
+    "text": "Step 4 - Plot California - Only Figure\n\n# Replicate Figure 4, only with SF Bay Area data\nggplot(effects_ca, aes(x = dist_bin, y = estimate)) +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  geom_vline(xintercept = 0, linetype = \"dashed\") +\n  geom_point(size = 2) +\n  geom_errorbar(aes(ymin = ci_low, ymax = ci_high), width = 20, alpha = 0.6) +\n  geom_smooth(method = \"loess\", se = TRUE, color = \"red\") +\n  theme_minimal() +\n  labs(\n    title = \"Outcome: Sense of personal harm (California only)\",\n    subtitle = \"Treatment effect of map by distance from SLR boundary\",\n    x = \"Distance from SLR boundary (negative = inside SLR zone)\",\n    y = \"Treatment effect of map\"\n  )\n\n\n\n\n\n\n\n\nThe above code produces a scatter plot of bin specific treatment effects (y-axis) against the distance from the SLR boundary (x-axis). The plot shows regardless of the distance from the SLR boundary, the effect of the treatment often trended negative even in the “extreme” group. This indicates that the survey may have backfired, as many people likely to be impacted seem to report feeling less perceived personal harm."
   }
 ]

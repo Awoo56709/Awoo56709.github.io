@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joshua Ferrer-Lozano">
+<meta name="author" content="Zach Loo">
+<meta name="author" content="William Mullins">
+<meta name="author" content="Sofia Sarak">
+<meta name="dcterms.date" content="2026-03-19">
+
+<title>Do Sea‑Level Rise Maps Backfire? – Joshua Ferrer-Lozano</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-991b1886d3c685c7aa2b62b80640c7af.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Joshua Ferrer-Lozano</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-the-world-through-film" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">The World Through Film</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-the-world-through-film">    
+        <li>
+    <a class="dropdown-item" href="../../photo_gallery.html">
+ <span class="dropdown-text">General Gallery</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../armenia.html">
+ <span class="dropdown-text">Armenia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../italy.html">
+ <span class="dropdown-text">Italia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../turkiye.html">
+ <span class="dropdown-text">Turkiye</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../recuerdos.html">
+ <span class="dropdown-text">Recuerdos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../peace_corps.html">
+ <span class="dropdown-text">მშვისდობის კორპუსი</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog_page.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../files/resume.pdf" target="_blank"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Do Sea‑Level Rise Maps Backfire?</h1>
+<p class="subtitle lead">Using a randomized experiment to prove causality in the San Francisco Bay Area</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joshua Ferrer-Lozano </p>
+             <p>Zach Loo </p>
+             <p>William Mullins </p>
+             <p>Sofia Sarak </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 19, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'here' was built under R version 4.5.2</code></pre>
+</div>
+<div class="cell quarto-layout-panel" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sf_flooding.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Flooding in the Bay Area is particularly intense when rainstorms coincide with king tides (Source: The San Fransisco Chronicle, 2025).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The following blog post breaks down the use of a randomized experiment and replicates the methods and code (using the original data) from a published study. Navigate to the appropriate sections for the following:</p>
+<p><strong>Background:</strong> A brief overview of the study we are replicating.</p>
+<p><strong>Study Design:</strong></p>
+<ul>
+<li><p>Explanation of the randomized experiment</p></li>
+<li><p>Survey methods</p></li>
+<li><p>Outcome variable</p></li>
+<li><p>Running variable</p></li>
+<li><p>Causal Identification Strategy</p></li>
+</ul>
+<p><strong>Recreation of Results/Figure 4:</strong> Our version of the study’s methods and code, using only a subset of the data.</p>
+<p><strong>Interpretation and Conclusion:</strong></p>
+<ul>
+<li><p>3 major takeaways</p></li>
+<li><p>Causal identification</p></li>
+<li><p>Statistical assumptions</p></li>
+<li><p>Sampling and External Validity</p></li>
+<li><p>Outcome validity concerns</p></li>
+</ul>
+<p>A full exploration of the study and the accompanying code can be found in our <a href="https://github.com/sofiasarak/slr-random-experiment-sf">GitHub repository</a>.</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Sea‑level rise (SLR) is one of California’s most pressing climate risks. Yet even in a climate‑aware state, public concern about SLR remains surprisingly low. <a href="https://www.nature.com/articles/s41893-024-01380-0">Mildenberger et al.&nbsp;(2024)</a> test whether personalized SLR maps increase resident concern by showing how rising seas could affect their home.</p>
+<p>The surprising finding: maps often reduce perceived personal harm, even for people whose homes are projected to flood.</p>
+<p>This blog post walks through the design‑based causal method of a randomized experiment to recreate the California‑only version of Figure 4, which shows how the map’s treatment effect varies with distance from the SLR boundary. The original study conducted this analysis on coastal communities of New Jersey, Florida, and Virginia, as well. California data comes from the San Francisco Bay Area.</p>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/figure4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Effect of map treatment on personal concern, with separate regressions estimated at 50 meter intervals, pooled across California, New Jersey, Virginia and Florida samples (Mildenberger et al.&nbsp;2024, Figure 4).
+</figcaption>
+</figure>
+</div>
+<p>We opted to conduct the replication using data from only one state in order to explore whether study findings hold even when considering just a subset, as well as limit our scope to allow for a more in-depth analysis of the causal method itself. Additionally, we chose California because provides the cleanest replication of Figure 4 due to consistent geospatial data availability and a larger sample size within a single region.</p>
+</section>
+<section id="study-design" class="level1">
+<h1>Study Design</h1>
+<hr>
+<section id="randomized-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="randomized-experiment">Randomized experiment</h2>
+<p>Respondents in California were recruited using address‑level mail‑to‑web sampling. Each respondent was randomly assigned to:</p>
+<p><strong>Treatment (treat_map = 1):</strong> See a customized SLR map centered on their home</p>
+<p><strong>Control (treat_map = 0):</strong> See no map</p>
+<p>Because treatment is randomized, the difference in outcomes between treated and control respondents is meant to be a causal estimate of the map’s effect.</p>
+<p>Additionally, the study utilized a geographic risk discontinuity design to test whether there was a difference in concern between respondents that were just within or just outside of the flood zone. Under these assumptions, these residents should be relatively similar in most covariates other than the risk to sea level rise. A jump in concern between groups on either side of the threshold would indicate a treatment effect.</p>
+<section id="survey-methods" class="level3">
+<h3 class="anchored" data-anchor-id="survey-methods">Survey Methods</h3>
+<p>Individualized letters were sent to households within the sample area (San Francisco Bay, CA) in Fall 2020; the timing of survey completion depended on when respondents chose to complete it. The average response rates inside and outside the projected SLR boundary (as a fraction of mailed invitations) – of all 4 states in the original study – was 2.6% and 3.1% respectively. Treatment, or whether the letter/survey was accompanied by a map of SLR, was randomized using the Qualtric web platform.</p>
+<p>Although the randomization assumption was met in this case, the low rate of response has the potential to contribute non-response/participation bias in the outcome.</p>
+</section>
+</section>
+<section id="outcome-variable" class="level2">
+<h2 class="anchored" data-anchor-id="outcome-variable">Outcome variable</h2>
+<p><code>dv_personal</code> — The study measures perceived risk or personal harm from SLR using a 0-3 scale, which respondents selected in their surveys.</p>
+</section>
+<section id="running-variable" class="level2">
+<h2 class="anchored" data-anchor-id="running-variable">Running variable</h2>
+<p>To recreate Figure 4, we use:</p>
+<p><code>dist_min</code> — distance (in meters) from the SLR boundary, where negative values correspond to homes inside the projected flood zone and positive ones outside of it.</p>
+<p>This running variable is used to estimate spatial heterogeneity in the treatment effect.</p>
+</section>
+<section id="causal-identification-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="causal-identification-strategy">Causal Identification Strategy</h2>
+<p>The randomized sample estimates an Average Treatment Effect (ATE). Because map exposure is randomly assigned, the causal effect is simply:</p>
+<div style="font-size: 0.8em; text-align: center;">
+<p><strong>ATE = mean outcome of those that received the SLR map - mean outcome of those that did not receive map</strong></p>
+</div>
+<p>Spatial heterogeneity/geographic risk discontinuity (Figure 4) is leveraged to understand whether the map works differently for people closer to the flood zone. The study does the following:</p>
+<ol type="1">
+<li><p>Bin respondents into 50‑meter intervals of distance to the SLR boundary</p></li>
+<li><p>Estimate the treatment effect within each bin</p></li>
+<li><p>Plot those bin‑specific effects against distance</p></li>
+</ol>
+<p>To reiterate, this is not a formal regression discontinuity design, but it borrows the intuition that if the map increases personal relevance, the treatment effect should be strongest near the boundary.</p>
+</section>
+<section id="study-result" class="level2">
+<h2 class="anchored" data-anchor-id="study-result">Study Result</h2>
+<p>The treatment effect is negative (reduces concern of SLR risk), regardless of geographic location. Across all four states, the authors find that personalized SLR maps reduce perceived personal harm. Respondents shown a map report significantly lower concern than those in the control group, even when their homes are explicitly shown inside the projected flood zone. This counterintuitive “backfire effect” is one of the central findings of the study.</p>
+</section>
+</section>
+<section id="recreation-of-resultsfigure-4" class="level1">
+<h1>Recreation of Results/Figure 4</h1>
+<p>The following section contains code that estimates the Average Treatment Effect using the randomized experiment data. It also prepares the data necessary to recreate Figure 4, or the geographic risk discontinuity, and plots it.</p>
+<hr>
+<section id="load-required-packages" class="level2">
+<h2 class="anchored" data-anchor-id="load-required-packages">Load Required Packages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-and-clean-california-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-and-clean-california-data">Load and Clean California Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CA survey data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_ca <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/SeaLevelRiseSurvey_California_January+16,+2021_13.54.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),] <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">geo =</span> <span class="st">"CA"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load CA distance-to-boundary file</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>dist_ca <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ca_dist_mins.csv"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load CA combined metadata</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>cw_ca <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ca_combined_final_withtraffic_sub.csv"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load flood zone file</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>fld_zone <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/fld_zone.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="merge-survey-distance-and-flood-zone" class="level2">
+<h2 class="anchored" data-anchor-id="merge-survey-distance-and-flood-zone">Merge Survey, Distance and Flood Zone</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dist_ca_clean <span class="ot">&lt;-</span> dist_ca <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep only the first occurrence</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(adds) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to minimum at each address</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dist_min <span class="sc">==</span> <span class="fu">min</span>(dist_min)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(cw_ca <span class="sc">%&gt;%</span>  <span class="co"># Join traffic data on addresses, and retain corresponding emails and IDS</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(adds, email, FID) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(.))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">RecipientEmail =</span> email) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(fld_zone <span class="sc">%&gt;%</span> <span class="co"># Join flood zone info on addresses, keeping county, tract, and flood zone info</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>             <span class="fu">select</span>(adds, COUNTYFP, TRACTCE, FLD_ZONE) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>             <span class="fu">distinct</span>(adds, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the analysis we are replicating in this blog post, traffic data is not used (but it used for another experiment in the same study, which is why it is included here).</p>
+<p><strong>Data Description:</strong> This intermediary clean data frame contains the following columns:</p>
+<ul>
+<li><p><code>adds</code> - Residential addresses where surveys were sent</p></li>
+<li><p><code>dist_min</code> - The minimum distance to the SLR boundary</p></li>
+<li><p><code>RecipientEmail</code> - Email address associated with recipient of survey</p></li>
+<li><p><code>FID</code> - Feature IDs from the corresponding geospatial data set</p></li>
+<li><p><code>COUNTYFP</code> - County identifier (there are 10 unique counties included in this study)</p></li>
+<li><p><code>TRACTCE</code> - Census tract identifier</p></li>
+<li><p><code>FLD_ZONE</code> - Flood zone area identifier</p></li>
+</ul>
+</section>
+<section id="construct-california-only-analytic-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="construct-california-only-analytic-dataset">Construct California-Only Analytic Dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function that recodes survey responses to numeric values</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dv_recode <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">case_when</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">==</span> <span class="st">"Not at all"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">==</span> <span class="st">"Only a little"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">==</span> <span class="st">"A moderate amount"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">==</span> <span class="st">"A great deal"</span> <span class="sc">~</span> <span class="dv">3</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean CA data frame</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>data_ca_clean <span class="ot">&lt;-</span> data_ca <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Join with cleaned distance data, by email</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dist_ca_clean, <span class="at">by =</span> <span class="st">"RecipientEmail"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Boolean variable denoting whether observation received a map treatment</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">treat_map =</span> <span class="sc">!</span><span class="fu">is.na</span>(exp_emphasis),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Boolean variable denoting whether the image shown was a SLR image</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">slr =</span> <span class="fu">str_detect</span>(img, <span class="st">"SLR"</span>),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Recode survey responses using function made above</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">dv_personal =</span> <span class="fu">dv_recode</span>(slharmpersonal),</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Flip sign of dist_min so that negative values represent closer to coast/greater risk</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist_min =</span> <span class="fu">ifelse</span>(slr <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="sc">-</span>dist_min, dist_min)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove NA values</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dv_personal), <span class="sc">!</span><span class="fu">is.na</span>(dist_min))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="california-only-covariate-balance-table" class="level2">
+<h2 class="anchored" data-anchor-id="california-only-covariate-balance-table">California-Only Covariate Balance Table</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create balance table comparing groups that did and did not receive treatment</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data_ca_clean <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(race, edu, gender, ideo, party, dist_min, treat_map) <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> treat_map,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> <span class="fu">list</span>(<span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ({sd})"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(label <span class="sc">~</span><span class="st">"**Covariate**"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">c</span>(<span class="st">"stat_1"</span>, <span class="st">"stat_2"</span>) <span class="sc">~</span> <span class="st">"**Map Treatment**"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">opt_interactive</span>(<span class="at">use_compact_mode =</span> <span class="cn">TRUE</span>) <span class="co"># Reduce long balance table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Covariate Summary</strong>: The covariate balance table compares demographic and geographic features between respondents who received the SLR map treatment and those who did not. Across covariates like race, gender, distance from SLR boundary, etc., the distributions are similar between groups, indicating successful randomization. This balance is essential for this study’s causal identification strategy as <code>dv_personal</code> can be attributed to the map itself rather than underlying differences between respondents.</p>
+<p><strong>Data Description:</strong> The final clean data frame contains a total of 123 columns, we will not summarize in entirety here. Those that are necessary for our analysis include:</p>
+<ul>
+<li><code>dv_personal</code>: Survey result, recoded as 0-3 to represent responses “Not at all”, “Only a little”, “A moderate amount”, and “A great deal”, respectively, when residents were asked about SLR concern. This is our <strong>outcome variable</strong>.</li>
+<li><code>treat_map</code>: Whether treatment was applied (SLR map included in survey). This is our <strong>treatment variable</strong>.</li>
+<li><code>dist_min</code>: Minimum distance (in meters) to SLR boundary. This is the <strong>running variable</strong> for our spatial heterogeneity test.</li>
+</ul>
+<p>This data contains 680 observations from California residents. The entire dataset (not used here) containing data from all four states has a sample size of 1,243</p>
+<p>In the following steps, we replicate two components of the study:</p>
+<ol type="1">
+<li>The <strong>Average Treatment Effect (ATE)</strong> of map exposure on perceived personal harm, and</li>
+<li>The <strong>spatial heterogeneity analysis</strong> used to construct Figure 4.</li>
+</ol>
+</section>
+<section id="step-1---estimate-the-ate-of-california" class="level2">
+<h2 class="anchored" data-anchor-id="step-1---estimate-the-ate-of-california">Step 1 - Estimate the ATE of California</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run robust linear model, using personal risk as response and map treatment as predictor</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mod_ate <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(dv_personal <span class="sc">~</span> treat_map, <span class="at">se_type =</span> <span class="st">"HC1"</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> data_ca_clean)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_ate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm_robust(formula = dv_personal ~ treat_map, data = data_ca_clean, 
+    se_type = "HC1")
+
+Standard error type:  HC1 
+
+Coefficients:
+              Estimate Std. Error t value   Pr(&gt;|t|) CI Lower CI Upper  DF
+(Intercept)     1.5646    0.04869  32.137 2.129e-138   1.4690   1.6602 678
+treat_mapTRUE  -0.2529    0.07454  -3.392  7.332e-04  -0.3992  -0.1065 678
+
+Multiple R-squared:  0.01685 ,  Adjusted R-squared:  0.0154 
+F-statistic: 11.51 on 1 and 678 DF,  p-value: 0.0007332</code></pre>
+</div>
+</div>
+<p>The above code chunk conducts a simple linear regression of <code>dv_personal</code> on <code>treat_map</code>, which is estimated using <code>lm_robust()</code> with HC1 (heteroskedasticity-consistent) standard errors. This results in an estimate of the average treatment effect of seeing the map on perceived personal harm.</p>
+<p>This identification approach is a simple difference in means under randomization, meaning that no covariates , fixed effects, or matching are used. The intercept reported by the model is 1.565 (p &lt; 0.001), representing the mean level of perceived personal harm among control-group respondents. As this is on a 0-3 scale, this indicates a moderate baseline level of concern. The treatment coefficient is −0.253 (SE = 0.075, p = 0.0007), meaning that respondents who saw the personalized SLR map reported roughly a quarter of a point less personal concern than those who did not. The 95% confidence interval excludes zero, which indicates that the map causally reduces perceived personal harm</p>
+</section>
+<section id="step-2-create-distance-bins" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-create-distance-bins">Step 2 — Create distance bins</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bin width</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bin_width <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data set where each observation is binned based on distance away from SLR line</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data_ca_binned <span class="ot">&lt;-</span> data_ca_clean <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist_bin =</span> bin_width <span class="sc">*</span> <span class="fu">round</span>(dist_min <span class="sc">/</span> bin_width),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist_bin =</span> <span class="fu">pmax</span>(<span class="fu">pmin</span>(dist_bin, <span class="dv">500</span>), <span class="sc">-</span><span class="dv">500</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above code discretizes the dist_min variable into 50 meter bins by rounding to the nearest multiple of 50. Bins are capped at +- 500 meters, meaning that all observations more than 500 meters from the SLR boundary are lumped together into “extreme” bins.</p>
+</section>
+<section id="step-3---estimate-treatment-effect-within-each-bin" class="level2">
+<h2 class="anchored" data-anchor-id="step-3---estimate-treatment-effect-within-each-bin">Step 3 - Estimate treatment effect within each bin</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>effects_ca <span class="ot">&lt;-</span> data_ca_binned <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep only distance bins that are more than 15 meters away from SLR line/flood zone</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dist_bin) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Run same model as before</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">lm_robust</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    dv_personal <span class="sc">~</span> treat_map,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">se_type =</span> <span class="st">"HC1"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> .</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  ))) <span class="sc">%&gt;%</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ungroup</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep only observations that received treatment</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"treat_mapTRUE"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate confidnece intervals</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_low =</span> estimate <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> std.error,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_high =</span> estimate <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> std.error</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above code conducts a separate OLS regression of <code>dv_personal</code> on <code>treat_map</code> with HC1 standard errors for each of the bins. Bins with less than 15 observations are dropped to reduce noise. This should, in theory, test the impact of the map based on the flood zone. For this to work, randomization must be maintained across each bin.</p>
+</section>
+<section id="step-4---plot-california---only-figure" class="level2">
+<h2 class="anchored" data-anchor-id="step-4---plot-california---only-figure">Step 4 - Plot California - Only Figure</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replicate Figure 4, only with SF Bay Area data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(effects_ca, <span class="fu">aes</span>(<span class="at">x =</span> dist_bin, <span class="at">y =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> ci_low, <span class="at">ymax =</span> ci_high), <span class="at">width =</span> <span class="dv">20</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Outcome: Sense of personal harm (California only)"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Treatment effect of map by distance from SLR boundary"</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Distance from SLR boundary (negative = inside SLR zone)"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Treatment effect of map"</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The above code produces a scatter plot of bin specific treatment effects (y-axis) against the distance from the SLR boundary (x-axis). The plot shows regardless of the distance from the SLR boundary, the effect of the treatment often trended negative even in the “extreme” group. This indicates that the survey may have backfired, as many people likely to be impacted seem to report feeling less perceived personal harm.</p>
+</section>
+</section>
+<section id="interpretation" class="level1">
+<h1>Interpretation</h1>
+<hr>
+<p>Three key insights emerge from the California analysis:</p>
+<ol type="1">
+<li><p><strong>Maps reduce perceived personal harm across almost all distances.</strong> Even respondents whose homes are projected to flood show lower concern after seeing the map.</p></li>
+<li><p><strong>There is no sharp change at the SLR boundary.</strong> If maps increased personal relevance, we would expect a spike near 0 meters. Instead, the curve is flat and negative.</p></li>
+<li><p><strong>California behaves like the national sample.</strong> Despite higher climate awareness, the backfire effect persists. This insight is based on evidence from the original study, as well. The national sample is in reference to the first experiment that consisted of a sample of four coastal regions in the states of California, Florida, New Jersey and Virginia.</p></li>
+</ol>
+<div id="fig-compare" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/figure4.png" class="img-fluid figure-img" width="463"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/figure4.png" class="img-fluid figure-img" width="463"></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Comparing Mildenberger et al.&nbsp;(2024)‘s results (left) to ours (right) reveals that inside the flood zone (negative distances), California’s treatment effect paralleled that of the entire study sample. We can also see that outside of the flood zone (positive distances), Californians’ sense of personal harm either didn’t change or increased, whereas the backfire effect was stronger in the four-state sample.
+</figcaption>
+</figure>
+</div>
+<p><strong>Backfire Effect</strong>: The negative treatment effect across most of the distances that indicates that maps may unintentionally make respondents less concerned about sea-level rise. Even respondents with homes projected to flood showed reduced perceived harm after viewing the map.</p>
+</section>
+<section id="conclusion-and-summary" class="level1">
+<h1>Conclusion and Summary</h1>
+<p>This study utilizes a randomized experiment to produce causal inference results. Additionally, spatial heterogeneity allows for mechanism exploration. However, due to the survey methodology, non-response bias persists.</p>
+<p>For policymakers, the takeaway is clear: SLR maps may unintentionally reduce concern, even among at‑risk households.</p>
+<p><strong>Causal Identification:</strong></p>
+<ul>
+<li><p>The study’s identification strategy is a randomized survey experiment that provides credibility.</p></li>
+<li><p>In the California sample, the treatment assignment (treat_map) is independent of respondent characteristics because the map is randomly shown after the individuals enter the survey.</p></li>
+<li><p>For ATE and bin-level estimates in Figure 4, the causal effect can be identified if: Randomization was implemented correctly If one respondent’s treatment does not affect anther’s outcome (SUTVA) This leads to the belief that internal validity is strong and that the randomized design credibly identifies the short-run causal effect of seeing the map on the survey outcome.</p></li>
+</ul>
+<p><strong>Spatial Analysis Assumptions</strong>: The spatial heterogeneity analysis assumes the following: - Randomization holds within each distance. - Treatment effects are comparable across bins. - Distance to the SLR boundary is measured without error. - No sorting or manipulation around the boundary due to randomization of treatment.</p>
+<p><strong>Statistical Assumptions:</strong></p>
+<p>Because this is a randomized experiment, the assumptions are:</p>
+<p><em>Randomized validity</em></p>
+<p>The author reports no evidence of imbalance across the treatment and control groups Our California-only replication relies on the same randomization. Randomization was implemented through the Qualtrics platform, ensuring that map exposure was independent of respondent characteristics.</p>
+<p><em>SUTVA</em></p>
+<p>Respondents complete surveys individually and therefore cannot see each others maps Spillovers are unlikely due to the online setting Due to this, we believe that statistical assumptions are reasonable. Although all treated individuals received a map, the variation in treatment was their homes location relative to the flood zone.</p>
+<p><strong>Sampling and External Validity:</strong></p>
+<ul>
+<li><p>The sample are the California respondents that were recruited via “address-matched mail-to-web sampling”</p></li>
+<li><p>This generalizes respondents that are Californian (more likely climate aware), metropolitan and more likely to engage with mailed surveys</p></li>
+<li><p>Even inside the flood zone, respondents show low personal concern</p></li>
+<li><p>These results may not generalize other people that are: Renters Low-income People that dont respond to mail surveys Other states or countries</p></li>
+<li><p>Our replication focuses on California which is more climate-concerned than the national-average Because of this, we find external validity is weak and may not be able to be generalized to the broader population.</p></li>
+</ul>
+<p>Therefore, due to the relatively small sample size and the geographic limit of only one coastal community, it can be concluded that these results can only be generalized to the residents of the San Francisco Bay Area, California.</p>
+<p><strong>Outcome Validity Concerns:</strong></p>
+<p>The outcome can be a concern as a single 4-point Likert item asking how much sea level rise will harm them personally raises some issues. The paper mentions respondents spent a median time of 33 seconds on the map page which may introduce a reaction that does not internalize the information fully The lower scores may reflect reassurance (they are not in the flood zone) or disbelief in the map Treatment Validity Concerns</p>
+<p>A map of sea level rise shown once at the discretion of the respondents may not capture the full opinion of the respondent. 19% of the respondents found the map not very or not at all credible. We can say that the Measurement validity is decent, however maybe limited in measuring risk perception.</p>
+<p><strong>Other Limitations:</strong></p>
+<p><em>Spillover effect</em></p>
+<p>It would not have been possible for the researchers to control whether or not residents discussed the surveys and their responses with each other. This could lead to observations that are not truly independent.</p>
+<p><em>Time lag</em></p>
+<p>Differences in response time (or even allowing for a long response time) could potential skew outcomes. For example, if there was a weather event that led to minor flooding in the time period that the survey was open, respondents who completed the survey before and after the event could be basing their beliefs off of different realities (and not off of the treatment). These discrepancies were not controlled for in the study methods.</p>
+<p>Overall, our California‑only replication supports the paper’s core experimental finding: randomized exposure to personalized SLR maps causally reduces reported personal concern about sea‑level rise. The internal validity of this estimate is strong due to proper randomization, minimal risk of spillovers. However, the broader policy relevance of this effect is limited. The outcome measure uses coarse scores and maybe be sensitive to short‑run reactions, the treatment is a one‑time map rather than the standard policy communication, and the California/San Francisco sample may and probably is unrepresentative of the broader population. These factors weaken external validity and can raise questions about whether the observed “backfire effect”. In all, the experiment credibly identifies a short‑run causal effect in this specific survey context, but the evidence is less convincing as support for the stronger policy claim that SLR maps broadly reduce public concern in real‑world settings.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
