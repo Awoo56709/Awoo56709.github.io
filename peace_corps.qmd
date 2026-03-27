@@ -6,9 +6,6 @@ format:
     smooth-scroll: true
     css: styles/peacecorps.css
 ---
-
-# Peace Corps Experiences
-
 ::: {.scene}
 ![](photos/peace_corps_photos/georgian_church.jpg){.full-img}
 <div class="caption">
