@@ -130,7 +130,7 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "As a Masters Student I analyze environmental and Geospatial data using R and Python. Packages that I use in my workflow include:\n\n\n\n\n\n\n\nLibrary\nDescription\n\n\n\n\ntidyverse\ndata wrangling and plotting\n\n\nterra\nraster processing, reclassification, resampling, map algebra\n\n\nsf\nreading shapefiles, managing projections, spatial joins\n\n\nstars\nconverts rasters for use with tmap and ggplot2\n\n\ntmap\ncreates maps with basemaps, legends, labels, scale bars, compasses\n\n\nknitr / kableExtra\ntable formatting and report‑ready tables\n\n\ngeopandas\nload shapefiles, reproject CRS, clip vectors, spatial joins\n\n\nxarray\nopen NetCDFs, access spectral bands, convert to arrays\n\n\nmatplotlib\ntrue/false‑color composites, fire overlays, raster visualization\n\n\npandas\ntabular data manipulation\n\n\nnumpy\nnumerical operations, masks, array calculations"
+    "text": "I’m a Master of Environmental Data Science candidate at UC Santa Barbara with a background in GHG accounting, environmental analytics, and sustainability reporting. My path into environmental data work began during my AmeriCorps service with Honolulu’s Office of Climate Change, Sustainability and Resiliency, where I co-developed the methodology for the city’s first countywide GHG inventory and contributed to its inaugural Sustainability Report and Resilience Strategy.\nBefore AmeriCorps, I served in the Peace Corps in Georgia, where I supported a local NGO by modernizing its digital and data systems. I built the organization’s website, developed a database to track youth program participation, and taught Excel and introductory Python to students. Working in a resource-limited environment strengthened my adaptability, problem-solving skills, and ability to design practical, accessible data tools — qualities that continue to shape my approach to environmental analytics today."
   },
   {
     "objectID": "about.html#what-i-do-for-work",
@@ -144,7 +144,7 @@
     "href": "about.html#what-i-do-for-fun",
     "title": "About Me",
     "section": "What I do for fun",
-    "text": "What I do for fun\nIn my free time, I enjoy film photography, cooking, playing guitar and going camping in my Volkswagen.\n\nYou can find me enjoying my collection of vinyl records. My favorite cuisine is Thai food. Among Thai food, drunken noodles, larb and yellow curry are among my favorite dishes. However, my all time favorite dish is the Japanese Ramen, specifically Tsukemen."
+    "text": "What I do for fun\nOutside of data work, I enjoy film photography, cooking, playing guitar, and taking my Volkswagen camping. I also collect vinyl records and love exploring new cuisines — especially Thai food (drunken noodles, larb, and yellow curry) and Japanese ramen, with a special love for tsukemen."
   },
   {
     "objectID": "index.html",
@@ -530,5 +530,19 @@
     "title": "Do Sea‑Level Rise Maps Backfire?",
     "section": "Step 4 - Plot California - Only Figure",
     "text": "Step 4 - Plot California - Only Figure\n\n# Replicate Figure 4, only with SF Bay Area data\nggplot(effects_ca, aes(x = dist_bin, y = estimate)) +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  geom_vline(xintercept = 0, linetype = \"dashed\") +\n  geom_point(size = 2) +\n  geom_errorbar(aes(ymin = ci_low, ymax = ci_high), width = 20, alpha = 0.6) +\n  geom_smooth(method = \"loess\", se = TRUE, color = \"red\") +\n  theme_minimal() +\n  labs(\n    title = \"Outcome: Sense of personal harm (California only)\",\n    subtitle = \"Treatment effect of map by distance from SLR boundary\",\n    x = \"Distance from SLR boundary (negative = inside SLR zone)\",\n    y = \"Treatment effect of map\"\n  )\n\n\n\n\n\n\n\n\nThe above code produces a scatter plot of bin specific treatment effects (y-axis) against the distance from the SLR boundary (x-axis). The plot shows regardless of the distance from the SLR boundary, the effect of the treatment often trended negative even in the “extreme” group. This indicates that the survey may have backfired, as many people likely to be impacted seem to report feeling less perceived personal harm."
+  },
+  {
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m a Master of Environmental Data Science candidate at UC Santa Barbara with a background in GHG accounting, environmental analytics, and sustainability reporting. My path into environmental data work began during my AmeriCorps service with Honolulu’s Office of Climate Change, Sustainability and Resiliency, where I co-developed the methodology for the city’s first countywide GHG inventory and contributed to its inaugural Sustainability Report and Resilience Strategy.\nBefore AmeriCorps, I served in the Peace Corps in Georgia, where I supported a local NGO by modernizing its digital and data systems. I built the organization’s website, developed a database to track youth program participation, and taught Excel and introductory Python to students. Working in a resource-limited environment strengthened my adaptability, problem-solving skills, and ability to design practical, accessible data tools — qualities that continue to shape my approach to environmental analytics today."
+  },
+  {
+    "objectID": "about.html#technical-skills-tools",
+    "href": "about.html#technical-skills-tools",
+    "title": "About Me",
+    "section": "Technical Skills & Tools",
+    "text": "Technical Skills & Tools\nAs a Masters Student I analyze environmental and Geospatial data using R and Python. Packages that I use in my workflow include:\n\n\n\n\n\n\n\nLibrary\nDescription\n\n\n\n\ntidyverse\ndata wrangling and plotting\n\n\nterra\nraster processing, reclassification, resampling, map algebra\n\n\nsf\nreading shapefiles, managing projections, spatial joins\n\n\nstars\nconverts rasters for use with tmap and ggplot2\n\n\ntmap\ncreates maps with basemaps, legends, labels, scale bars, compasses\n\n\nknitr / kableExtra\ntable formatting and report‑ready tables\n\n\ngeopandas\nload shapefiles, reproject CRS, clip vectors, spatial joins\n\n\nxarray\nopen NetCDFs, access spectral bands, convert to arrays\n\n\nmatplotlib\ntrue/false‑color composites, fire overlays, raster visualization\n\n\npandas\ntabular data manipulation\n\n\nnumpy\nnumerical operations, masks, array calculations"
   }
 ]

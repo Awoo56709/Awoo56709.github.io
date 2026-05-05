@@ -2,8 +2,6 @@
 title: "About Me"
 ---
 
-## About Me
-
 I’m a Master of Environmental Data Science candidate at UC Santa Barbara with a background in GHG accounting, environmental analytics, and sustainability reporting. My path into environmental data work began during my AmeriCorps service with Honolulu’s Office of Climate Change, Sustainability and Resiliency, where I co-developed the methodology for the city’s first countywide GHG inventory and contributed to its inaugural Sustainability Report and Resilience Strategy.
 
 Before AmeriCorps, I served in the Peace Corps in Georgia, where I supported a local NGO by modernizing its digital and data systems. I built the organization’s website, developed a database to track youth program participation, and taught Excel and introductory Python to students. Working in a resource-limited environment strengthened my adaptability, problem-solving skills, and ability to design practical, accessible data tools — qualities that continue to shape my approach to environmental analytics today.
