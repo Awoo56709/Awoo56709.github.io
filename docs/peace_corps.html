@@ -40,6 +40,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-991b1886d3c685c7aa2b62b80640c7af.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,13 +70,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
 
 
-<link rel="stylesheet" href="styles/peacecorps.css">
+<link rel="stylesheet" href="_extensions/qmd-lab/closeread/closeread.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -145,12 +149,12 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -159,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -173,74 +177,204 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="peace-corps-experiences" class="level1">
 <h1>Peace Corps Experiences</h1>
-<div class="scene">
-<img src="photos/peace_corps_photos/georgian_church.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Georgian 14th Century Church<br>
-A quiet moment before the day began.</p>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/georgian_church.jpg" class="img-fluid"></p>
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/handsome_cat.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Summer Time Lounging<br>
-The neighborhood cats always knew the best places to rest.</p>
+<div class="trigger">
+<section id="georgian-14th-century-church" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="georgian-14th-century-church">Georgian 14th Century Church</h3>
+<p>A quiet moment before the day began.</p>
+</section>
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/mestia_cow.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Mestia and Svan Towers<br>
-A landscape where cows and mountains share the same calm.</p>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/motor_cat.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Rallying for a Ride<br>
-A cat with somewhere important to be.</p>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/handsome_cat.jpg" class="img-fluid"></p>
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/mtchadi.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Berikaoba Mtchadi<br>
-Warm bread, cold air, and the feeling of celebration.</p>
+<div class="trigger">
+<section id="summer-time-lounging" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="summer-time-lounging">Summer Time Lounging</h3>
+<p>The neighborhood cats always knew the best places to rest.</p>
+</section>
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/night_in_tkibuli.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Evening Walks in Tkibuli<br>
-Streetlights, quiet roads, and the rhythm of small‑town nights.</p>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/oba.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>An Experience at Berikaoba<br>
-Tradition, color, and the energy of community.</p>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/mestia_cow.jpg" class="img-fluid"></p>
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/tkibuli_lift.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Winter in Georgia<br>
-Snow‑covered hills and the slow hum of daily life.</p>
+<div class="trigger">
+<section id="mestia-and-svan-towers" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="mestia-and-svan-towers">Mestia and Svan Towers</h3>
+<p>A landscape where cows and mountains share the same calm.</p>
+</section>
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/tkibuli_office.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Inside the Tkibuli Office<br>
-Where projects began, conversations unfolded, and ideas took shape.</p>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
 </div>
 </div>
-<div class="scene">
-<img src="photos/peace_corps_photos/tkibuli_town.jpg" class="full-img img-fluid">
-<div class="caption">
-<p>Racha and Imereti is the Place to Be<br>
-A region that shaped my service and my memories.</p>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/motor_cat.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger">
+<section id="rallying-for-a-ride" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="rallying-for-a-ride">Rallying for a Ride</h3>
+<p>A cat with somewhere important to be.</p>
+</section>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/mtchadi.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger">
+<section id="berikaoba-mtchadi" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="berikaoba-mtchadi">Berikaoba Mtchadi</h3>
+<p>Warm bread, cold air, and the feeling of celebration.</p>
+</section>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/night_in_tkibuli.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger">
+<section id="evening-walks-in-tkibuli" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="evening-walks-in-tkibuli">Evening Walks in Tkibuli</h3>
+<p>Streetlights, quiet roads, and the rhythm of small‑town nights.</p>
+</section>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/oba.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger">
+<section id="an-experience-at-berikaoba" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="an-experience-at-berikaoba">An Experience at Berikaoba</h3>
+<p>Tradition, color, and the energy of community.</p>
+</section>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/tkibuli_lift.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger">
+<section id="winter-in-georgia" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="winter-in-georgia">Winter in Georgia</h3>
+<p>Snow‑covered hills and the slow hum of daily life.</p>
+</section>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/tkibuli_office.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger">
+<section id="inside-the-tkibuli-office" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="inside-the-tkibuli-office">Inside the Tkibuli Office</h3>
+<p>Where projects began, conversations unfolded, and ideas took shape.</p>
+</section>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger">
+<div class="narrative">
+<p><img src="photos/peace_corps_photos/tkibuli_town.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger">
+<section id="racha-and-imereti" class="level3 cr-text narrative">
+<h3 class="anchored" data-anchor-id="racha-and-imereti">Racha and Imereti</h3>
+<p>A region that shaped my service and my memories.</p>
+</section>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+
+</div>
 </div>
 </div>
 
@@ -652,5 +786,4 @@ A region that shaped my service and my memories.</p>
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

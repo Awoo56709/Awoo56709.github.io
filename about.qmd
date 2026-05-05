@@ -2,7 +2,13 @@
 title: "About Me"
 ---
 
-## What I do For Work
+## About Me
+
+I’m a Master of Environmental Data Science candidate at UC Santa Barbara with a background in GHG accounting, environmental analytics, and sustainability reporting. My path into environmental data work began during my AmeriCorps service with Honolulu’s Office of Climate Change, Sustainability and Resiliency, where I co-developed the methodology for the city’s first countywide GHG inventory and contributed to its inaugural Sustainability Report and Resilience Strategy.
+
+Before AmeriCorps, I served in the Peace Corps in Georgia, where I supported a local NGO by modernizing its digital and data systems. I built the organization’s website, developed a database to track youth program participation, and taught Excel and introductory Python to students. Working in a resource-limited environment strengthened my adaptability, problem-solving skills, and ability to design practical, accessible data tools — qualities that continue to shape my approach to environmental analytics today.
+
+## Technical Skills & Tools
 
 As a Masters Student I analyze environmental and Geospatial data using R and Python. Packages that I use in my workflow include:
 
@@ -22,8 +28,6 @@ As a Masters Student I analyze environmental and Geospatial data using R and Pyt
 
 ## What I do for fun
 
-In my free time, I enjoy film photography, cooking, playing guitar and going camping in my Volkswagen.
+Outside of data work, I enjoy film photography, cooking, playing guitar, and taking my Volkswagen camping. I also collect vinyl records and love exploring new cuisines — especially Thai food (drunken noodles, larb, and yellow curry) and Japanese ramen, with a special love for tsukemen.
 
 ![](photos/turkiye/turk_breakfast.jpg){.gallery-img}
-
-You can find me enjoying my collection of vinyl records. My favorite cuisine is Thai food. Among Thai food, drunken noodles, larb and yellow curry are among my favorite dishes. However, my all time favorite dish is the Japanese Ramen, specifically Tsukemen.
