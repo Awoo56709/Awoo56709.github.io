@@ -2,9 +2,11 @@
 title: "About Me"
 ---
 
-I’m a Master of Environmental Data Science candidate at UC Santa Barbara with a background in GHG accounting, environmental analytics, and sustainability reporting. My path into environmental data work began during my AmeriCorps service with Honolulu’s Office of Climate Change, Sustainability and Resiliency, where I co-developed the methodology for the city’s first countywide GHG inventory and contributed to its inaugural Sustainability Report and Resilience Strategy.
+I’m a Master of Environmental Data Science candidate at UC Santa Barbara with a background in GHG accounting, environmental analytics, and sustainability reporting. My path into environmental data work began during my AmeriCorps service with Honolulu’s Office of Climate Change, Sustainability and Resiliency, where I co‑developed the methodology for the city’s first countywide GHG inventory and contributed to its inaugural Sustainability Report and Resilience Strategy. That experience grounded me in the importance of accurate, transparent environmental data for climate planning and public decision‑making.
 
-Before AmeriCorps, I served in the Peace Corps in Georgia, where I supported a local NGO by modernizing its digital and data systems. I built the organization’s website, developed a database to track youth program participation, and taught Excel and introductory Python to students. Working in a resource-limited environment strengthened my adaptability, problem-solving skills, and ability to design practical, accessible data tools — qualities that continue to shape my approach to environmental analytics today.
+After AmeriCorps, I served in the Peace Corps in Georgia, where I supported a local NGO by modernizing its digital and data systems. I built the organization’s website, developed a database to track youth program participation, and taught Excel and introductory Python to students. Working in a resource‑limited environment strengthened my adaptability, problem‑solving skills, and ability to design practical, accessible data tools — qualities that continue to shape my approach to environmental analytics today.
+
+Across my roles, I’ve focused on building reproducible data workflows, integrating cross‑sector environmental datasets, and translating complex climate and emissions data into clear, actionable insights. I’m driven by the intersection of data, policy, and environmental decision‑making — and I’m committed to helping organizations strengthen their sustainability, ESG, and climate analytics capabilities.
 
 ## Technical Skills & Tools
 
