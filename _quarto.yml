@@ -26,6 +26,8 @@ website:
             text: მშვისდობის კორპუსი
       - href: blog_page.qmd
         text: Blog
+      - href: reports.qmd
+        text: Reports
       - href: /files/resume.pdf
         text: Resume
         target: _blank
