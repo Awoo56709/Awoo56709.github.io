@@ -548,8 +548,15 @@
   {
     "objectID": "reports.html",
     "href": "reports.html",
-    "title": "reports",
+    "title": "Reports",
     "section": "",
-    "text": "TDDF First Annual Report"
+    "text": "[View PDF] (https://github.com/Awoo56709/Awoo56709.github.io/blob/main/assets/TDDF_Summary_Report.pdf)"
+  },
+  {
+    "objectID": "reports.html#tddf-first-annual-report",
+    "href": "reports.html#tddf-first-annual-report",
+    "title": "Reports",
+    "section": "",
+    "text": "[View PDF] (https://github.com/Awoo56709/Awoo56709.github.io/blob/main/assets/TDDF_Summary_Report.pdf)"
   }
 ]
