@@ -5,5 +5,4 @@ format: html
 
 ## TDDF First Annual Report
 
-
-![View PDF](https://github.com/Awoo56709/Awoo56709.github.io/blob/main/assets/TDDF_Summary_Report.pdf)
+You can view the PDF [here](assets/TDDF_Summary_Report.pdf){target="_blank"}.
